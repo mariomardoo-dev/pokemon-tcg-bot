@@ -55,32 +55,35 @@ hr{border:none;border-top:1px solid #181818;margin:4px 0}
 <div id=chat>
 <div class="msg bot"><b>Välkommen till Pokesniper.se! 🏹</b><br><br>
 <i>Sveriges smartaste sökverktyg för Pokémon TCG-lager</i><br><br>
-<b>🔍 Sök på vad som helst</b><br>
-Prova: <b>151, etb, tin, prismatic, mewtwo, pitch black, booster bundle, team rocket, stellar crown, ascended heroes, mega evolution</b> — eller skriv valfri produkt!<br><br>
+<div style="background:#1a0000;border:1px solid #cc0000;border-radius:6px;padding:12px;margin:8px 0">
+<b style="font-size:15px;color:#ff4444">🔍 Sök på vad som helst</b><br>
+<span style="font-size:14px;color:#ff9999">
+Prova: <b>151, etb, tin, prismatic, mewtwo, pitch black, booster bundle, team rocket, stellar crown, ascended heroes, mega evolution</b> — eller skriv valfri produkt!
+</span>
+</div>
 <b>🛒 43 butiker — 2 670 produkter</b><br>
 Vi söker igenom ALLA svenska butiker samtidigt:<br>
 Alphaspel • Webhallen • MaxGaming • Coolcard • Swepoke • DragonsLair<br>
 Spelochsant • Poketalk • Cardlevels • Kortarkivet • TCG Center • och 30+ fler!<br><br>
 <hr><br>
 <b>🎮 Discord-servern</b><br>
-Vi har en hel server med <b>5 bottar</b> som övervakar lagret i realtid — 24/7!<br><br>
+På vår Discord har vi <b>ännu kraftfullare sökmotorer</b> — bottarna kan mycket mer än hemsidan! 🚀<br><br>
 <b>🤖 Jessie</b> — postar automatiskt i butikskanaler när nya produkter dyker upp. Varje butik har en egen kanal med 🟢/🔴 status<br><br>
 <b>🤖 Meowth</b> — din personliga assistent via DM!<br>
-• <b>!search</b> — sök produkter i alla butiker<br>
+• <b>!search</b> — sök i alla butiker med smart matchning<br>
 • <b>!track</b> — få DM direkt när en produkt kommer i lager<br>
 • <b>!prisvarn</b> — få notis när priset sjunker<br>
 • <b>!card / !set</b> — sök Pokémon-kort via TCGdex<br>
 • <b>!prisjakt</b> — bästa priset just nu<br><br>
-<b>🤖 James</b> — 24h live-feed i en egen kanal. Nya produkter postas direkt, ❌ när de tar slut, och allt raderas efter 24h — alltid färskt!<br><br>
-<b>🤖 Giovanni</b> — håller koll på utländska butiker (Danmark, Tyskland, Polen, USA)<br><br>
-<b>🤖 Cipher</b> — din personliga spårningsbot. Sätt upp till 5 egna trackers!<br><br>
-<b>📊 Övervakning dygnet runt</b><br>
-Butikerna skannas var <b>15:e minut</b> — du missar aldrig ett släpp eller en restock!<br><br>
+<b>🤖 James</b> — 24h live-feed med statusändringar<br>
+<b>🤖 Giovanni</b> — utländska butiker (DK, DE, PL, US)<br>
+<b>🤖 Cipher</b> — personlig spårning, upp till 5 trackers<br><br>
+<b>📊 Uppdateras var 15:e minut</b> — du missar aldrig ett släpp!<br><br>
 <hr><br>
 <b>💬 Redo att gå med?</b><br>
 👉 <b><a href="https://discord.gg/QRaPfTVHFr" target="_blank" style="color:#60a5fa">discord.gg/QRaPfTVHFr</a></b><br>
 Välkommen in i <b>Team Rocket</b>! 🚀 Vi ses på servern — gotta catch 'em all! 🔥<br><br>
-<i>Tips: skriv 1-2 ord för snabbast sökning! 👊</i></div>
+<i style="color:#666">Tips: skriv 1-2 ord för snabbast sökning! 👊</i></div>
 </div>
 <div class=input><input id=q placeholder="Sok produkt..." autofocus><button onclick=sok()>Sok</button></div>
 <script>
