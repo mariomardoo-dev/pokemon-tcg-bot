@@ -21,28 +21,28 @@ HTML = """<!DOCTYPE html>
 <title>Pokesniper.se - Pokemon TCG</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#1a1a2e;color:#eee;height:100vh;display:flex;flex-direction:column}
-.header{background:#16213e;padding:20px;text-align:center;border-bottom:2px solid #e94560}
-.header h1{font-size:24px;color:#e94560}
-.header p{font-size:14px;color:#888;margin-top:5px}
-#count{font-size:12px;color:#666}
-#chat{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
-.msg{max-width:80%;padding:12px 16px;border-radius:12px;line-height:1.4;font-size:14px}
-.user{background:#0f3460;align-self:flex-end;border-bottom-right-radius:4px}
-.bot{background:#16213e;align-self:flex-start;border-bottom-left-radius:4px}
-.bot .p{padding:8px 0;border-bottom:1px solid #333}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#eee;height:100vh;display:flex;flex-direction:column}
+.header{background:#1a0000;padding:20px;text-align:center;border-bottom:3px solid #cc0000}
+.header h1{font-size:24px;color:#cc0000;text-shadow:0 0 10px rgba(204,0,0,.5)}
+.header p{font-size:14px;color:#ff4444;margin-top:5px}
+#count{font-size:12px;color:#993333}
+#chat{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;background:#0d0d0d}
+.msg{max-width:80%;padding:12px 16px;border-radius:12px;line-height:1.4;font-size:14px;border:1px solid #222}
+.user{background:#1a0000;align-self:flex-end;border-bottom-right-radius:4px;border-color:#330000}
+.bot{background:#111;align-self:flex-start;border-bottom-left-radius:4px;border-color:#222}
+.bot .p{padding:8px 0;border-bottom:1px solid #1a1a1a}
 .bot .p:last-child{border:none}
-.name{font-weight:600;color:#e94560}
+.name{font-weight:600;color:#ff3333}
 .price{color:#4ade80}
-.store{color:#888;font-size:12px}
-.link a{color:#60a5fa;font-size:12px}
-.input{background:#16213e;padding:15px 20px;display:flex;gap:10px;border-top:1px solid #333}
-.input input{flex:1;padding:12px 16px;border:1px solid #333;border-radius:8px;background:#1a1a2e;color:#eee;font-size:15px;outline:none}
-.input input:focus{border-color:#e94560}
-.input button{padding:12px 24px;border:none;border-radius:8px;background:#e94560;color:#fff;font-size:15px;cursor:pointer}
-.input button:hover{background:#d63851}
-.typing{color:#666;font-style:italic;padding:8px}
-.hint{color:#555;font-size:12px;text-align:center;padding:10px}
+.store{color:#999;font-size:12px}
+.link a{color:#ff6666;font-size:12px}
+.input{background:#1a0000;padding:15px 20px;display:flex;gap:10px;border-top:3px solid #cc0000}
+.input input{flex:1;padding:12px 16px;border:1px solid #333;border-radius:8px;background:#0a0a0a;color:#eee;font-size:15px;outline:none}
+.input input:focus{border-color:#cc0000}
+.input button{padding:12px 24px;border:none;border-radius:8px;background:#cc0000;color:#fff;font-size:15px;cursor:pointer;font-weight:bold}
+.input button:hover{background:#ff0000;box-shadow:0 0 10px rgba(204,0,0,.5)}
+.typing{color:#993333;font-style:italic;padding:8px}
+hr{border:none;border-top:1px solid #330000;margin:5px 0}
 </style>
 </head>
 <body>
