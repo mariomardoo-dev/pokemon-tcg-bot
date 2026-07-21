@@ -67,7 +67,8 @@ Alphaspel • Webhallen • MaxGaming • Coolcard • Swepoke • DragonsLair<b
 Spelochsant • Poketalk • Cardlevels • Kortarkivet • TCG Center • och 30+ fler!<br><br>
 <hr><br>
 <b>🎮 Discord-servern</b><br>
-På vår Discord har vi <b>ännu kraftfullare sökmotorer</b> — bottarna kan mycket mer än hemsidan! 🚀<br><br>
+På vår Discord har vi <b>ännu kraftfullare sökmotorer</b> — bottarna kan mycket mer än hemsidan! 🚀<br>
+Vi uppdaterar och finslipar bottarna och kanalerna hela tiden för att du ska få bästa möjliga koll på lagret! 🔧🔥<br><br>
 <b>🤖 Jessie</b> — postar automatiskt i butikskanaler när nya produkter dyker upp. Varje butik har en egen kanal med 🟢/🔴 status<br><br>
 <b>🤖 Meowth</b> — din personliga assistent via DM!<br>
 • <b>!search</b> — sök i alla butiker med smart matchning<br>
