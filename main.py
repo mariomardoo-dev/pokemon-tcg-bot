@@ -21,28 +21,29 @@ HTML = """<!DOCTYPE html>
 <title>Pokesniper.se - Pokemon TCG</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#eee;height:100vh;display:flex;flex-direction:column}
-.header{background:#1a0000;padding:20px;text-align:center;border-bottom:3px solid #cc0000}
-.header h1{font-size:24px;color:#cc0000;text-shadow:0 0 10px rgba(204,0,0,.5)}
-.header p{font-size:14px;color:#ff4444;margin-top:5px}
-#count{font-size:12px;color:#993333}
-#chat{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;background:#0d0d0d}
-.msg{max-width:80%;padding:12px 16px;border-radius:12px;line-height:1.4;font-size:14px;border:1px solid #222}
-.user{background:#1a0000;align-self:flex-end;border-bottom-right-radius:4px;border-color:#330000}
-.bot{background:#111;align-self:flex-start;border-bottom-left-radius:4px;border-color:#222}
-.bot .p{padding:8px 0;border-bottom:1px solid #1a1a1a}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d0d0d;color:#e0e0e0;height:100vh;display:flex;flex-direction:column}
+.header{background:linear-gradient(180deg,#1a0000,#0d0d0d);padding:24px 20px;text-align:center;border-bottom:1px solid #2a0000}
+.header h1{font-size:22px;color:#cc0000;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.header p{font-size:13px;color:#993333;margin-top:4px;letter-spacing:1px}
+#count{font-size:11px;color:#662222;margin-top:2px}
+#chat{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:75%;padding:10px 14px;border-radius:6px;line-height:1.5;font-size:13px;border:1px solid #1a1a1a}
+.user{background:#1a0000;align-self:flex-end;border-color:#2a0000}
+.bot{background:#111;align-self:flex-start;border-color:#1a1a1a}
+.bot .p{padding:6px 0;border-bottom:1px solid #181818}
 .bot .p:last-child{border:none}
 .name{font-weight:600;color:#ff3333}
-.price{color:#4ade80}
-.store{color:#999;font-size:12px}
-.link a{color:#ff6666;font-size:12px}
-.input{background:#1a0000;padding:15px 20px;display:flex;gap:10px;border-top:3px solid #cc0000}
-.input input{flex:1;padding:12px 16px;border:1px solid #333;border-radius:8px;background:#0a0a0a;color:#eee;font-size:15px;outline:none}
+.price{color:#4ade80;font-weight:500}
+.store{color:#777;font-size:11px}
+.link a{color:#cc0000;font-size:12px;text-decoration:none}
+.link a:hover{color:#ff3333;text-decoration:underline}
+.input{background:#0a0a0a;padding:16px 20px;display:flex;gap:8px;border-top:1px solid #1a1a1a}
+.input input{flex:1;padding:10px 14px;border:1px solid #222;border-radius:4px;background:#0d0d0d;color:#e0e0e0;font-size:14px;outline:none;transition:border-color .2s}
 .input input:focus{border-color:#cc0000}
-.input button{padding:12px 24px;border:none;border-radius:8px;background:#cc0000;color:#fff;font-size:15px;cursor:pointer;font-weight:bold}
-.input button:hover{background:#ff0000;box-shadow:0 0 10px rgba(204,0,0,.5)}
-.typing{color:#993333;font-style:italic;padding:8px}
-hr{border:none;border-top:1px solid #330000;margin:5px 0}
+.input button{padding:10px 20px;border:none;border-radius:4px;background:#cc0000;color:#fff;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:1px;transition:all .2s}
+.input button:hover{background:#ff0000}
+.typing{color:#662222;font-style:italic;padding:6px 0;font-size:12px}
+hr{border:none;border-top:1px solid #181818;margin:4px 0}
 </style>
 </head>
 <body>
