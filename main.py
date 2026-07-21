@@ -158,6 +158,10 @@ def sok():
     q = request.args.get("q","").strip()
     return jsonify(search_products(q) if q else [])
 
+@app.route("/google15a64bbd69393fe9.html")
+def google_verify():
+    return "google-site-verification: google15a64bbd69393fe9.html"
+
 @app.route("/count")
 def count():
     return str(len(PRODUCTS))
