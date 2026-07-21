@@ -52,19 +52,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div id=count></div>
 </div>
 <div id=chat>
-<div class="msg bot">Hej! Välkommen till <b>Pokesniper.se</b> 🔥<br><br>
-<b>🔍 Sök på</b> 151, etb, tin, prismatic, mewtwo, pitch, booster — eller valfri produkt!<br><br>
-<b>🛒 43 butiker — 2670 produkter</b><br>
-Allt fran svenska butiker pa ett stalle: Alphaspel, Webhallen, MaxGaming, Coolcard, Swepoke, DragonsLair och manga fler!<br><br>
-<b>🤖 Discord-bottar</b><br>
-Vi har ocksa bottar pa Discord som overvakar lagret i realtid:<br>
-• <b>Jessie</b> — postar i butikskanaler nar nya produkter kommer<br>
-• <b>Meowth</b> — sok, tracka och fa DM nar nagot kommer i lager<br>
-• <b>Giovanni</b> — utlandska butiker<br>
-• <b>Cipher</b> — personlig sparning<br>
-• <b>James</b> — 24h live-feed med statusandringar<br><br>
-<b>💬 Discord:</b> Sag till mig sa fixar jag invite-lank!<br><br>
-<i>Tips: skriv 1-2 ord, t.ex. &quot;151&quot; eller &quot;team rocket&quot;</i></div>
+<div class="msg bot"><b>Välkommen till Pokesniper.se! 🏹</b><br><br>
+<i>Sveriges smartaste sökverktyg för Pokémon TCG-lager</i><br><br>
+<b>🔍 Sök på vad som helst</b><br>
+Prova: <b>151, etb, tin, prismatic, mewtwo, pitch black, booster bundle, team rocket, stellar crown, ascended heroes, mega evolution</b> — eller skriv valfri produkt!<br><br>
+<b>🛒 43 butiker — 2 670 produkter</b><br>
+Vi söker igenom ALLA svenska butiker samtidigt:<br>
+Alphaspel • Webhallen • MaxGaming • Coolcard • Swepoke • DragonsLair<br>
+Spelochsant • Poketalk • Cardlevels • Kortarkivet • TCG Center • och 30+ fler!<br><br>
+<hr><br>
+<b>🎮 Discord-servern</b><br>
+Vi har en hel server med <b>5 bottar</b> som övervakar lagret i realtid — 24/7!<br><br>
+<b>🤖 Jessie</b> — postar automatiskt i butikskanaler när nya produkter dyker upp. Varje butik har en egen kanal med 🟢/🔴 status<br><br>
+<b>🤖 Meowth</b> — din personliga assistent via DM!<br>
+• <b>!search</b> — sök produkter i alla butiker<br>
+• <b>!track</b> — få DM direkt när en produkt kommer i lager<br>
+• <b>!prisvarn</b> — få notis när priset sjunker<br>
+• <b>!card / !set</b> — sök Pokémon-kort via TCGdex<br>
+• <b>!prisjakt</b> — bästa priset just nu<br><br>
+<b>🤖 James</b> — 24h live-feed i en egen kanal. Nya produkter postas direkt, ❌ när de tar slut, och allt raderas efter 24h — alltid färskt!<br><br>
+<b>🤖 Giovanni</b> — håller koll på utländska butiker (Danmark, Tyskland, Polen, USA)<br><br>
+<b>🤖 Cipher</b> — din personliga spårningsbot. Sätt upp till 5 egna trackers!<br><br>
+<b>📊 Övervakning dygnet runt</b><br>
+Butikerna skannas var <b>15:e minut</b> — du missar aldrig ett släpp eller en restock!<br><br>
+<hr><br>
+<b>💬 Redo att gå med?</b><br>
+Fråga mig (Mario) om invite-länk — eller använd hemsidan tills vidare!<br><br>
+<i>Tips: skriv 1-2 ord för snabbast sökning! 👊</i></div>
 </div>
 <div class=input><input id=q placeholder="Sok produkt..." autofocus><button onclick=sok()>Sok</button></div>
 <script>
