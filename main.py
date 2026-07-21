@@ -75,8 +75,8 @@ Vi uppdaterar och finslipar bottarna hela tiden 🔧<br>
 • Botarna blir bara bättre och bättre — allt för att du ska ha bästa kollen! 🔥<br><br>
 <b>🤖 Jessie</b> — postar automatiskt i butikskanaler när nya produkter dyker upp. Varje butik har en egen kanal med 🟢/🔴 status<br><br>
 <b>🤖 Meowth</b> — din personliga assistent via DM med smart sökning, tracking och prisbevakning! 🐱<br><br>
-<b>🤖 James</b> — 24h live-feed med statusändringar<br>
-<b>🤖 Giovanni</b> — utländska butiker (DK, DE, PL, US)<br>
+<b>🤖 James</b> — 24h live-feed med statusändringar<br><br>
+<b>🤖 Giovanni</b> — utländska butiker (DK, DE, PL, US)<br><br>
 <b>🤖 Cipher</b> — personlig spårning, upp till 5 trackers<br><br>
 <b>📊 Uppdateras var 15:e minut</b> — du missar aldrig ett släpp!<br><br>
 <hr><br>
