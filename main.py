@@ -8,6 +8,49 @@ PRODUCTS_FILE = os.path.join(os.path.dirname(__file__), "products.json")
 with open(PRODUCTS_FILE, encoding="utf-8") as f:
     PRODUCTS = json.load(f)
 
+# --- filters ---
+NON_POKEMON = {"lorcana","digimon","gundam","star wars","riftbound","magic:","flesh and blood",
+               "one piece","disney","final fantasy","yugioh","yu-gi-oh","meta zoo","flesh&blood",
+               "ultra pro","sleeves","deck box","binder","toploader","playmat","album",
+               "portfolio","zipfolio","dice","sugarrush","tcgprotect","ultimate guard","gamegenic",
+               "dragon shield","foldable","commander","playmats","prereleasekit"}
+
+def is_pokemon(title):
+    t = title.lower()
+    for np in NON_POKEMON:
+        if np in t: return False
+    if "pokemon" in t or "pokémon" in t or "poké" in t: return True
+    if "etb" in t or "elite trainer" in t: return True
+    if "booster" in t and "display" in t: return True
+    if "booster bundle" in t: return True
+    if " booster " in t and "pack" not in t: return True
+    if " tin " in t or t.endswith(" tin") or " tins " in t: return True
+    if "battle deck" in t: return True
+    if "blister" in t: return True
+    if "premium collection" in t or "illustration collection" in t: return True
+    if "checklane" in t or "poster collection" in t: return True
+    if "mega evolution" in t or "ascended heroes" in t or "pitch black" in t: return True
+    if "prismatic evolutions" in t or "stellar crown" in t or "shrouded fable" in t: return True
+    if "hidden fates" in t or "chilling reign" in t or "fusion strike" in t: return True
+    if "evolving skies" in t or "brilliant stars" in t or "lost origin" in t: return True
+    if "silver tempest" in t or "crown zenith" in t or "scarlet" in t: return True
+    if "paldea" in t or "obsidian flames" in t or "paradox rift" in t: return True
+    if "temporal forces" in t or "twilight masquerade" in t or "sur spark" in t: return True
+    if "collection box" in t or "premium figure" in t: return True
+    if "booster box" in t and "magic" not in t: return True
+    if t.startswith("pokémon ") or t.startswith("pokemon ") or "pokémon " in t or "pokemon " in t: return True
+    if " me" in t and ("evolution" in t or "booster" in t or "etb" in t): return True
+    return False
+
+# bad URL patterns (category pages sold as products)
+BAD_URL = {"/collections/","/categories/","/pokemon/booster","/pokemon/tin","/pokemon/pokemon","/pokemon/etb"}
+
+def is_good_url(url):
+    for b in BAD_URL:
+        if b in url: return False
+    return True
+
+# --- categories ---
 CAT_KEYS = {
     "ETB": ["elite trainer box"," etb "," etbs "],
     "Booster Box": ["booster box","booster display"],
@@ -32,6 +75,8 @@ def search_products(q, cat=None, sort="relevance", limit=60):
     results = []
     seen = set()
     for p in PRODUCTS:
+        if not is_pokemon(p["title"]): continue
+        if not is_good_url(p.get("url","")): continue
         if cat and cat_for(p["title"]) != cat: continue
         t = p["title"].lower()
         if not words:
@@ -159,7 +204,7 @@ footer a{color:var(--muted)}
 <p>Hittade inga produkter</p>
 </div>
 <div class=fynd-section id=fynd-section style=display:none>
-<h2><span class=icon>🔥</span> Dagens fynd — billigaste produkterna</h2>
+<h2><span class=icon>🔥</span> Dagens fynd — billigaste i lager</h2>
 <div class=grid id=fynd-grid></div>
 </div>
 </main>
@@ -239,6 +284,7 @@ function doSearch(){
     });
   }
   if(activeCat) filtered=filtered.filter(p=>catFor(p.title)===activeCat);
+  filtered=filtered.filter(p=>isPokemon(p.title)&&isGoodUrl(p.url||''));
   if(activeSort==='price_asc') filtered.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
   else if(activeSort==='price_desc') filtered.sort((a,b)=>(parseInt(b.price)||0)-(parseInt(a.price)||0));
 
@@ -246,6 +292,12 @@ function doSearch(){
   document.getElementById('empty').style.display=filtered.length?'none':'block';
   document.getElementById('fynd-section').style.display=searchQ||activeCat?'none':'block';
   renderCards(filtered.slice(0,120),'grid');
+}
+
+function isPokemon(title){return true;} // server handles this
+function isGoodUrl(url){
+  let bad=['/collections/','/categories/','/pokemon/booster','/pokemon/tin','/pokemon/etb','/pokemon/pokemon'];
+  return !bad.some(b=>url.includes(b));
 }
 
 function renderCards(items,gridId){
@@ -269,7 +321,7 @@ function renderCards(items,gridId){
 }
 
 function buildFynd(){
-  let instock=products.filter(p=>p.status==='✅');
+  let instock=products.filter(p=>p.status==='✅'&&isGoodUrl(p.url||''));
   instock.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
   let cheapest=instock.slice(0,12);
   if(cheapest.length) renderCards(cheapest,'fynd-grid');
@@ -284,7 +336,9 @@ def index():
 
 @app.route("/api/products")
 def api_products():
-    return jsonify(PRODUCTS)
+    # Filter at API level too
+    filtered = [p for p in PRODUCTS if is_pokemon(p["title"]) and is_good_url(p.get("url",""))]
+    return jsonify(filtered)
 
 @app.route("/api/search")
 def api_search():
