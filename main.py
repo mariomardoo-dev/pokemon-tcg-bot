@@ -74,12 +74,7 @@ Vi uppdaterar och finslipar bottarna hela tiden 🔧<br>
 • Nya funktioner som prissänkningslarm och release-kalender<br>
 • Botarna blir bara bättre och bättre — allt för att du ska ha bästa kollen! 🔥<br><br>
 <b>🤖 Jessie</b> — postar automatiskt i butikskanaler när nya produkter dyker upp. Varje butik har en egen kanal med 🟢/🔴 status<br><br>
-<b>🤖 Meowth</b> — din personliga assistent via DM!<br>
-• <b>!search</b> — sök i alla butiker med smart matchning<br>
-• <b>!track</b> — få DM direkt när en produkt kommer i lager<br>
-• <b>!prisvarn</b> — få notis när priset sjunker<br>
-• <b>!card / !set</b> — sök Pokémon-kort via TCGdex<br>
-• <b>!prisjakt</b> — bästa priset just nu<br><br>
+<b>🤖 Meowth</b> — din personliga assistent via DM med smart sökning, tracking och prisbevakning! 🐱<br><br>
 <b>🤖 James</b> — 24h live-feed med statusändringar<br>
 <b>🤖 Giovanni</b> — utländska butiker (DK, DE, PL, US)<br>
 <b>🤖 Cipher</b> — personlig spårning, upp till 5 trackers<br><br>
