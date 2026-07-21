@@ -18,7 +18,12 @@ HTML = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pokesniper.se - Pokemon TCG</title>
+<title>Pokesniper.se - Hitta Pokemon TCG i lager - 43 butiker pa ett stalle</title>
+<meta name="description" content="Sok bland 2670 Pokemon TCG-produkter fran 43 svenska butiker. Elite Trainer Box, booster packs, tins och mer. Upptack var som finns i lager just nu!">
+<meta name="keywords" content="pokemon tcg, pokemon kort, pokemon sverige, lagersaldo, elite trainer box, pokemon booster, pokemon butik, pokesniper">
+<meta property="og:title" content="Pokesniper.se - Pokemon TCG lagerkollen">
+<meta property="og:description" content="Sok bland 2670 Pokemon TCG-produkter fran 43 svenska butiker. Hitta lagersaldo pa ETB, boosters, tins och mer!">
+<meta name="google-site-verification" content="">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d0d0d;color:#e0e0e0;height:100vh;display:flex;flex-direction:column}
@@ -49,7 +54,7 @@ hr{border:none;border-top:1px solid #181818;margin:4px 0}
 <body>
 <div class=header>
 <h1>Pokesniper.se</h1>
-<p>Skriv en produkt for att kolla lagret</p>
+<p>Sveriges Pokemon TCG-sokmotor - 43 butiker, 2670 produkter</p>
 <div id=count></div>
 </div>
 <div id=chat>
