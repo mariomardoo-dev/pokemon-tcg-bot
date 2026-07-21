@@ -85,7 +85,7 @@ Vi uppdaterar och finslipar bottarna hela tiden 🔧<br>
 Välkommen in i <b>Team Rocket</b>! 🚀 Vi ses på servern — gotta catch 'em all! 🔥<br><br>
 <i style="color:#666">Tips: skriv 1-2 ord för snabbast sökning! 👊</i></div>
 </div>
-<div class=input><input id=q placeholder="Sok produkt..." autofocus><button onclick=sok()>Sok</button></div>
+<div class=input><input id=q placeholder="Sök produkt..." autofocus style="font-size:16px;padding:14px 16px"><button onclick=sok() style="font-size:15px;padding:14px 28px">Sök</button></div>
 <script>
 var i=document.getElementById('q'),c=document.getElementById('chat');
 i.addEventListener('keydown',function(e){if(e.key=='Enter')sok()});
