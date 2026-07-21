@@ -23924,5 +23924,40 @@
     "store": "TCGVault",
     "status": "✅",
     "url": "https://tcgvault.se/products/magnetisk-kortdisplay"
+  },
+  {
+    "title": "Pokemon Lumiose City Mini Tin",
+    "price": "190 kr",
+    "store": "Spelgalaxen",
+    "status": "❌",
+    "url": "https://spelgalaxen.se/products/pokemon-ascended-heroes-mini-tin-2-pack-en-copy"
+  },
+  {
+    "title": "Pokémon Mega Gengar ex Tin (4 Pack) (ENG)",
+    "price": "440 kr",
+    "store": "Spelgalaxen",
+    "status": "❌",
+    "url": "https://spelgalaxen.se/products/pokemon-mega-charizard-y-ex-spring-tin-2026-en-copy"
+  },
+  {
+    "title": "Pokemon Pitch Black Booster Display (EN)",
+    "price": "2399 kr",
+    "store": "Spelgalaxen",
+    "status": "✅",
+    "url": "https://spelgalaxen.se/products/pitch-black-booster-display-en"
+  },
+  {
+    "title": "Pokémon Mega Clefable ex Tin (4 Pack) (ENG)",
+    "price": "440 kr",
+    "store": "Spelgalaxen",
+    "status": "✅",
+    "url": "https://spelgalaxen.se/products/pokemon-mega-gengar-ex-tin-4-pack-eng-copy"
+  },
+  {
+    "title": "Pokemon TCG Mega Lucario ex League Battle Deck (EN)",
+    "price": "550 kr",
+    "store": "Spelgalaxen",
+    "status": "✅",
+    "url": "https://spelgalaxen.se/products/pokemon-tcg-mega-lucario-ex-league-battle-deck-en"
   }
 ]
