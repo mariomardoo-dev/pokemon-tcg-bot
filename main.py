@@ -77,7 +77,8 @@ Vi har en hel server med <b>5 bottar</b> som övervakar lagret i realtid — 24/
 Butikerna skannas var <b>15:e minut</b> — du missar aldrig ett släpp eller en restock!<br><br>
 <hr><br>
 <b>💬 Redo att gå med?</b><br>
-Fråga mig (Mario) om invite-länk — eller använd hemsidan tills vidare!<br><br>
+👉 <b><a href="https://discord.gg/QRaPfTVHFr" target="_blank" style="color:#60a5fa">discord.gg/QRaPfTVHFr</a></b><br>
+Välkommen in i <b>Team Rocket</b>! 🚀 Vi ses på servern — gotta catch 'em all! 🔥<br><br>
 <i>Tips: skriv 1-2 ord för snabbast sökning! 👊</i></div>
 </div>
 <div class=input><input id=q placeholder="Sok produkt..." autofocus><button onclick=sok()>Sok</button></div>
