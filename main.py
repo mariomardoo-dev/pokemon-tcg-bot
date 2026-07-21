@@ -18,8 +18,8 @@ HTML = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pokesniper.se - Hitta Pokemon TCG i lager - 43 butiker pa ett stalle</title>
-<meta name="description" content="Sok bland 2670 Pokemon TCG-produkter fran 43 svenska butiker. Elite Trainer Box, booster packs, tins och mer. Upptack var som finns i lager just nu!">
+<title>Pokesniper.se - Hitta Pokemon TCG i lager - 44 butiker pa ett stalle</title>
+<meta name="description" content="Sok bland 3423 Pokemon TCG-produkter fran 44 svenska butiker.
 <meta name="keywords" content="pokemon tcg, pokemon kort, pokemon sverige, lagersaldo, elite trainer box, pokemon booster, pokemon butik, pokesniper">
 <meta property="og:title" content="Pokesniper.se - Pokemon TCG lagerkollen">
 <meta property="og:description" content="Sok bland 2670 Pokemon TCG-produkter fran 43 svenska butiker. Hitta lagersaldo pa ETB, boosters, tins och mer!">
@@ -54,7 +54,7 @@ hr{border:none;border-top:1px solid #181818;margin:4px 0}
 <body>
 <div class=header>
 <h1>Pokesniper.se</h1>
-<p>Sveriges Pokemon TCG-sokmotor - 43 butiker, 2670 produkter</p>
+<p>Sveriges Pokemon TCG-sokmotor - 44 butiker, 3423 produkter</p>
 <div id=count></div>
 </div>
 <div id=chat>
@@ -66,7 +66,7 @@ hr{border:none;border-top:1px solid #181818;margin:4px 0}
 Prova: <b>151, etb, tin, prismatic, mewtwo, pitch black, booster bundle, team rocket, stellar crown, ascended heroes, mega evolution, pokemon day</b> — eller skriv valfri produkt!
 </span>
 </div>
-<b>🛒 43 butiker — 2 670 produkter</b><br>
+<b>🛒 44 butiker — 3 423 produkter</b><br>
 Vi söker igenom ALLA svenska butiker samtidigt:<br>
 Alphaspel • Webhallen • MaxGaming • Coolcard • Swepoke • DragonsLair<br>
 Spelochsant • Poketalk • Cardlevels • Kortarkivet • TCG Center • och 30+ fler!<br><br>
