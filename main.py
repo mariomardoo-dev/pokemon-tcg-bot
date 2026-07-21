@@ -63,7 +63,7 @@ hr{border:none;border-top:1px solid #181818;margin:4px 0}
 <div style="background:#1a0000;border:1px solid #cc0000;border-radius:6px;padding:12px;margin:8px 0">
 <b style="font-size:15px;color:#ff4444">🔍 Sök på vad som helst</b><br>
 <span style="font-size:14px;color:#ff9999">
-Prova: <b>151, etb, tin, prismatic, mewtwo, pitch black, booster bundle, team rocket, stellar crown, ascended heroes, mega evolution</b> — eller skriv valfri produkt!
+Prova: <b>151, etb, tin, prismatic, mewtwo, pitch black, booster bundle, team rocket, stellar crown, ascended heroes, mega evolution, pokemon day</b> — eller skriv valfri produkt!
 </span>
 </div>
 <b>🛒 43 butiker — 2 670 produkter</b><br>
