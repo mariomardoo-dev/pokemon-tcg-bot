@@ -52,14 +52,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div id=count></div>
 </div>
 <div id=chat>
-<div class="msg bot">Hej! Skriv vad du soker efter.<br><br>
-<b>151</b> — 151-produkter<br>
-<b>etb</b> — Elite Trainer Boxes<br>
-<b>pitch black</b> — Pitch Black-setet<br>
-<b>tin</b> — alla tins<br>
-<b>mewtwo</b> — Team Rocket etc<br>
-<b>prismatic</b> — Prismatic Evolutions<br><br>
-Tips: 1-2 ord racker!</div>
+<div class="msg bot">Hej! Välkommen till <b>Pokesniper.se</b> 🔥<br><br>
+<b>🔍 Sök på</b> 151, etb, tin, prismatic, mewtwo, pitch, booster — eller valfri produkt!<br><br>
+<b>🛒 43 butiker — 2670 produkter</b><br>
+Allt fran svenska butiker pa ett stalle: Alphaspel, Webhallen, MaxGaming, Coolcard, Swepoke, DragonsLair och manga fler!<br><br>
+<b>🤖 Discord-bottar</b><br>
+Vi har ocksa bottar pa Discord som overvakar lagret i realtid:<br>
+• <b>Jessie</b> — postar i butikskanaler nar nya produkter kommer<br>
+• <b>Meowth</b> — sok, tracka och fa DM nar nagot kommer i lager<br>
+• <b>Giovanni</b> — utlandska butiker<br>
+• <b>Cipher</b> — personlig sparning<br>
+• <b>James</b> — 24h live-feed med statusandringar<br><br>
+<b>💬 Discord:</b> Sag till mig sa fixar jag invite-lank!<br><br>
+<i>Tips: skriv 1-2 ord, t.ex. &quot;151&quot; eller &quot;team rocket&quot;</i></div>
 </div>
 <div class=input><input id=q placeholder="Sok produkt..." autofocus><button onclick=sok()>Sok</button></div>
 <script>
