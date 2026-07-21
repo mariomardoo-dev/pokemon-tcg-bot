@@ -162,6 +162,17 @@ def sok():
 def google_verify():
     return "google-site-verification: google15a64bbd69393fe9.html"
 
+@app.route("/sitemap.xml")
+def sitemap():
+    popular = ["151","etb","tin","prismatic","mewtwo","pitch+black","team+rocket","booster+bundle","ascended+heroes","mega+evolution","stellar+crown","booster","elite+trainer+box","summer+ex","battle+deck","greninja","charizard","pokemon","tcg"]
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>']
+    lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    lines.append('  <url><loc>https://pokesniper.se/</loc><priority>1.0</priority></url>')
+    for q in popular:
+        lines.append(f'  <url><loc>https://pokesniper.se/sok?q={q}</loc><priority>0.8</priority></url>')
+    lines.append('</urlset>')
+    return lines, 200, {"Content-Type": "application/xml"}
+
 @app.route("/count")
 def count():
     return str(len(PRODUCTS))
