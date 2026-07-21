@@ -25,7 +25,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .header{background:#16213e;padding:20px;text-align:center;border-bottom:2px solid #e94560}
 .header h1{font-size:24px;color:#e94560}
 .header p{font-size:14px;color:#888;margin-top:5px}
-.header .count{font-size:12px;color:#666}
+#count{font-size:12px;color:#666}
 #chat{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
 .msg{max-width:80%;padding:12px 16px;border-radius:12px;line-height:1.4;font-size:14px}
 .user{background:#0f3460;align-self:flex-end;border-bottom-right-radius:4px}
@@ -48,24 +48,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <body>
 <div class=header>
 <h1>Pokesniper.se</h1>
-<p>Skriv en produkt for att kolla lagret i svenska butiker</p>
-<div class=count>Just nu: """ + str(len(PRODUCTS)) + """ produkter i databasen</div>
+<p>Skriv en produkt for att kolla lagret</p>
+<div id=count></div>
 </div>
 <div id=chat>
-<div class="msg bot">Hej! Skriv vad du soker efter. Prova:<br><br>
-<b>151</b> — for alla 151-produkter<br>
-<b>etb</b> — for Elite Trainer Boxes<br>
-<b>pitch black</b> — for Pitch Black-setet<br>
-<b>ascended</b> — for Ascended Heroes<br>
-<b>booster</b> — for losa boosters<br>
-<b>tin</b> — for tins<br>
-<b>mewtwo</b> — for Team Rocket etc<br><br>
-Tips: skriv kort, 1-2 ord racker!</div>
+<div class="msg bot">Hej! Skriv vad du soker efter.<br><br>
+<b>151</b> — 151-produkter<br>
+<b>etb</b> — Elite Trainer Boxes<br>
+<b>pitch black</b> — Pitch Black-setet<br>
+<b>tin</b> — alla tins<br>
+<b>mewtwo</b> — Team Rocket etc<br>
+<b>prismatic</b> — Prismatic Evolutions<br><br>
+Tips: 1-2 ord racker!</div>
 </div>
 <div class=input><input id=q placeholder="Sok produkt..." autofocus><button onclick=sok()>Sok</button></div>
 <script>
 var i=document.getElementById('q'),c=document.getElementById('chat');
 i.addEventListener('keydown',function(e){if(e.key=='Enter')sok()});
+
+// Hamta produktantal
+fetch('/count').then(function(r){return r.text()}).then(function(n){document.getElementById('count').textContent='Just nu: '+n+' produkter i databasen'});
+
 function add(t,u){var d=document.createElement('div');d.className='msg '+(u?'user':'bot');d.innerHTML=t;c.appendChild(d);c.scrollTop=c.scrollHeight}
 async function sok(){
 var q=i.value.trim();if(!q)return;
@@ -74,12 +77,12 @@ var t=document.createElement('div');t.className='typing';t.textContent='Letar...
 try{
 var r=await fetch('/sok?q='+encodeURIComponent(q)),p=await r.json();
 t.remove();
-if(!p.length){add('Hittade inget for "'+q+'".<br>Forsok med andra ord, t.ex. "151", "etb", "booster", "tin".',0);return}
+if(!p.length){add('Hittade inget. Forsok: etb, 151, tin, pitch, mewtwo',0);return}
 var h='',inne=p.filter(function(x){return x.status=='\u2705'}),ute=p.filter(function(x){return x.status!='\u2705'});
 if(inne.length){h+='<b>I LAGER ('+inne.length+'):</b><br>';inne.forEach(function(x){h+='<div class=p><div class=name>'+x.title+'</div><div class=price>'+x.price+'</div><div class=store>'+x.store+'</div><div class=link><a href='+x.url+' target=_blank>Handla har</a></div></div>'})}
 if(ute.length){h+='<br><b>SLUT ('+ute.length+'):</b><br>';ute.forEach(function(x){h+='<div class=p><div style=color:#888>'+x.title+'</div><div class=store>'+x.store+'</div></div>'})}
 add(h,0);
-}catch(e){t.remove();add('Naget gick fel. Forsok igen!',0)}
+}catch(e){t.remove();add('Naget gick fel',0)}
 }
 </script>
 </body>
@@ -125,6 +128,10 @@ def index():
 def sok():
     q = request.args.get("q","").strip()
     return jsonify(search_products(q) if q else [])
+
+@app.route("/count")
+def count():
+    return str(len(PRODUCTS))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
