@@ -1,157 +1,297 @@
 # -*- coding: utf-8 -*-
-"""Pokesniper.se — Pokemon TCG chatbot."""
+"""Pokesniper.se — Sveriges Pokemon TCG-prisjämförelse."""
 from flask import Flask, request, jsonify
-import json, os
+import json, os, re
 
 app = Flask(__name__)
-
-# Load products
 PRODUCTS_FILE = os.path.join(os.path.dirname(__file__), "products.json")
-if os.path.exists(PRODUCTS_FILE):
-    with open(PRODUCTS_FILE, encoding="utf-8") as f:
-        PRODUCTS = json.load(f)
-else:
-    PRODUCTS = []
+with open(PRODUCTS_FILE, encoding="utf-8") as f:
+    PRODUCTS = json.load(f)
+
+CAT_KEYS = {
+    "ETB": ["elite trainer box"," etb "," etbs "],
+    "Booster Box": ["booster box","booster display"],
+    "Booster Bundle": ["booster bundle"],
+    "Tin": [" tin "," tins "],
+    "Booster": ["booster"],
+    "Box Set": ["box","collection","premium"],
+}
+
+def cat_for(title):
+    t = f" {title.lower()} "
+    for cat, keys in CAT_KEYS.items():
+        if any(k in t for k in keys):
+            return cat
+    return "Övrigt"
+
+def search_products(q, cat=None, sort="relevance", limit=60):
+    words = [w for w in q.lower().split() if w not in
+             {"pokemon","tcg","pokémon","the","a","an","max","per","sv","-"}]
+    if "etb" in words:
+        words = [w for w in words if w != "etb"] + ["elite","trainer","box"]
+    results = []
+    seen = set()
+    for p in PRODUCTS:
+        if cat and cat_for(p["title"]) != cat: continue
+        t = p["title"].lower()
+        if not words:
+            results.append(p)
+            continue
+        matched = sum(1 for w in words if len(w)>0 and w in t)
+        needed = 1 if len(words)<=2 else max(1, len(words)-1)
+        if matched >= needed:
+            key = p["title"]+p["store"]
+            if key not in seen:
+                seen.add(key)
+                results.append((matched, p))
+    if words:
+        results.sort(key=lambda x: (-x[0], 0 if x[1]["status"]=="✅" else 1))
+        results = [r[1] for r in results]
+    if sort == "price_asc":
+        def _pr(x):
+            try: return int(re.sub(r"[^0-9]","",x["price"])) if x["price"] else 999999
+            except: return 999999
+        results.sort(key=_pr)
+    elif sort == "price_desc":
+        def _pr2(x):
+            try: return -int(re.sub(r"[^0-9]","",x["price"])) if x["price"] else -999999
+            except: return -999999
+        results.sort(key=_pr2)
+    return results[:limit]
 
 HTML = """<!DOCTYPE html>
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pokesniper.se - Hitta Pokemon TCG i lager - 44 butiker pa ett stalle</title>
-<meta name="description" content="Sok bland 3423 Pokemon TCG-produkter fran 44 svenska butiker.
-<meta name="keywords" content="pokemon tcg, pokemon kort, pokemon sverige, lagersaldo, elite trainer box, pokemon booster, pokemon butik, pokesniper">
-<meta property="og:title" content="Pokesniper.se - Pokemon TCG lagerkollen">
-<meta property="og:description" content="Sok bland 2670 Pokemon TCG-produkter fran 43 svenska butiker. Hitta lagersaldo pa ETB, boosters, tins och mer!">
-<meta name="google-site-verification" content="">
+<title>Pokesniper.se — Jämför priser på Pokémon-kort</title>
+<meta name="description" content="Jämför priser på Pokémon TCG från 44+ svenska butiker. Hitta bästa pris på ETB, booster box, tins och mer.">
+<meta property="og:title" content="Pokesniper.se — Sveriges Pokémon-prisjämförelse">
+<meta property="og:description" content="44+ butiker, 3400+ produkter. Hitta billigaste Pokémon-korten i Sverige.">
 <style>
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--red:#cc0000;--red2:#ff2222;--green:#22c55e;--text:#e0e0e0;--muted:#888;--border:#222}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d0d0d;color:#e0e0e0;height:100vh;display:flex;flex-direction:column}
-.header{background:linear-gradient(180deg,#1a0000,#0d0d0d);padding:24px 20px;text-align:center;border-bottom:1px solid #2a0000}
-.header h1{font-size:22px;color:#cc0000;font-weight:700;letter-spacing:2px;text-transform:uppercase}
-.header p{font-size:13px;color:#993333;margin-top:4px;letter-spacing:1px}
-#count{font-size:11px;color:#662222;margin-top:2px}
-#chat{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:8px}
-.msg{max-width:75%;padding:10px 14px;border-radius:6px;line-height:1.5;font-size:13px;border:1px solid #1a1a1a}
-.user{background:#1a0000;align-self:flex-end;border-color:#2a0000}
-.bot{background:#111;align-self:flex-start;border-color:#1a1a1a}
-.bot .p{padding:6px 0;border-bottom:1px solid #181818}
-.bot .p:last-child{border:none}
-.name{font-weight:600;color:#ff3333}
-.price{color:#4ade80;font-weight:500}
-.store{color:#777;font-size:11px}
-.link a{color:#cc0000;font-size:12px;text-decoration:none}
-.link a:hover{color:#ff3333;text-decoration:underline}
-.input{background:#0a0a0a;padding:16px 20px;display:flex;gap:8px;border-top:1px solid #1a1a1a}
-.input input{flex:1;padding:10px 14px;border:1px solid #222;border-radius:4px;background:#0d0d0d;color:#e0e0e0;font-size:14px;outline:none;transition:border-color .2s}
-.input input:focus{border-color:#cc0000}
-.input button{padding:10px 20px;border:none;border-radius:4px;background:#cc0000;color:#fff;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:1px;transition:all .2s}
-.input button:hover{background:#ff0000}
-.typing{color:#662222;font-style:italic;padding:6px 0;font-size:12px}
-hr{border:none;border-top:1px solid #181818;margin:4px 0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--red);text-decoration:none}
+a:hover{color:var(--red2)}
+
+header{background:linear-gradient(180deg,#150000,var(--bg));border-bottom:1px solid var(--border);padding:20px;position:sticky;top:0;z-index:100}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:800;color:var(--red);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.logo span{color:var(--green);font-size:13px;display:block;letter-spacing:0;font-weight:400;text-transform:none}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.search-wrap input{width:100%;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--red)}
+.search-wrap input::placeholder{color:#555}
+.clear-search{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;display:none}
+.clear-search.visible{display:block}
+.header-stats{color:var(--muted);font-size:12px}
+
+nav{max-width:1200px;margin:16px auto 0;display:flex;gap:8px;flex-wrap:wrap;padding:0 20px}
+.cat-pill{padding:8px 16px;border-radius:20px;border:1px solid var(--border);background:var(--bg2);color:var(--muted);cursor:pointer;font-size:13px;transition:all .2s;white-space:nowrap}
+.cat-pill:hover,.cat-pill.active{background:#1a0000;border-color:var(--red);color:var(--red)}
+
+main{max-width:1200px;margin:0 auto;padding:16px 20px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.toolbar .count{color:var(--muted);font-size:13px}
+.sort-select{padding:8px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none;cursor:pointer}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .2s;display:flex;gap:12px;padding:12px}
+.card:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 4px 20px rgba(204,0,0,.1)}
+.card-img{width:100px;height:100px;border-radius:8px;overflow:hidden;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.card-img img{width:100%;height:100%;object-fit:contain}
+.card-img .no-img{font-size:32px;opacity:.3}
+.card-info{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+.card-title{font-size:14px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-meta{display:flex;align-items:center;gap:8px;font-size:12px;margin-top:auto}
+.card-price{color:var(--green);font-weight:700;font-size:16px}
+.card-store{color:var(--muted)}
+.card-status{font-size:12px;padding:3px 8px;border-radius:12px;display:inline-block}
+.status-in{background:rgba(34,197,94,.1);color:var(--green)}
+.status-out{background:rgba(255,255,255,.05);color:var(--muted)}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;gap:8px}
+.card-link{font-size:12px;color:var(--red);white-space:nowrap}
+
+.fynd-section{margin-top:32px;border-top:1px solid var(--border);padding-top:20px}
+.fynd-section h2{font-size:18px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.fynd-section h2 .icon{font-size:22px}
+
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty .icon{font-size:48px;margin-bottom:12px}
+.empty p{font-size:15px}
+
+footer{text-align:center;padding:32px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);margin-top:40px}
+footer a{color:var(--muted)}
+
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .header-inner{flex-direction:column;align-items:stretch}
+  .logo{text-align:center}
+  .card-img{width:70px;height:70px}
+}
 </style>
 </head>
 <body>
-<div class=header>
-<h1>Pokesniper.se</h1>
-<p>Sveriges Pokemon TCG-sokmotor - 44 butiker, 3423 produkter</p>
-<div id=count></div>
+<header>
+<div class=header-inner>
+<div class=logo>Pokesniper<span>Pokémon prisjämförelse</span></div>
+<div class=search-wrap>
+<input id=search placeholder="Sök produkt... (t.ex. 151, etb, pitch black, tins)" autofocus>
+<button id=clear class=clear-search onclick="clearSearch()">✕</button>
 </div>
-<div id=chat>
-<div class="msg bot"><b>Välkommen till Pokesniper.se! 🏹</b><br><br>
-<i>Sveriges smartaste sökverktyg för Pokémon TCG-lager</i><br><br>
-<div style="background:#1a0000;border:1px solid #cc0000;border-radius:6px;padding:12px;margin:8px 0">
-<b style="font-size:15px;color:#ff4444">🔍 Sök på vad som helst</b><br>
-<span style="font-size:14px;color:#ff9999">
-Prova: <b>151, etb, tin, prismatic, mewtwo, pitch black, booster bundle, team rocket, stellar crown, ascended heroes, mega evolution, pokemon day</b> — eller skriv valfri produkt!
-</span>
+<div class=header-stats id=stats></div>
 </div>
-<b>🛒 44 butiker — 3 423 produkter</b><br>
-Vi söker igenom ALLA svenska butiker samtidigt:<br>
-Alphaspel • Webhallen • MaxGaming • Coolcard • Swepoke • DragonsLair<br>
-Spelochsant • Poketalk • Cardlevels • Kortarkivet • TCG Center • och 30+ fler!<br><br>
-<hr><br>
-<b>🎮 Discord-servern</b><br>
-På vår Discord har vi <b>ännu kraftfullare sökmotorer</b> — bottarna kan mycket mer än hemsidan! 🚀<br><br>
-Vi uppdaterar och finslipar bottarna hela tiden 🔧<br>
-• Smartare sökningar — bättre matchning, fler resultat<br>
-• Fler butiker läggs till löpande<br>
-• Nya funktioner som prissänkningslarm och release-kalender<br>
-• Botarna blir bara bättre och bättre — allt för att du ska ha bästa kollen! 🔥<br><br>
-<b>🤖 Jessie</b> — postar automatiskt i butikskanaler när nya produkter dyker upp. Varje butik har en egen kanal med 🟢/🔴 status<br><br>
-<b>🤖 Meowth</b> — din personliga assistent via DM med smart sökning, tracking och prisbevakning! 🐱<br><br>
-<b>🤖 James</b> — 24h live-feed med statusändringar<br><br>
-<b>🤖 Giovanni</b> — utländska butiker (DK, DE, PL, US)<br><br>
-<b>🤖 Cipher</b> — personlig spårning, upp till 5 trackers<br><br>
-<b>📊 Uppdateras var 15:e minut</b> — du missar aldrig ett släpp!<br><br>
-<hr><br>
-<b>💬 Redo att gå med?</b><br>
-👉 <b><a href="https://discord.gg/QRaPfTVHFr" target="_blank" style="color:#60a5fa">discord.gg/QRaPfTVHFr</a></b><br>
-Välkommen in i <b>Team Rocket</b>! 🚀 Vi ses på servern — gotta catch 'em all! 🔥<br><br>
-<i style="color:#666">Tips: skriv 1-2 ord för snabbast sökning! 👊</i></div>
+</header>
+<nav id=categories></nav>
+<main>
+<div class=toolbar>
+<div class=count id=count></div>
+<select class=sort-select id=sort onchange="doSearch()">
+<option value=relevance>Relevans</option>
+<option value=price_asc>Pris: lägst först</option>
+<option value=price_desc>Pris: högst först</option>
+</select>
 </div>
-<div class=input><input id=q placeholder="Sök produkt..." autofocus style="font-size:16px;padding:14px 16px"><button onclick=sok() style="font-size:15px;padding:14px 28px">Sök</button></div>
+<div class=grid id=grid></div>
+<div class=empty id=empty style=display:none>
+<div class=icon>🔍</div>
+<p>Hittade inga produkter</p>
+</div>
+<div class=fynd-section id=fynd-section style=display:none>
+<h2><span class=icon>🔥</span> Dagens fynd — billigaste produkterna</h2>
+<div class=grid id=fynd-grid></div>
+</div>
+</main>
+<footer>
+Pokesniper.se — Jämför Pokémon TCG-priser hos 44+ svenska butiker · <a href="https://discord.gg/QRaPfTVHFr">Discord</a>
+</footer>
 <script>
-var i=document.getElementById('q'),c=document.getElementById('chat');
-i.addEventListener('keydown',function(e){if(e.key=='Enter')sok()});
+let products=[],activeCat=null,activeSort='relevance',searchQ='';
 
-// Hamta produktantal
-fetch('/count').then(function(r){return r.text()}).then(function(n){document.getElementById('count').textContent='Just nu: '+n+' produkter i databasen'});
+fetch('/api/products').then(r=>r.json()).then(p=>{
+  products=p;
+  document.getElementById('stats').textContent=p.length+' produkter · '+new Set(p.map(x=>x.store)).size+' butiker';
+  buildCategories();
+  doSearch();
+  buildFynd();
+});
 
-function add(t,u){var d=document.createElement('div');d.className='msg '+(u?'user':'bot');d.innerHTML=t;c.appendChild(d);c.scrollTop=c.scrollHeight}
-async function sok(){
-var q=i.value.trim();if(!q)return;
-add(q,1);i.value='';
-var t=document.createElement('div');t.className='typing';t.textContent='Letar...';c.appendChild(t);
-try{
-var r=await fetch('/sok?q='+encodeURIComponent(q)),p=await r.json();
-t.remove();
-if(!p.length){add('Hittade inget. Forsok: etb, 151, tin, pitch, mewtwo',0);return}
-var h='',inne=p.filter(function(x){return x.status=='\u2705'}),ute=p.filter(function(x){return x.status!='\u2705'});
-if(inne.length){h+='<b>I LAGER ('+inne.length+'):</b><br>';inne.forEach(function(x){h+='<div class=p><div class=name>'+x.title+'</div><div class=price>'+x.price+'</div><div class=store>'+x.store+'</div><div class=link><a href='+x.url+' target=_blank>Handla har</a></div></div>'})}
-if(ute.length){h+='<br><b>SLUT ('+ute.length+'):</b><br>';ute.forEach(function(x){h+='<div class=p><div style=color:#888>'+x.title+'</div><div class=store>'+x.store+'</div></div>'})}
-add(h,0);
-}catch(e){t.remove();add('Naget gick fel',0)}
+function buildCategories(){
+  let cats={};
+  products.forEach(p=>{
+    let c=catFor(p.title);
+    if(!cats[c]) cats[c]=0;
+    cats[c]++;
+  });
+  let order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','Övrigt'];
+  let html=order.filter(c=>cats[c]).map(c=>
+    `<button class="cat-pill" data-cat="${c}" onclick="toggleCat('${c}',this)">${c} <span style="opacity:.5;font-size:11px">${cats[c]}</span></button>`
+  ).join('');
+  html='<button class="cat-pill active" onclick="toggleCat(null,this)">Alla</button>'+html;
+  document.getElementById('categories').innerHTML=html;
+}
+
+function catFor(t){
+  t=' '+t.toLowerCase()+' ';
+  if(t.includes('elite trainer box')||t.includes(' etb ')||t.includes(' etbs '))return'ETB';
+  if(t.includes('booster box')||t.includes('booster display'))return'Booster Box';
+  if(t.includes('booster bundle'))return'Booster Bundle';
+  if(t.includes(' tin ')||t.includes(' tins '))return'Tin';
+  if(t.includes('booster'))return'Booster';
+  if(t.includes('box')||t.includes('collection')||t.includes('premium'))return'Box Set';
+  return'Övrigt';
+}
+
+function toggleCat(cat,el){
+  activeCat=cat===activeCat?null:cat;
+  document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));
+  if(activeCat) el.classList.add('active');
+  else document.querySelector('.cat-pill').classList.add('active');
+  doSearch();
+}
+
+let tmr;
+document.getElementById('search').addEventListener('input',function(){
+  clearTimeout(tmr);
+  document.getElementById('clear').classList.toggle('visible',this.value.length>0);
+  tmr=setTimeout(doSearch,200);
+});
+
+function clearSearch(){
+  document.getElementById('search').value='';
+  document.getElementById('clear').classList.remove('visible');
+  doSearch();
+}
+
+function doSearch(){
+  searchQ=document.getElementById('search').value.trim();
+  activeSort=document.getElementById('sort').value;
+  let filtered=products;
+  if(searchQ){
+    let words=searchQ.toLowerCase().split(/\\s+/).filter(w=>!['pokemon','tcg','pokémon','the','a','an','max','per','sv','-'].includes(w));
+    if(words.includes('etb')){words=words.filter(w=>w!=='etb');words.push('elite','trainer','box');}
+    filtered=filtered.filter(p=>{
+      let t=p.title.toLowerCase();
+      let m=words.filter(w=>w.length>0&&t.includes(w)).length;
+      let need=words.length<=2?1:Math.max(1,words.length-1);
+      return m>=need;
+    });
+  }
+  if(activeCat) filtered=filtered.filter(p=>catFor(p.title)===activeCat);
+  if(activeSort==='price_asc') filtered.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
+  else if(activeSort==='price_desc') filtered.sort((a,b)=>(parseInt(b.price)||0)-(parseInt(a.price)||0));
+
+  document.getElementById('count').textContent=filtered.length+' produkter';
+  document.getElementById('empty').style.display=filtered.length?'none':'block';
+  document.getElementById('fynd-section').style.display=searchQ||activeCat?'none':'block';
+  renderCards(filtered.slice(0,120),'grid');
+}
+
+function renderCards(items,gridId){
+  let html=items.map(p=>{
+    let img=p.image?`<img src="${p.image}" alt="" loading=lazy onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class=no-img style=display:none>📦</span>`:'<span class=no-img>📦</span>';
+    let statusClass=p.status==='✅'?'status-in':'status-out';
+    return`<div class=card onclick="window.open('${p.url}','_blank')" style=cursor:pointer>
+<div class=card-img>${img}</div>
+<div class=card-info>
+<div class=card-title>${p.title}</div>
+<div class=card-meta>
+<span class=card-price>${p.price||'—'}</span>
+</div>
+<div class=card-footer>
+<span class="card-status ${statusClass}">${p.status==='✅'?'I lager':'Slut'}</span>
+<span class=card-store>${p.store}</span>
+</div>
+</div></div>`;
+  }).join('');
+  document.getElementById(gridId).innerHTML=html;
+}
+
+function buildFynd(){
+  let instock=products.filter(p=>p.status==='✅');
+  instock.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
+  let cheapest=instock.slice(0,12);
+  if(cheapest.length) renderCards(cheapest,'fynd-grid');
 }
 </script>
 </body>
 </html>"""
 
-STOP = {"pokemon","tcg","pokemon","the","a","an","max","per","sv","-","box","pack","booster","sv8","sv9","sv10","sv11","sv2a","sv4a","sv7a","sv8a","me05","me04","me03","me02","me25","m1l","m1s","sv9a"}
-
-def search_products(search):
-    q = search.lower().strip()
-    words = [w for w in q.split() if w not in STOP]
-    
-    # ETB mapping
-    if "etb" in words or "etbs" in words:
-        q = q.replace("etb","elite trainer box").replace("etbs","elite trainer box")
-    if "sv8a" in q or "terastal" in q.lower():
-        q += " " + "terastal festival"
-    
-    words = [w for w in q.split() if w not in STOP]
-    if not words:
-        return []
-    
-    results = []
-    seen = set()
-    for p in PRODUCTS:
-        title = p["title"].lower()
-        matched = sum(1 for w in words if w in title)
-        # Only require 1 word to match for short queries, N-1 for longer
-        needed = 1 if len(words) <= 2 else max(1, len(words) - 1)
-        if matched >= needed:
-            key = p["title"] + p["store"]
-            if key not in seen:
-                seen.add(key)
-                results.append((matched, p))
-    
-    results.sort(key=lambda x: (-x[0], 0 if x[1]["status"] == "✅" else 1))
-    return [r[1] for r in results[:30]]
-
 @app.route("/")
 def index():
     return HTML
+
+@app.route("/api/products")
+def api_products():
+    return jsonify(PRODUCTS)
+
+@app.route("/api/search")
+def api_search():
+    q = request.args.get("q","").strip()
+    cat = request.args.get("cat")
+    sort = request.args.get("sort","relevance")
+    return jsonify(search_products(q, cat, sort))
 
 @app.route("/sok")
 def sok():
@@ -171,7 +311,7 @@ def sitemap():
     for q in popular:
         lines.append(f'  <url><loc>https://pokesniper.se/sok?q={q}</loc><priority>0.8</priority></url>')
     lines.append('</urlset>')
-    return lines, 200, {"Content-Type": "application/xml"}
+    return "\n".join(lines), 200, {"Content-Type": "application/xml"}
 
 @app.route("/count")
 def count():
