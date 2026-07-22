@@ -275,7 +275,7 @@ function buildCats(cats){
   var order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','\u00d6vrigt'];
   var html='<button class="cat-pill active" onclick="setCat(null,this)">Alla</button>';
   order.forEach(function(c){
-    if(cats[c]) html+='<button class="cat-pill" onclick="setCat(\u00b4'+c+'\u00b4,this)">'+c+' <span style="opacity:.5;font-size:11px">'+cats[c]+'</span></button>';
+    if(cats[c]) html+='<button class="cat-pill" onclick="setCat(''+c+'',this)">'+c+' <span style="opacity:.5;font-size:11px">'+cats[c]+'</span></button>';
   });
   document.getElementById('categories').innerHTML=html;
 }
@@ -319,9 +319,9 @@ function renderGroups(groups,targetId){
     var rows=g.items.map(function(p){
       var sc=p.status==='\u2705'?'s-in':'s-out';
       var st=p.status==='\u2705'?'I lager':'Slut';
-      return'<div class=store-row onclick="event.stopPropagation();window.open(\u00b4'+p.url+'\u00b4,\u00b4_blank\u00b4)"><span class=s-price>'+(p.price||'\u2014')+'</span><span class=s-store>'+p.store+'</span><span class="s-status '+sc+'">'+st+'</span></div>';
+      return'<div class=store-row onclick="event.stopPropagation();window.open(''+p.url+'','_blank')"><span class=s-price>'+(p.price||'\u2014')+'</span><span class=s-store>'+p.store+'</span><span class="s-status '+sc+'">'+st+'</span></div>';
     }).join('');
-    return'<div class=group-card onclick="this.classList.toggle(\u00b4open\u00b4)"><div class=group-header><div class=group-img>'+img+'</div><div class=group-info><div class=group-title>'+g.title+'</div><div class=group-meta><span class=group-price>Fr\u00e5n '+price+'</span><span class=group-stores>'+g.count+' butiker</span><span class=group-arrow>\u25bc</span></div></div></div><div class=store-list>'+rows+'</div></div>';
+    return'<div class=group-card onclick="this.classList.toggle('open')"><div class=group-header><div class=group-img>'+img+'</div><div class=group-info><div class=group-title>'+g.title+'</div><div class=group-meta><span class=group-price>Fr\u00e5n '+price+'</span><span class=group-stores>'+g.count+' butiker</span><span class=group-arrow>\u25bc</span></div></div></div><div class=store-list>'+rows+'</div></div>';
   }).join('');
   document.getElementById(targetId).innerHTML=html;
 }
