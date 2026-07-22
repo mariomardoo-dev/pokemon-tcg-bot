@@ -332,11 +332,11 @@ var HIT_GLOW={
   'Shiny Rare':'rgba(6,182,212,.4)','Shiny Ultra Rare':'rgba(6,182,212,.5)'
 };
 var RARE_SLOT_POOL=[
-  {rarity:'Double Rare',weight:78},             // ~79% — baseline hit
-  {rarity:'Illustration Rare',weight:9},        // ~9% — 1 in 11 packs
-  {rarity:'Ultra Rare',weight:6},               // ~6% — 1 in 17 packs
-  {rarity:'Special Illustration Rare',weight:3}, // ~3% — 1 in 33 packs
-  {rarity:'Hyper Rare',weight:1},               // ~1% — 1 in 100 packs
+  {rarity:'Double Rare',weight:180},              // ~78% — baseline ex
+  {rarity:'Illustration Rare',weight:28},         // ~12% — 1 in 8 packs
+  {rarity:'Ultra Rare',weight:18},                // ~8% — 1 in 13 packs
+  {rarity:'Special Illustration Rare',weight:3},  // ~1.3% — 1 in 77 packs
+  {rarity:'Hyper Rare',weight:1},                 // ~0.4% — 1 in 230 packs
 ];
 
 // ===== SET LOGOS =====
