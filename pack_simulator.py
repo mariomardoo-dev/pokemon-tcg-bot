@@ -359,7 +359,20 @@ var RARE_SLOT_POOL=[
   {rarity:'Hyper Rare',weight:1},                  // ~0.5% — 1 in 187 packs (1 per 4-5 boxes)
 ];
 
-// ===== SET LOGOS =====
+// ===== ERA DEFINITIONS =====
+var ERAS=[
+  {id:'sv',name:'Scarlet & Violet',logo:'https://assets.tcgdex.net/en/sv/sv01/logo.png',sets:[
+    'scarlet-violet','paldea-evolved','obsidian-flames','151','paradox-rift',
+    'paldean-fates','temporal-forces','twilight-masquerade','shrouded-fable','stellar-crown',
+    'surging-sparks','prismatic-evolutions','journey-together','destined-rivals',
+    'white-flare','black-bolt'
+  ]},
+  {id:'swsh',name:'Sword & Shield',logo:'https://images.pokemontcg.io/swsh1/logo.png',sets:[
+    'sword-shield','rebel-clash','darkness-ablaze','champions-path','vivid-voltage',
+    'shining-fates','battle-styles','chilling-reign','evolving-skies','fusion-strike',
+    'brilliant-stars','astral-radiance','pokemon-go','lost-origin','silver-tempest','crown-zenith'
+  ]},
+];
 var SET_LOGOS={
   'scarlet-violet':'https://images.pokemontcg.io/sv1/logo.png',
   'paldea-evolved':'https://images.pokemontcg.io/sv2/logo.png',
@@ -377,6 +390,23 @@ var SET_LOGOS={
   'destined-rivals':'https://images.pokemontcg.io/sv10/logo.png',
   'white-flare':'https://assets.tcgdex.net/en/sv/sv10.5w/logo.png',
   'black-bolt':'https://assets.tcgdex.net/en/sv/sv10.5b/logo.png',
+  // Sword & Shield
+  'sword-shield':'https://images.pokemontcg.io/swsh1/logo.png',
+  'rebel-clash':'https://images.pokemontcg.io/swsh2/logo.png',
+  'darkness-ablaze':'https://images.pokemontcg.io/swsh3/logo.png',
+  'champions-path':'https://images.pokemontcg.io/swsh35/logo.png',
+  'vivid-voltage':'https://images.pokemontcg.io/swsh4/logo.png',
+  'shining-fates':'https://images.pokemontcg.io/swsh45/logo.png',
+  'battle-styles':'https://images.pokemontcg.io/swsh5/logo.png',
+  'chilling-reign':'https://images.pokemontcg.io/swsh6/logo.png',
+  'evolving-skies':'https://images.pokemontcg.io/swsh7/logo.png',
+  'fusion-strike':'https://images.pokemontcg.io/swsh8/logo.png',
+  'brilliant-stars':'https://images.pokemontcg.io/swsh9/logo.png',
+  'astral-radiance':'https://images.pokemontcg.io/swsh10/logo.png',
+  'pokemon-go':'https://images.pokemontcg.io/swsh105/logo.png',
+  'lost-origin':'https://images.pokemontcg.io/swsh11/logo.png',
+  'silver-tempest':'https://images.pokemontcg.io/swsh12/logo.png',
+  'crown-zenith':'https://images.pokemontcg.io/swsh125/logo.png',
 };
 var SET_COLORS={
   'scarlet-violet':'#e0245e','paldea-evolved':'#f59e0b','obsidian-flames':'#ef4444',
@@ -384,6 +414,10 @@ var SET_COLORS={
   'temporal-forces':'#06b6d4','twilight-masquerade':'#34d399','shrouded-fable':'#8b5cf6',
   'stellar-crown':'#fbbf24','surging-sparks':'#ff6b35','prismatic-evolutions':'#c4b5fd',
   'journey-together':'#22c55e','destined-rivals':'#dc2626','white-flare':'#f8fafc','black-bolt':'#1e1b4b',
+  'sword-shield':'#4f9bc2','rebel-clash':'#e85d3a','darkness-ablaze':'#e04040','champions-path':'#c9a44b',
+  'vivid-voltage':'#f5c842','shining-fates':'#f472b6','battle-styles':'#c44b4b','chilling-reign':'#5ba0c8',
+  'evolving-skies':'#8bc5e8','fusion-strike':'#b880c8','brilliant-stars':'#f5a623','astral-radiance':'#6db3c4',
+  'pokemon-go':'#f5c542','lost-origin':'#c090e0','silver-tempest':'#88b8d8','crown-zenith':'#e8c547',
 };
 
 // ===== AUDIO (Web Audio API synthesis) =====
@@ -454,7 +488,10 @@ async function loadSets(){
   var setFiles=['scarlet-violet','paldea-evolved','obsidian-flames','151','paradox-rift',
     'paldean-fates','temporal-forces','twilight-masquerade','shrouded-fable','stellar-crown',
     'surging-sparks','prismatic-evolutions','journey-together','destined-rivals',
-    'white-flare','black-bolt'];
+    'white-flare','black-bolt',
+    'sword-shield','rebel-clash','darkness-ablaze','champions-path','vivid-voltage',
+    'shining-fates','battle-styles','chilling-reign','evolving-skies','fusion-strike',
+    'brilliant-stars','astral-radiance','pokemon-go','lost-origin','silver-tempest','crown-zenith'];
   for(var i=0;i<setFiles.length;i++){
     try{
       var resp=await fetch('/static/sets/'+setFiles[i]+'.json');
@@ -473,32 +510,34 @@ async function loadSets(){
 
 function buildSetSelector(){
   var sel=document.getElementById('setSelector');
-  sel.innerHTML=
-    '<button class=era-btn id=eraBtn onclick=toggleEra()>'+
-      '<img src="https://assets.tcgdex.net/en/sv/sv01/logo.png" alt="SV">'+
-      'Scarlet & Violet'+
-      '<span class=arrow>▼</span>'+
-    '</button>'+
-    '<div class="set-grid open" id=setGrid></div>';
-  var grid=document.getElementById('setGrid');
-  var first=true;
-  for(var key in sets){
-    grid.innerHTML+='<button class="set-btn'+(first?' active':'')+'" onclick="selectSet(\''+key+'\',this)">'+sets[key].displayName+'</button>';
-    first=false;
-  }
+  sel.innerHTML='';
+  ERAS.forEach(function(era){
+    sel.innerHTML+=
+      '<button class=era-btn onclick=toggleEra(this)>'+
+        '<img src="'+era.logo+'" alt="">'+era.name+
+        '<span class=arrow>▼</span>'+
+      '</button>'+
+      '<div class=set-grid id=grid-'+era.id+'></div>';
+    var grid=document.getElementById('grid-'+era.id);
+    era.sets.forEach(function(key,idx){
+      if(!sets[key])return;
+      grid.innerHTML+='<button class="set-btn'+(idx===0&&era.id==='sv'?' active':'')+'" data-key="'+key+'" onclick="selectSet(\''+key+'\',this)">'+sets[key].displayName+'</button>';
+    });
+  });
 }
 
-function toggleEra(){
-  document.getElementById('setGrid').classList.toggle('open');
-  document.getElementById('eraBtn').classList.toggle('open');
+function toggleEra(btn){
+  var grid=btn.nextElementSibling;
+  grid.classList.toggle('open');
+  btn.classList.toggle('open');
 }
 
 function selectSet(key,btn){
   activeSet=key;
   document.querySelectorAll('.set-btn').forEach(function(b){b.classList.remove('active')});
   btn.classList.add('active');
-  document.getElementById('setGrid').classList.remove('open');
-  document.getElementById('eraBtn').classList.remove('open');
+  btn.closest('.set-grid').classList.remove('open');
+  btn.closest('.set-grid').previousElementSibling.classList.remove('open');
   showPackUI();
 }
 
