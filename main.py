@@ -450,5 +450,18 @@ def static_sets(filename):
     sets_dir = os.path.join(os.path.dirname(__file__), "static", "sets")
     return send_from_directory(sets_dir, filename)
 
+@app.route("/proxy-img/<path:url>")
+def proxy_img(url):
+    """Proxy scrydex images to bypass hotlink protection."""
+    import urllib.request
+    try:
+        req = urllib.request.Request(f"https://{url}", headers={"User-Agent": "Pokesniper/1.0"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = resp.read()
+            ct = resp.headers.get("Content-Type", "image/png")
+        return data, 200, {"Content-Type": ct, "Cache-Control": "public, max-age=86400"}
+    except:
+        return "", 404
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

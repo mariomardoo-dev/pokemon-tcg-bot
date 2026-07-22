@@ -507,10 +507,10 @@ var SET_LOGOS={
   // Mega Evolution
   'mega-evolution':'https://images.pokemontcg.io/me1/logo.png',
   'phantasmal-flames':'https://images.pokemontcg.io/me2/logo.png',
-  'ascended-heroes':'https://assets.tcgdex.net/en/me/me02.5/logo.png',
-  'perfect-order':'https://assets.tcgdex.net/en/me/me03/logo.png',
-  'chaos-rising':'https://assets.tcgdex.net/en/me/me04/logo.png',
-  'pitch-black':'https://assets.tcgdex.net/en/me/me05/logo.png',
+  'ascended-heroes':'https://images.scrydex.com/pokemon/me2pt5-logo/logo',
+  'perfect-order':'https://images.scrydex.com/pokemon/me3-logo/logo',
+  'chaos-rising':'https://images.scrydex.com/pokemon/me4-logo/logo',
+  'pitch-black':'https://images.scrydex.com/pokemon/me5-logo/logo',
 };
 var SET_COLORS={
   'scarlet-violet':'#e0245e','paldea-evolved':'#f59e0b','obsidian-flames':'#ef4444',
