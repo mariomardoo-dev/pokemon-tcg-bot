@@ -114,6 +114,10 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 .booster-pack .pack-sub{
   font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px;z-index:1;
 }
+.booster-pack .pack-sim-label{
+  font-size:8px;color:rgba(255,255,255,.2);letter-spacing:1px;z-index:1;
+  font-weight:300;margin-top:2px;
+}
 
 /* Pack glow — applied before rip */
 .booster-pack.charging{animation:packPulse .6s ease-in-out 3}
@@ -676,7 +680,8 @@ function showPackUI(){
           (sym?'<img src="'+sym+'" alt="" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1>':'')+
         '</div>'+
         '<div class=pack-label style=color:'+color+'>'+set.displayName+'</div>'+
-        '<div class=pack-sub>10 KORT PER PACK</div>'+
+        '<div class=pack-sub>Öppna Pokemon Pack!</div>'+
+        '<div class=pack-sim-label>Pack Simulator</div>'+
       '</div>'+
     '</div>'+
     '<div class=card-stage id=cardStage></div>';
