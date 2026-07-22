@@ -86,10 +86,11 @@ def norm(t):
     t = re.sub(r'\s*\*[^*]+\*\s*', ' ', t)  # *max X per hushall* etc
     t = re.sub(r'\s+samlarkort\s+set\s+', ' ', t, flags=re.I)
     t = re.sub(r'\b(\d+),(\d+)\b', r'\1.\2', t)  # 8,5 -> 8.5
-    t = re.sub(r'^(Scarlet\s*(?:&|and)?\s*Violet\s*\d*\.?\d*\s*[:\s,-]+|SV\d+\.?\d*\s*[:\s,-]+|SV\s*\d+[:\s,-]+)', '', t, flags=re.I)
+    t = re.sub(r'\s+[sS][vV]\s*\d+\.?\d*\s*$', '', t)  # trailing SV set code
     t = re.sub(r'\s*[\u2013\u2014\u2012-]\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
     t = re.sub(r'\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
     t = re.sub(r'^(Pok\u00e9mon\s*TCG[:\s,-]+|Pokemon\s*TCG[:\s,-]+|Pok\u00e9mon[:\s,-]+|Pokemon[:\s,-]+)', '', t, flags=re.I)
+    t = re.sub(r'^(Scarlet\s*(?:&|and)?\s*Violet\s*\d*\.?\d*\s*[:\s,-]+|SV\s*\d+\.?\d*\s*[:\s,-]+)', '', t, flags=re.I)
     t = re.sub(r'^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)', '', t, flags=re.I)
     t = re.sub(r'^[\u2013\u2014\u2012-]\s*', '', t)
     t = re.sub(r'\bElite\s+Trainer\s+Box\b', 'ETB', t, flags=re.I)
