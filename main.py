@@ -274,7 +274,7 @@ fetch('/api/groups?q=&cat=&sort=relevance').then(function(r){return r.json()}).t
   nav.innerHTML='';
   var order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','Ovrigt'];
   order.forEach(function(c){
-    if(data.categories[c]) nav.innerHTML+='<button class=cat-pill data-cat='+c+' onclick=toggleCat(this)>'+c+'</button>';
+    if(data.categories[c]) nav.innerHTML+='<button class=cat-pill data-cat="'+c+'" onclick=toggleCat(this)>'+c+'</button>';
   });
   if(data.groups.length) renderGroups(data.groups,'grid');
   else document.getElementById('grid').innerHTML='<div class=empty>Inga produkter</div>';
