@@ -243,6 +243,7 @@ function norm(t){
           .replace(/\bBooster\s+Display\s+Box\b/gi,'Booster Box')
           .replace(/\s*\(ETB\)\s*/gi,' ETB ')
           .replace(/\s+ETB\s+ETB\b/gi,' ETB')
+          .replace(/\s*[-–—]\s*ETB\b/gi,' ETB')
           .replace(/\s+/g,' ').trim().toLowerCase();
   if(hadEtb && !/\betb\b/.test(t)) t += ' etb';
   return t;
