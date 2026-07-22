@@ -39,17 +39,33 @@ header{
 
 .set-selector{
   max-width:1000px;margin:24px auto 0;padding:0 20px;
-  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
 }
+.era-btn{
+  padding:12px 28px;border-radius:28px;border:2px solid var(--border);
+  background:var(--bg2);color:var(--text);cursor:pointer;
+  font-size:16px;font-weight:700;transition:all .3s;
+  display:flex;align-items:center;gap:10px;
+}
+.era-btn:hover{border-color:var(--red);box-shadow:0 0 24px rgba(204,0,0,.15)}
+.era-btn.open{border-color:var(--red);border-radius:28px 28px 8px 8px}
+.era-btn img{height:28px;width:auto}
+.era-btn .arrow{font-size:12px;transition:transform .3s;color:var(--muted)}
+.era-btn.open .arrow{transform:rotate(180deg)}
+.set-grid{
+  display:none;flex-wrap:wrap;justify-content:center;gap:8px;
+  max-width:900px;background:var(--bg2);border:2px solid var(--red);
+  border-top:none;border-radius:0 0 16px 16px;padding:16px;
+}
+.set-grid.open{display:flex}
 .set-btn{
-  padding:10px 20px;border-radius:24px;border:1px solid var(--border);
-  background:var(--bg2);color:var(--muted);cursor:pointer;
-  font-size:14px;transition:all .2s;
+  padding:8px 16px;border-radius:20px;border:1px solid var(--border);
+  background:var(--bg3);color:var(--muted);cursor:pointer;
+  font-size:13px;transition:all .2s;white-space:nowrap;
 }
 .set-btn:hover{border-color:var(--red);color:var(--text)}
 .set-btn.active{
   background:#1a0000;border-color:var(--red);color:var(--red);
-  box-shadow:0 0 20px rgba(204,0,0,.15);
 }
 
 main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
@@ -277,6 +293,9 @@ footer{text-align:center;padding:24px;color:var(--muted);font-size:12px;border-t
   .pack-wrapper{width:160px;height:224px}
   .booster-pack .pack-art{width:100px;height:100px;font-size:40px}
   .booster-pack .pack-label{font-size:14px}
+  .era-btn{font-size:14px;padding:10px 20px}
+  .era-btn img{height:22px}
+  .set-btn{padding:6px 12px;font-size:11px}
 }
 </style>
 </head>
@@ -453,18 +472,33 @@ async function loadSets(){
 }
 
 function buildSetSelector(){
-  var html='',first=true;
+  var sel=document.getElementById('setSelector');
+  sel.innerHTML=
+    '<button class=era-btn id=eraBtn onclick=toggleEra()>'+
+      '<img src="https://assets.tcgdex.net/en/sv/sv01/logo.png" alt="SV">'+
+      'Scarlet & Violet'+
+      '<span class=arrow>▼</span>'+
+    '</button>'+
+    '<div class="set-grid open" id=setGrid></div>';
+  var grid=document.getElementById('setGrid');
+  var first=true;
   for(var key in sets){
-    html+='<button class="set-btn'+(first?' active':'')+'" onclick="selectSet(\''+key+'\',this)">'+sets[key].displayName+'</button>';
+    grid.innerHTML+='<button class="set-btn'+(first?' active':'')+'" onclick="selectSet(\''+key+'\',this)">'+sets[key].displayName+'</button>';
     first=false;
   }
-  document.getElementById('setSelector').innerHTML=html;
+}
+
+function toggleEra(){
+  document.getElementById('setGrid').classList.toggle('open');
+  document.getElementById('eraBtn').classList.toggle('open');
 }
 
 function selectSet(key,btn){
   activeSet=key;
   document.querySelectorAll('.set-btn').forEach(function(b){b.classList.remove('active')});
   btn.classList.add('active');
+  document.getElementById('setGrid').classList.remove('open');
+  document.getElementById('eraBtn').classList.remove('open');
   showPackUI();
 }
 
