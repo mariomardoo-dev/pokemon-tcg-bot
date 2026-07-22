@@ -233,6 +233,8 @@ function norm(t){
           .replace(/^(Pokémon\s*TCG[:\s,-]+|Pokemon\s*TCG[:\s,-]+|Pokémon[:\s,-]+|Pokemon[:\s,-]+)/gi,'')
           .replace(/^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
           .replace(/^[-–—]\s*/, '')
+          .replace(/^(?:Elite\s+Trainer\s+Box\s*[-–—]\s*)?(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
+          .replace(/^[-–—]\s*/, '')
           .replace(/^ETB\s*[-–—]\s*(Mega\s*Evolution\s*\d*\.?\d*[:\s,-]+)/gi,'$1')
           .replace(/^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
           .replace(/\s*[-–—]\s*Elite\s+Trainer\s+Box\b/gi,' ETB')
