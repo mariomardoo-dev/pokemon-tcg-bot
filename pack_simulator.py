@@ -258,14 +258,14 @@ var RARITY_WEIGHT={
   'ACE SPEC Rare':8,'Shiny Rare':4,'Shiny Ultra Rare':5
 };
 
-// ===== RARE SLOT ODDS (weighted random) =====
+// ===== RARE SLOT ODDS (realistic SV-era pull rates) =====
+// Based on community data from 1000s of pack openings
 var RARE_SLOT_POOL=[
-  {rarity:'Double Rare',weight:48},
-  {rarity:'Illustration Rare',weight:18},
-  {rarity:'Ultra Rare',weight:14},
-  {rarity:'Special Illustration Rare',weight:8},
-  {rarity:'Hyper Rare',weight:3},
-  {rarity:'Rare',weight:9}  // fallback if set has few Double Rares
+  {rarity:'Double Rare',weight:67},             // ~67% — guaranteed holo or better in rare slot
+  {rarity:'Illustration Rare',weight:12},       // ~12% — 1 in 8 packs
+  {rarity:'Ultra Rare',weight:9},               // ~9% — 1 in 11 packs
+  {rarity:'Special Illustration Rare',weight:4}, // ~4% — 1 in 25 packs
+  {rarity:'Hyper Rare',weight:2},               // ~2% — 1 in 50 packs
 ];
 
 // ===== LOAD SETS =====
