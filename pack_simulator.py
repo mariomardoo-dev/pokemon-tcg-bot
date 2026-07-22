@@ -342,18 +342,29 @@ var RARE_SLOT_POOL=[
 
 // ===== SET LOGOS =====
 var SET_LOGOS={
+  'scarlet-violet':'https://images.pokemontcg.io/sv1/logo.png',
+  'paldea-evolved':'https://images.pokemontcg.io/sv2/logo.png',
+  'obsidian-flames':'https://images.pokemontcg.io/sv3/logo.png',
   '151':'https://images.pokemontcg.io/sv3pt5/logo.png',
+  'paradox-rift':'https://images.pokemontcg.io/sv4/logo.png',
+  'paldean-fates':'https://images.pokemontcg.io/sv4pt5/logo.png',
+  'temporal-forces':'https://images.pokemontcg.io/sv5/logo.png',
+  'twilight-masquerade':'https://images.pokemontcg.io/sv6/logo.png',
+  'shrouded-fable':'https://images.pokemontcg.io/sv6pt5/logo.png',
+  'stellar-crown':'https://images.pokemontcg.io/sv7/logo.png',
   'surging-sparks':'https://images.pokemontcg.io/sv8/logo.png',
   'prismatic-evolutions':'https://images.pokemontcg.io/sv8pt5/logo.png',
-  'paldean-fates':'https://images.pokemontcg.io/sv4pt5/logo.png',
-  'twilight-masquerade':'https://images.pokemontcg.io/sv6/logo.png',
+  'journey-together':'https://images.pokemontcg.io/sv9/logo.png',
+  'destined-rivals':'https://images.pokemontcg.io/sv10/logo.png',
+  'white-flare':'https://images.pokemontcg.io/sv10pt5w/logo.png',
+  'black-bolt':'https://images.pokemontcg.io/sv10pt5b/logo.png',
 };
 var SET_COLORS={
-  '151':'#e8c547',
-  'surging-sparks':'#ff6b35',
-  'prismatic-evolutions':'#c4b5fd',
-  'paldean-fates':'#f472b6',
-  'twilight-masquerade':'#34d399',
+  'scarlet-violet':'#e0245e','paldea-evolved':'#f59e0b','obsidian-flames':'#ef4444',
+  '151':'#e8c547','paradox-rift':'#a855f7','paldean-fates':'#f472b6',
+  'temporal-forces':'#06b6d4','twilight-masquerade':'#34d399','shrouded-fable':'#8b5cf6',
+  'stellar-crown':'#fbbf24','surging-sparks':'#ff6b35','prismatic-evolutions':'#c4b5fd',
+  'journey-together':'#22c55e','destined-rivals':'#dc2626','white-flare':'#e2e8f0','black-bolt':'#334155',
 };
 
 // ===== AUDIO (Web Audio API synthesis) =====
@@ -421,7 +432,10 @@ function screenShake(){
 
 // ===== LOAD SETS =====
 async function loadSets(){
-  var setFiles=['151','surging-sparks','prismatic-evolutions','paldean-fates','twilight-masquerade'];
+  var setFiles=['scarlet-violet','paldea-evolved','obsidian-flames','151','paradox-rift',
+    'paldean-fates','temporal-forces','twilight-masquerade','shrouded-fable','stellar-crown',
+    'surging-sparks','prismatic-evolutions','journey-together','destined-rivals',
+    'white-flare','black-bolt'];
   for(var i=0;i<setFiles.length;i++){
     try{
       var resp=await fetch('/static/sets/'+setFiles[i]+'.json');
