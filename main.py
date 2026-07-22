@@ -19,7 +19,7 @@ def is_pokemon(title):
     t = title.lower()
     for np in NON_POKEMON:
         if np in t: return False
-    if "pokemon" in t or "pokémon" in t or "poké" in t: return True
+    if "pokemon" in t or "pok\u00e9mon" in t or "pok\u00e9" in t: return True
     if "etb" in t or "elite trainer" in t: return True
     if "booster" in t and "display" in t: return True
     if "booster bundle" in t: return True
@@ -31,14 +31,13 @@ def is_pokemon(title):
     if "checklane" in t or "poster collection" in t: return True
     if "mega evolution" in t or "ascended heroes" in t or "pitch black" in t: return True
     if "prismatic evolutions" in t or "stellar crown" in t or "shrouded fable" in t: return True
-    if "hidden fates" in t or "chilling reign" in t or "fusion strike" in t: return True
-    if "evolving skies" in t or "brilliant stars" in t or "lost origin" in t: return True
-    if "silver tempest" in t or "crown zenith" in t or "scarlet" in t: return True
-    if "paldea" in t or "obsidian flames" in t or "paradox rift" in t: return True
-    if "temporal forces" in t or "twilight masquerade" in t or "sur spark" in t: return True
+    if any(x in t for x in ["hidden fates","chilling reign","fusion strike","evolving skies",
+                             "brilliant stars","lost origin","silver tempest","crown zenith",
+                             "paldea","obsidian flames","paradox rift","temporal forces",
+                             "twilight masquerade","sur spark"]): return True
     if "collection box" in t or "premium figure" in t: return True
     if "booster box" in t and "magic" not in t: return True
-    if t.startswith("pokémon ") or t.startswith("pokemon ") or "pokémon " in t or "pokemon " in t: return True
+    if t.startswith("pok\u00e9mon ") or t.startswith("pokemon ") or "pok\u00e9mon " in t or "pokemon " in t: return True
     if " me" in t and ("evolution" in t or "booster" in t or "etb" in t): return True
     return False
 
@@ -72,11 +71,11 @@ def cat_for(title):
     for cat, keys in CAT_KEYS.items():
         if any(k in t for k in keys):
             return cat
-    return "Övrigt"
+    return "\u00d6vrigt"
 
 def search_products(q, cat=None, sort="relevance", limit=60):
     words = [w for w in q.lower().split() if w not in
-             {"pokemon","tcg","pokémon","the","a","an","max","per","sv","-"}]
+             {"pokemon","tcg","pok\u00e9mon","the","a","an","max","per","sv","-"}]
     if "etb" in words:
         words = [w for w in words if w != "etb"] + ["elite","trainer","box"]
     results = []
@@ -97,7 +96,7 @@ def search_products(q, cat=None, sort="relevance", limit=60):
                 seen.add(key)
                 results.append((matched, p))
     if words:
-        results.sort(key=lambda x: (-x[0], 0 if x[1]["status"]=="✅" else 1))
+        results.sort(key=lambda x: (-x[0], 0 if x[1]["status"]=="\u2705" else 1))
         results = [r[1] for r in results]
     if sort == "price_asc":
         def _pr(x):
@@ -116,46 +115,37 @@ HTML = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pokesniper.se — Jämför priser på Pokémon-kort</title>
-<meta name="description" content="Jämför priser på Pokémon TCG från 45+ svenska butiker. 4293 produkter. Hitta bästa pris på ETB, booster box, tins och mer.">
-<meta property="og:title" content="Pokesniper.se — Sveriges Pokémon-prisjämförelse">
-<meta property="og:description" content="45+ butiker, 4293 produkter. Hitta billigaste Pokémon-korten i Sverige.">
+<title>Pokesniper.se — J\u00e4mf\u00f6r priser p\u00e5 Pok\u00e9mon-kort</title>
+<meta name="description" content="J\u00e4mf\u00f6r priser p\u00e5 Pok\u00e9mon TCG fr\u00e5n 45+ svenska butiker. 4293 produkter. Hitta b\u00e4sta pris p\u00e5 ETB, booster box, tins och mer.">
+<meta property="og:title" content="Pokesniper.se — Sveriges Pok\u00e9mon-prisj\u00e4mf\u00f6relse">
+<meta property="og:description" content="45+ butiker, 4293 produkter. Hitta billigaste Pok\u00e9mon-korten i Sverige.">
 
 <style>
 :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--red:#cc0000;--red2:#ff2222;--green:#22c55e;--text:#e0e0e0;--muted:#888;--border:#222}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-a{color:var(--red);text-decoration:none}
-a:hover{color:var(--red2)}
-
+a{color:var(--red);text-decoration:none}a:hover{color:var(--red2)}
 header{background:linear-gradient(180deg,#150000,var(--bg));border-bottom:1px solid var(--border);padding:20px;position:sticky;top:0;z-index:100}
 .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .logo{font-size:22px;font-weight:800;color:var(--red);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
 .logo span{color:var(--green);font-size:13px;display:block;letter-spacing:0;font-weight:400;text-transform:none}
 .logo span .free{color:var(--red);font-weight:700;font-size:11px;letter-spacing:1px}
-.discord-label{color:var(--muted);font-size:11px;text-align:center;margin-bottom:2px}
-.discord-badge{background:#1a0000;border:1px solid var(--red);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:all .2s}
-.discord-badge:hover{background:#2a0000;border-color:var(--red2)}
-.discord-badge .icon{font-size:16px}
+.disc-label{color:var(--muted);font-size:11px;text-align:center;margin-bottom:2px}
+.disc-badge{background:#1a0000;border:1px solid var(--red);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:all .2s}
+.disc-badge:hover{background:#2a0000;border-color:var(--red2)}.disc-badge .icon{font-size:16px}
 .search-wrap{flex:1;min-width:200px;position:relative}
 .search-wrap input{width:100%;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s}
-.search-wrap input:focus{border-color:var(--red)}
-.search-wrap input::placeholder{color:#555}
+.search-wrap input:focus{border-color:var(--red)}.search-wrap input::placeholder{color:#555}
 .clear-search{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;display:none}
 .clear-search.visible{display:block}
-.header-stats{color:var(--muted);font-size:12px}
-
 nav{max-width:1200px;margin:16px auto 0;display:flex;gap:8px;flex-wrap:wrap;padding:0 20px}
 .cat-pill{padding:8px 16px;border-radius:20px;border:1px solid var(--border);background:var(--bg2);color:var(--muted);cursor:pointer;font-size:13px;transition:all .2s;white-space:nowrap}
 .cat-pill:hover,.cat-pill.active{background:#1a0000;border-color:var(--red);color:var(--red)}
-
 main{max-width:1200px;margin:0 auto;padding:16px 20px}
 .toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
 .toolbar .count{color:var(--muted);font-size:13px}
 .sort-select{padding:8px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none;cursor:pointer}
-
-/* Product group card */
-.group-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .2s;padding:12px}
+.group-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .2s;padding:12px;margin-bottom:8px}
 .group-card:hover{border-color:var(--red)}
 .group-header{display:flex;gap:12px;cursor:pointer;align-items:flex-start}
 .group-img{width:100px;height:100px;border-radius:8px;overflow:hidden;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center}
@@ -168,8 +158,6 @@ main{max-width:1200px;margin:0 auto;padding:16px 20px}
 .group-stores{color:var(--muted);font-size:12px}
 .group-arrow{color:var(--muted);font-size:14px;transition:transform .2s;margin-left:8px}
 .group-card.open .group-arrow{transform:rotate(180deg)}
-
-/* Store rows inside expanded group */
 .store-list{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
 .group-card.open .store-list{display:block}
 .store-row{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;border-radius:6px;transition:background .15s;cursor:pointer;gap:8px}
@@ -177,36 +165,28 @@ main{max-width:1200px;margin:0 auto;padding:16px 20px}
 .store-row .s-price{color:var(--green);font-weight:600;font-size:14px;white-space:nowrap;min-width:70px}
 .store-row .s-store{color:var(--muted);font-size:13px;flex:1;min-width:0}
 .store-row .s-status{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap}
-
+.s-in{background:rgba(34,197,94,.1);color:var(--green)}.s-out{background:rgba(239,68,68,.15);color:#ef4444}
 .fynd-section{margin-top:32px;border-top:1px solid var(--border);padding-top:20px}
 .fynd-section h2{font-size:18px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .fynd-section h2 .icon{font-size:22px}
-
 .empty{text-align:center;padding:60px 20px;color:var(--muted)}
-.empty .icon{font-size:48px;margin-bottom:12px}
-.empty p{font-size:15px}
-
+.empty .icon{font-size:48px;margin-bottom:12px}.empty p{font-size:15px}
 footer{text-align:center;padding:32px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);margin-top:40px}
 footer a{color:var(--muted)}
-
-@media(max-width:600px){
-  .header-inner{flex-direction:column;align-items:stretch}
-  .logo{text-align:center}
-  .group-img{width:70px;height:70px}
-}
+@media(max-width:600px){.header-inner{flex-direction:column;align-items:stretch}.logo{text-align:center}.group-img{width:70px;height:70px}}
 </style>
 </head>
 <body>
 <header>
 <div class=header-inner>
-<div class=logo>Pokesniper<span>Scanna, hitta & jämför Pokémon TCG<br><span class=free>HELT GRATIS</span></span></div>
+<div class=logo>Pokesniper<span>Scanna, hitta &amp; j\u00e4mf\u00f6r Pok\u00e9mon TCG<br><span class=free>HELT GRATIS</span></span></div>
 <div class=search-wrap>
-<input id=search placeholder="Sök produkt... (t.ex. 151, etb, pitch black, tins)" autofocus>
-<button id=clear class=clear-search onclick="clearSearch()">✕</button>
+<input id=search placeholder="S\u00f6k produkt... (t.ex. 151, etb, pitch black, tins)" autofocus>
+<button id=clear class=clear-search onclick="clearSearch()">\u2715</button>
 </div>
 <div>
-<div class=discord-label>Vi finns även i Discord</div>
-<a class=discord-badge href="https://discord.gg/QRaPfTVHFr" target=_blank><span class=icon>💬</span> Discord — smartare sök & spårning</a>
+<div class=disc-label>Vi finns \u00e4ven i Discord</div>
+<a class=disc-badge href="https://discord.gg/QRaPfTVHFr" target=_blank><span class=icon>💬</span> Discord — smartare sök &amp; spårning</a>
 </div>
 <div class=header-stats id=stats></div>
 </div>
@@ -217,8 +197,8 @@ footer a{color:var(--muted)}
 <div class=count id=count></div>
 <select class=sort-select id=sort onchange="doSearch()">
 <option value=relevance>Relevans</option>
-<option value=price_asc>Pris: lägst först</option>
-<option value=price_desc>Pris: högst först</option>
+<option value=price_asc>Pris: l\u00e4gst f\u00f6rst</option>
+<option value=price_desc>Pris: h\u00f6gst f\u00f6rst</option>
 </select>
 </div>
 <div id=grid></div>
@@ -232,63 +212,57 @@ footer a{color:var(--muted)}
 </div>
 </main>
 <footer>
-Pokesniper.se — Jämför Pokémon TCG-priser hos 45+ svenska butiker · <a href="https://discord.gg/QRaPfTVHFr">Discord</a>
+Pokesniper.se — J\u00e4mf\u00f6r Pok\u00e9mon TCG-priser hos 45+ svenska butiker \u00b7 <a href="https://discord.gg/QRaPfTVHFr">Discord</a>
 </footer>
 <script>
-let products=[],activeCat=null,activeSort='relevance',searchQ='';
+var products=[],activeCat=null,activeSort='relevance';
 
-fetch('/api/products').then(r=>r.json()).then(p=>{
+fetch('/api/products').then(function(r){return r.json()}).then(function(p){
   products=p;
-  document.getElementById('stats').textContent=p.length+' produkter · '+new Set(p.map(x=>x.store)).size+' butiker';
-  buildCategories();
-  doSearch();
-  buildFynd();
+  document.getElementById('stats').textContent=p.length+' produkter \u00b7 '+new Set(p.map(function(x){return x.store})).size+' butiker';
+  buildCats();doSearch();buildFynd();
 });
 
-function normalize(t){
-  return t.replace(/\s*\(Max\s+\d+\s*(st)?\s*(per\s+(kund|hushåll|person))?\)/gi,'')
-          .replace(/\s*\(Max\s+\d+(st)?\s*\/\s*(kund|hushåll)\)/gi,'')
-          .replace(/\s*\(Limit\s+\d+\s*per[^)]*\)/gi,'')
-          .replace(/\s*\(ENG\)/gi,'').replace(/\s*\(EN\)/gi,'')
-          .replace(/\s*\(JP\)/gi,'').replace(/\s*–\s*Förhandsbokning\s*/gi,'')
-          .replace(/\s*Förhandsbokning\s*/gi,'').trim();
+function norm(t){
+  return t.replace(/\\s*\\(Max\\s+\\d+\\s*(st)?\\s*(per\\s+(kund|hush\\u00e5ll|person))?\\)/gi,'')
+          .replace(/\\s*\\(Max\\s+\\d+(st)?\\s*\\/\\s*(kund|hush\\u00e5ll)\\)/gi,'')
+          .replace(/\\s*\\(Limit\\s+\\d+\\s*per[^)]*\\)/gi,'')
+          .replace(/\\s*\\(ENG?\\)/gi,'').replace(/\\s*\\(JP\\)/gi,'')
+          .replace(/\\s*[\u2013\u2014\u2012-]\\s*F\u00f6rhandsbokning\\s*/gi,'')
+          .replace(/\\s*F\u00f6rhandsbokning\\s*/gi,'').trim();
 }
 
-function buildCategories(){
-  let cats={};
-  products.forEach(p=>{
-    let c=catFor(p.title);
-    if(!cats[c]) cats[c]=0;
-    cats[c]++;
+function buildCats(){
+  var cats={},order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','\u00d6vrigt'];
+  products.forEach(function(p){
+    var c=catFor(p.title);cats[c]=(cats[c]||0)+1;
   });
-  let order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','Övrigt'];
-  let html=order.filter(c=>cats[c]).map(c=>
-    `<button class="cat-pill" data-cat="${c}" onclick="toggleCat('${c}',this)">${c} <span style="opacity:.5;font-size:11px">${cats[c]}</span></button>`
-  ).join('');
-  html='<button class="cat-pill active" onclick="toggleCat(null,this)">Alla</button>'+html;
-  document.getElementById('categories').innerHTML=html;
+  var html=order.filter(function(c){return cats[c]}).map(function(c){
+    return '<button class="cat-pill" onclick="toggleCat(\\''+c+'\\',this)">'+c+' <span style="opacity:.5;font-size:11px">'+cats[c]+'</span></button>';
+  }).join('');
+  document.getElementById('categories').innerHTML='<button class="cat-pill active" onclick="toggleCat(null,this)">Alla</button>'+html;
 }
 
 function catFor(t){
   t=' '+t.toLowerCase()+' ';
-  if(t.includes('elite trainer box')||t.includes(' etb ')||t.includes(' etbs '))return'ETB';
-  if(t.includes('booster box')||t.includes('booster display'))return'Booster Box';
-  if(t.includes('booster bundle'))return'Booster Bundle';
-  if(t.includes(' tin ')||t.includes(' tins '))return'Tin';
-  if(t.includes('booster'))return'Booster';
-  if(t.includes('box')||t.includes('collection')||t.includes('premium'))return'Box Set';
-  return'Övrigt';
+  if(/elite trainer box|\\betb\\b|\\betbs\\b/.test(t))return'ETB';
+  if(/booster box|booster display/.test(t))return'Booster Box';
+  if(/booster bundle/.test(t))return'Booster Bundle';
+  if(/\\btin\\b|\\btins\\b/.test(t))return'Tin';
+  if(/booster/.test(t))return'Booster';
+  if(/box|collection|premium/.test(t))return'Box Set';
+  return'\u00d6vrigt';
 }
 
 function toggleCat(cat,el){
   activeCat=cat===activeCat?null:cat;
-  document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));
-  if(activeCat) el.classList.add('active');
+  document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active')});
+  if(activeCat)el.classList.add('active');
   else document.querySelector('.cat-pill').classList.add('active');
   doSearch();
 }
 
-let tmr;
+var tmr;
 document.getElementById('search').addEventListener('input',function(){
   clearTimeout(tmr);
   document.getElementById('clear').classList.toggle('visible',this.value.length>0);
@@ -302,111 +276,86 @@ function clearSearch(){
 }
 
 function doSearch(){
-  searchQ=document.getElementById('search').value.trim();
+  var q=document.getElementById('search').value.trim();
   activeSort=document.getElementById('sort').value;
-  let filtered=products;
-  if(searchQ){
-    let words=searchQ.toLowerCase().split(/\\s+/).filter(w=>!['pokemon','tcg','pokémon','the','a','an','max','per','sv','-'].includes(w));
-    if(words.includes('etb')){words=words.filter(w=>w!=='etb');words.push('elite','trainer','box');}
-    filtered=filtered.filter(p=>{
-      let t=p.title.toLowerCase();
-      let m=words.filter(w=>w.length>0&&t.includes(w)).length;
-      let need=words.length<=2?1:Math.max(1,words.length-1);
-      return m>=need;
+  var filtered=products;
+  if(q){
+    var words=q.toLowerCase().split(/\\s+/).filter(function(w){return['pokemon','tcg','pok\\u00e9mon','the','a','an','max','per','sv','-'].indexOf(w)===-1});
+    if(words.indexOf('etb')!==-1){words=words.filter(function(w){return w!=='etb'});words.push('elite','trainer','box');}
+    filtered=filtered.filter(function(p){
+      var t=p.title.toLowerCase();
+      var m=words.filter(function(w){return w.length>0&&t.indexOf(w)!==-1}).length;
+      return m>=(words.length<=2?1:Math.max(1,words.length-1));
     });
   }
-  if(activeCat) filtered=filtered.filter(p=>catFor(p.title)===activeCat);
-  filtered=filtered.filter(p=>isGoodUrl(p.url||''));
+  if(activeCat)filtered=filtered.filter(function(p){return catFor(p.title)===activeCat});
+  filtered=filtered.filter(function(p){return isGoodUrl(p.url||'')});
 
-  // Group by normalized title
-  let groups={};
-  filtered.forEach(p=>{
-    let key=normalize(p.title);
-    if(!groups[key]) groups[key]={title:p.title,image:p.image,items:[]};
-    groups[key].items.push(p);
-    if(!groups[key].image && p.image) groups[key].image=p.image;
+  var groups={};
+  filtered.forEach(function(p){
+    var k=norm(p.title);
+    if(!groups[k])groups[k]={title:p.title,img:p.image,items:[]};
+    groups[k].items.push(p);
+    if(!groups[k].img&&p.image)groups[k].img=p.image;
+  });
+  var gl=Object.values(groups);
+  gl.forEach(function(g){
+    g.cheapest=Math.min.apply(null,g.items.map(function(p){return parseInt(p.price)||999999}));
+    g.inStock=g.items.filter(function(p){return p.status==='\u2705'}).length;
+    g.items.sort(function(a,b){return(parseInt(a.price)||999999)-(parseInt(b.price)||999999)});
   });
 
-  let groupList=Object.values(groups);
-  // Sort groups by cheapest
-  groupList.forEach(g=>{
-    g.cheapest=Math.min(...g.items.map(p=>parseInt(p.price)||999999));
-    g.inStock=g.items.filter(p=>p.status===`✅`).length;
-    g.items.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
-  });
+  if(activeSort==='price_asc')gl.sort(function(a,b){return a.cheapest-b.cheapest});
+  else if(activeSort==='price_desc')gl.sort(function(a,b){return b.cheapest-a.cheapest});
+  else if(q)gl.sort(function(a,b){return b.inStock-a.inStock||a.cheapest-b.cheapest});
 
-  if(activeSort==='price_asc') groupList.sort((a,b)=>a.cheapest-b.cheapest);
-  else if(activeSort==='price_desc') groupList.sort((a,b)=>b.cheapest-a.cheapest);
-  else if(searchQ) groupList.sort((a,b)=>b.inStock-a.inStock||a.cheapest-b.cheapest);
-
-  document.getElementById('count').textContent=groupList.length+' produkter';
-  document.getElementById('empty').style.display=groupList.length?'none':'block';
-  document.getElementById('fynd-section').style.display=searchQ||activeCat?'none':'block';
-  renderGroups(groupList.slice(0,80));
+  document.getElementById('count').textContent=gl.length+' produkter';
+  document.getElementById('empty').style.display=gl.length?'none':'block';
+  document.getElementById('fynd-section').style.display=(q||activeCat)?'none':'block';
+  renderTo(gl.slice(0,80),'grid');
 }
 
-function renderGroups(groups){
-  let html=groups.map(g=>{
-    let img=g.image?`<img src="${g.image}" alt="" loading=lazy onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class=no-img style=display:none>📦</span>`:'<span class=no-img>📦</span>';
-    let price=g.cheapest<999999?g.cheapest+' kr':'—';
-    let storeRows=g.items.map(p=>{
-      let sc=p.status===`✅`?'status-in':'status-out';
-      let st=p.status===`✅`?'I lager':'Slut';
-      let pr=p.price||'—';
-      return`<div class=store-row onclick="event.stopPropagation();window.open('${p.url}','_blank')">
-<span class=s-price>${pr}</span><span class=s-store>${p.store}</span>
-<span class="card-status ${sc}">${st}</span></div>`;
+function renderTo(groups,targetId){
+  var html=groups.map(function(g){
+    var img=g.img?'<img src="'+g.img+'" alt="" loading=lazy onerror="this.style.display=\\'none\\';this.nextElementSibling.style.display=\\'block\\'"><span class=no-img style=display:none>📦</span>':'<span class=no-img>📦</span>';
+    var price=g.cheapest<999999?g.cheapest+' kr':'\u2014';
+    var rows=g.items.map(function(p){
+      var sc=p.status==='\u2705'?'s-in':'s-out';
+      var st=p.status==='\u2705'?'I lager':'Slut';
+      return'<div class=store-row onclick="event.stopPropagation();window.open(\\''+p.url+'\\',\\'_blank\\')"><span class=s-price>'+(p.price||'\u2014')+'</span><span class=s-store>'+p.store+'</span><span class="s-status '+sc+'">'+st+'</span></div>';
     }).join('');
-    return`<div class=group-card onclick="this.classList.toggle('open')">
-<div class=group-header>
-<div class=group-img>${img}</div>
-<div class=group-info>
-<div class=group-title>${g.title}</div>
-<div class=group-meta>
-<span class=group-price>Från ${price}</span>
-<span class=group-stores>${g.items.length} butiker</span>
-<span class=group-arrow>▼</span>
-</div>
-</div>
-</div>
-<div class=store-list>${storeRows}</div>
-</div>`;
+    return'<div class=group-card onclick="this.classList.toggle(\\'open\\')"><div class=group-header><div class=group-img>'+img+'</div><div class=group-info><div class=group-title>'+g.title+'</div><div class=group-meta><span class=group-price>Fr\u00e5n '+price+'</span><span class=group-stores>'+g.items.length+' butiker</span><span class=group-arrow>\u25bc</span></div></div></div><div class=store-list>'+rows+'</div></div>';
   }).join('');
-  document.getElementById('grid').innerHTML=html;
+  document.getElementById(targetId).innerHTML=html;
 }
 
 function isGoodUrl(url){
-  let bad=['/collections/','/categories/'];
-  if(bad.some(b=>url.includes(b))) return false;
+  if(/\\/collections\\/|\\/categories\\//.test(url))return false;
   try{
-    let path=new URL(url).pathname.replace(/\\/$/,'').split('/').filter(Boolean);
-    let badEnds=['booster-box','booster-packs','tins','etb','booster-bundle','pokemon-boxar','pokemon-elite-trainer-box','pokemon-tins','booster','elite-trainer-box'];
-    if(path.length<=2 && badEnds.includes(path[path.length-1].toLowerCase())) return false;
+    var parts=new URL(url).pathname.replace(/\\/$/,'').split('/').filter(Boolean);
+    var badEnds=['booster-box','booster-packs','tins','etb','booster-bundle','pokemon-boxar','pokemon-elite-trainer-box','pokemon-tins','booster','elite-trainer-box'];
+    if(parts.length<=2&&badEnds.indexOf(parts[parts.length-1].toLowerCase())!==-1)return false;
   }catch(e){}
   return true;
 }
 
 function buildFynd(){
-  let instock=products.filter(p=>p.status===`✅`&&isGoodUrl(p.url||''));
-  let groups={};
-  instock.forEach(p=>{
-    let key=normalize(p.title);
-    if(!groups[key]) groups[key]={title:p.title,image:p.image,items:[]};
-    groups[key].items.push(p);
-    if(!groups[key].image && p.image) groups[key].image=p.image;
+  var instock=products.filter(function(p){return p.status==='\u2705'&&isGoodUrl(p.url||'')});
+  var groups={};
+  instock.forEach(function(p){
+    var k=norm(p.title);
+    if(!groups[k])groups[k]={title:p.title,img:p.image,items:[]};
+    groups[k].items.push(p);
+    if(!groups[k].img&&p.image)groups[k].img=p.image;
   });
-  let groupList=Object.values(groups);
-  groupList.forEach(g=>{
-    g.cheapest=Math.min(...g.items.map(p=>parseInt(p.price)||999999));
-    g.items.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
+  var gl=Object.values(groups);
+  gl.forEach(function(g){
+    g.cheapest=Math.min.apply(null,g.items.map(function(p){return parseInt(p.price)||999999}));
+    g.items.sort(function(a,b){return(parseInt(a.price)||999999)-(parseInt(b.price)||999999)});
   });
-  groupList.sort((a,b)=>a.cheapest-b.cheapest);
-  renderGroups(groupList.slice(0,12));
-  document.getElementById('fynd-grid').innerHTML=document.getElementById('grid').innerHTML;
-  setTimeout(buildFynd,0); // reset grid
+  gl.sort(function(a,b){return a.cheapest-b.cheapest});
+  renderTo(gl.slice(0,12),'fynd-grid');
 }
-// Re-run buildFynd properly
-setTimeout(()=>{buildFynd();},500);
 </script>
 </body>
 </html>"""
