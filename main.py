@@ -276,7 +276,7 @@ Pokesniper.se — J\u00e4mf\u00f6r Pok\u00e9mon TCG-priser hos 45+ svenska butik
 var activeCat=null,activeSort='relevance';
 
 fetch('/api/groups?q=&cat=&sort=relevance').then(function(r){return r.json()}).then(function(data){
-  document.getElementById('stats').textContent=data.total_products+' produkter \u00b7 '+data.total_stores+' butiker';
+  document.getElementById('stats').textContent=data.total_products+' produkter \u00b7 '+data.total_stores+' svenska butiker';
   var nav=document.getElementById('categories');
   nav.innerHTML='<button class=\"cat-pill active\" data-cat=\"\">Allt</button>';
   var order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','\u00d6vrigt'];
