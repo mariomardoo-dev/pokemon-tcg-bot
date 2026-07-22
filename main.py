@@ -178,8 +178,8 @@ header{background:linear-gradient(180deg,#150000,var(--bg));border-bottom:1px so
 .logo span{color:var(--green);font-size:13px;display:block;letter-spacing:0;font-weight:400;text-transform:none}
 .logo span .free{color:var(--red);font-weight:700;font-size:11px;letter-spacing:1px}
 .disc-label{color:var(--muted);font-size:11px;text-align:center;margin-bottom:2px}
-.disc-badge{background:#1a0000;border:1px solid var(--red);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:all .2s}
-.disc-badge:hover{background:#2a0000;border-color:var(--red2)}.disc-badge .icon{font-size:16px}
+.disc-badge{background:#5865F2;border:1px solid #5865F2;border-radius:8px;padding:8px 12px;color:#fff;font-size:12px;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:all .2s}
+.disc-badge:hover{background:#4752C4;border-color:#4752C4}.disc-badge .icon{font-size:16px;font-weight:700}
 .search-wrap{flex:1;min-width:200px;position:relative}
 .search-wrap input{width:100%;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s}
 .search-wrap input:focus{border-color:var(--red)}.search-wrap input::placeholder{color:#555}
@@ -233,7 +233,7 @@ footer a{color:var(--muted)}
 </div>
 <div>
 <div class=disc-label>Vi finns \u00e4ven i Discord</div>
-<a class=disc-badge href="https://discord.gg/QRaPfTVHFr" target=_blank><span class=icon>💬</span> Discord — smartare s\u00f6k &amp; sp\u00e5rning</a>
+<a class=disc-badge href="https://discord.gg/QRaPfTVHFr" target=_blank><span class=icon><svg width=16 height=16 viewBox="0 0 24 24" fill=white><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></span> Discord — smartare sök &amp; spårning</a>
 </div>
 <div class=header-stats id=stats></div>
 </div>
