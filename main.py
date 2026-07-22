@@ -266,43 +266,30 @@ Pokesniper.se — J\u00e4mf\u00f6r Pok\u00e9mon TCG-priser hos 45+ svenska butik
 var activeCat=null,activeSort='relevance';
 
 fetch('/api/groups?q=&cat=&sort=relevance').then(function(r){return r.json()}).then(function(data){
-  document.getElementById('stats').textContent=data.total_products+' produkter \u00b7 '+data.total_stores+' butiker';
-  buildCats(data.categories);
-  renderGroups(data.groups,'grid');
+  document.getElementById('stats').textContent=data.total_products+' produkter';
+  var nav=document.getElementById('categories');
+  nav.innerHTML='';
+  var order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','Ovrigt'];
+  order.forEach(function(c){
+    if(data.categories[c]) nav.innerHTML+='<button class=cat-pill data-cat='+c+' onclick=toggleCat(this)>'+c+'</button>';
+  });
+  if(data.groups.length) renderGroups(data.groups,'grid');
+  else document.getElementById('grid').innerHTML='<div class=empty>Inga produkter</div>';
   buildFynd();
 });
 
-function buildCats(cats){
-  var order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','Ovrigt'];
-  var nav=document.getElementById('categories');
-  nav.innerHTML='<button class="cat-pill active" data-cat="">Alla</button>';
-  order.forEach(function(c){
-    if(cats[c]) nav.innerHTML+='<button class="cat-pill" data-cat="'+c+'">'+c+' <span style="opacity:.5;font-size:11px">'+cats[c]+'</span></button>';
-  });
-  nav.onclick=function(e){
-    var btn=e.target.closest('.cat-pill');
-    if(!btn)return;
-    var cat=btn.dataset.cat||null;
-    activeCat=cat===activeCat?null:cat;
-    document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active')});
-    if(activeCat)btn.classList.add('active');
-    else nav.querySelector('.cat-pill').classList.add('active');
-    doSearch();
-  };
-}
-
-var tmr;
-document.getElementById('search').addEventListener('input',function(){
-  clearTimeout(tmr);
-  document.getElementById('clear').classList.toggle('visible',this.value.length>0);
-  tmr=setTimeout(doSearch,200);
-});
-
-function clearSearch(){
-  document.getElementById('search').value='';
-  document.getElementById('clear').classList.remove('visible');
+function toggleCat(btn){
+  var cat=btn.dataset.cat;
+  activeCat=cat===activeCat?null:cat;
+  document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active')});
+  if(activeCat)btn.classList.add('active');
   doSearch();
 }
+
+document.getElementById('search').addEventListener('input',function(){
+  clearTimeout(this._tmr);
+  this._tmr=setTimeout(doSearch,200);
+});
 
 function doSearch(){
   var q=document.getElementById('search').value.trim();
@@ -310,23 +297,33 @@ function doSearch(){
   var url='/api/groups?q='+encodeURIComponent(q)+'&cat='+(activeCat||'')+'&sort='+activeSort;
   fetch(url).then(function(r){return r.json()}).then(function(data){
     document.getElementById('count').textContent=data.groups.length+' produkter';
-    document.getElementById('empty').style.display=data.groups.length?'none':'block';
-    document.getElementById('fynd-section').style.display=(q||activeCat)?'none':'block';
     renderGroups(data.groups,'grid');
   });
 }
 
 function renderGroups(groups,targetId){
-  var html=groups.map(function(g){
-    var img=g.image?'<img src="'+g.image+'" alt="" loading=lazy onerror="this.style.display=\\'none\\';this.nextElementSibling.style.display=\\'block\\'"><span class=no-img style=display:none>📦</span>':'<span class=no-img>📦</span>';
-    var price=g.cheapest?g.cheapest:'\u2014';
-    var rows=g.items.map(function(p){
-      var sc=p.status==='\u2705'?'s-in':'s-out';
-      var st=p.status==='\u2705'?'I lager':'Slut';
-      return'<div class=store-row onclick="event.stopPropagation();window.open(''+p.url+'','_blank')"><span class=s-price>'+(p.price||'\u2014')+'</span><span class=s-store>'+p.store+'</span><span class="s-status '+sc+'">'+st+'</span></div>';
-    }).join('');
-    return'<div class=group-card onclick="this.classList.toggle('open')"><div class=group-header><div class=group-img>'+img+'</div><div class=group-info><div class=group-title>'+g.title+'</div><div class=group-meta><span class=group-price>Fr\u00e5n '+price+'</span><span class=group-stores>'+g.count+' butiker</span><span class=group-arrow>\u25bc</span></div></div></div><div class=store-list>'+rows+'</div></div>';
-  }).join('');
+  var html='';
+  groups.forEach(function(g){
+    var img=g.image?'<img src='+g.image+' class=group-img-img alt="" loading=lazy onerror="this.style.display=none">':'';
+    var cheapest=g.items[0].price||'';
+    html+='<div class=group-card onclick="this.classList.toggle(\'open\')">';
+    html+='<div class=group-header>';
+    html+='<div class=group-img>'+(img||'<span>📦</span>')+'</div>';
+    html+='<div class=group-info>';
+    html+='<div class=group-title>'+g.title+'</div>';
+    html+='<div class=group-meta><span class=group-price>Fran '+cheapest+'</span>';
+    html+='<span class=group-stores>'+g.count+' butiker</span></div>';
+    html+='</div></div>';
+    html+='<div class=store-list>';
+    g.items.forEach(function(p){
+      var sc=p.status==='✅'?'s-in':'s-out';
+      var st=p.status==='✅'?'I lager':'Slut';
+      html+='<div class=store-row><a href="'+p.url+'" target=_blank class=s-price>'+(p.price||'')+'</a>';
+      html+='<span class=s-store>'+p.store+'</span>';
+      html+='<span class="s-status '+sc+'">'+st+'</span></div>';
+    });
+    html+='</div></div>';
+  });
   document.getElementById(targetId).innerHTML=html;
 }
 
