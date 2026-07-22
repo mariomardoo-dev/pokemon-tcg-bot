@@ -2899,7 +2899,7 @@
     "title": "The Seriema - Foil",
     "price": "21 kr",
     "store": "Manatorsk",
-    "status": "✅",
+    "status": "❌",
     "url": "https://manatorsk.com/products/dec91ec3-42d3-4922-96f0-dbb50a576084-f",
     "image": null
   },
@@ -4441,19 +4441,19 @@
   },
   {
     "title": "Pokémon Scarlet & Violet 10.5: White Flare Binder Collection",
-    "price": "949 kr",
-    "store": "TCGStore",
+    "price": "649 kr",
+    "store": "Swepoke",
     "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-scarlet-violet-10-5-white-flare-binder-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-scarlet-and-violet-10.5-white-flare-binder-collection.jpg?v=1752827420"
+    "url": "https://www.swepoke.se/pokemon/pokemon-boxar/pokemon-scarlet-violet-white-flare-binder-collection",
+    "image": null
   },
   {
     "title": "Pokémon Scarlet & Violet 10.5: Black Bolt Binder Collection",
-    "price": "999 kr",
-    "store": "TCGStore",
+    "price": "649 kr",
+    "store": "Swepoke",
     "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-scarlet-violet-10-5-black-bolt-binder-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-scarlet-and-violet-10.5-black-bolt-binder-collection.jpg?v=1752827002"
+    "url": "https://www.swepoke.se/pokemon/pokemon-boxar/pokemon-scarlet-violet-black-bolt-binder-collection",
+    "image": null
   },
   {
     "title": "Pokémon Mega Venusaur ex Premium Collection",
@@ -7497,11 +7497,11 @@
   },
   {
     "title": "Pokémon Mega Evolution: Phantasmal Flames Elite Trainer Box",
-    "price": "1099 kr",
-    "store": "TCGStore",
+    "price": "1399 kr",
+    "store": "Poketalk",
     "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-elite-trainer-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-phantasmal-flames-elite-trainer-box.jpg?v=1763630175"
+    "url": "https://poketalk.se/products/pokemon-mega-evolution-phantasmal-flames-elite-trainer-box",
+    "image": null
   },
   {
     "title": "Pokemon TCG: 151 Surprise Slim Booster Pack",
@@ -9546,10 +9546,10 @@
   {
     "title": "Pokémon Acrylic Case - Booster Box",
     "price": "249 kr",
-    "store": "Rahtech",
+    "store": "Hobbykort",
     "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-acrylic-case-elite-trainer-box-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/71SzkE2cEoL.jpg?v=1782145758"
+    "url": "https://hobbykort.se/products/pokemon-acrylic-booster-box-display",
+    "image": "https://cdn.shopify.com/s/files/1/0769/4106/6574/files/PokemonAcrylicCase-BoosterBoxDisplay_9.jpg?v=1776282691"
   },
   {
     "title": "Pokémon Acrylic Case - Booster Bundle",
@@ -9578,10 +9578,10 @@
   {
     "title": "Pokémon Acrylic Case - Elite Trainer Box",
     "price": "249 kr",
-    "store": "Rahtech",
+    "store": "Hobbykort",
     "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-acrylic-case-elite-trainer-box",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/EliteTrainerAcrylicProtector-main.jpg?v=1782145493"
+    "url": "https://hobbykort.se/products/pokemon-acrylic-elite-trainer-box",
+    "image": "https://cdn.shopify.com/s/files/1/0769/4106/6574/files/Pokemonacryliccaseelitetrainerbox.jpg?v=1776283014"
   },
   {
     "title": "Pokémon Acrylic Case – Ultra Premium Collection (UPC)",
@@ -10598,318 +10598,6 @@
     "status": "\\u2705",
     "url": "https://www.coolcard.se/product/pokmon-scarlet-violet-ancient-roar-sv4k-booster-display-30-paket-japansk",
     "image": null
-  },
-  {
-    "title": "Pokémon: Ascended Heroes ex Box (Mega Meganium / Emboar / Feraligatr)",
-    "price": "599 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-ex-box-mega-meganium-emboar-feraligatr",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/s-l400-2.jpg?v=1777857810"
-  },
-  {
-    "title": "Pokémon: Ascended Heroes - Premium Poster Collection (Lucario ex / Gardevoir ex)",
-    "price": "1599 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-premium-poster-collection-lucario-ex-gardevoir-ex",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/3.jpg?v=1777856459"
-  },
-  {
-    "title": "Pokémon: First Partner Illustration Collection Series 1",
-    "price": "799 kr",
-    "store": "Samlargrottan",
-    "status": "❌",
-    "url": "https://www.samlargrottan.se/product-page/pok%C3%A9mon-first-partner-illustration-collection-series-1",
-    "image": null
-  },
-  {
-    "title": "Pokémon: Ascended Heroes - Booster Bundle (Engelsk)",
-    "price": "999 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-first-partners-deluxe-pin-collection-engelsk-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/POK10311-101_jpg.webp?v=1779113227"
-  },
-  {
-    "title": "Ultra Pro Regular Toploader (25-pack)",
-    "price": "39 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/ultra-pro-regular-toploader-25-pack",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/62ff820f5b533_jpg.webp?v=1776500783"
-  },
-  {
-    "title": "Pokémon: Ascended Heroes - Elite Trainer Box (Engelsk)",
-    "price": "1990 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-elite-trainer-box-engelsk",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/15839807.jpg?v=1779112417"
-  },
-  {
-    "title": "Ultra Pro Standard Sleeves - Regular Soft Card (Penny Sleeves) - 100-pack",
-    "price": "19 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/ultra-pro-standard-sleeves-regular-soft-card-penny-sleeves-125-pack",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/ult81126.jpg?v=1779062712"
-  },
-  {
-    "title": "Pokémon: Destined Rivals - Booster Pack (Engelsk)",
-    "price": "99 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-destined-rivals-booster-pack-engelsk",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/PokmonScarletViolet10DestinedRivalsBoosterPackDefaultTitle_c9c42740-0db0-4f22-8db1-6c8ae336b86f_jpg.webp?v=1779997920"
-  },
-  {
-    "title": "Pokémon: Ascended Heroes First Partners - Deluxe Pin Collection (Engelsk)",
-    "price": "799 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-mini-tin-engelsk-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/POK10301-107_1_jpg.webp?v=1779113098"
-  },
-  {
-    "title": "Pokémon Scarlet & Violet: Terastal Grand Gathering Eevee & Friends Binder Gift Box (8 Pack) (CH)",
-    "price": "1499 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-scarlet-violet-terastal-grand-gathering-eevee-friends-binder-gift-box-8-pack-ch",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/BlackBox-2026-06-03T152449_843_png.webp?v=1782167469"
-  },
-  {
-    "title": "Pokémon: Ascended Heroes Tech Sticker Collection (Charmander / Gastly)",
-    "price": "399 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-tech-sticker-collection-charmander-gastly",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/pokemon-mega-evolution-ascended-heroes-tech-sticker-collection-charmander_jpg.webp?v=1777858240"
-  },
-  {
-    "title": "Pokémon TCG: Pokémon Day 2026 Collection – 30th Anniversary",
-    "price": "449 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-tcg-pokemon-day-2026-collection-30th-anniversary",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/pokemon-tcg-pokemon-day-2026-collection-box__40506.jpg?v=1780411005"
-  },
-  {
-    "title": "Pokémon: Mega Evolution Chaos Rising - Booster Bundle (Engelsk)",
-    "price": "599 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-mega-evolution-chaos-rising-booster-bundle-engelsk",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/pok10403-101.jpg?v=1779998485"
-  },
-  {
-    "title": "Pokémon: Ascended Heroes - Mini Tin (Engelsk)",
-    "price": "349 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-elite-trainer-box-engelsk-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/05f53982-251f-4463-8250-8f532b312f99.webp?v=1779112901"
-  },
-  {
-    "title": "Pokémon TCG: Unova Heavy Hitters Premium Collection",
-    "price": "1149 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-tcg-unova-heavy-hitters-premium-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/85F4AF1F-E1A3-4E47-9780-2B1026D18C88.jpg?v=1774771441"
-  },
-  {
-    "title": "Akrylskydd för Mega Charizard X ex Ultra Premium Collection (UPC)",
-    "price": "319 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/akrylskydd-for-pokemon-booster-bundle-6-pack-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/UPC_Mega_Charizard_X_EX_Acryl_Case_schuin_voor_met_inhoud_jpg.webp?v=1782161783"
-  },
-  {
-    "title": "Pokémon TCG: Poké Ball Tin",
-    "price": "239 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-tcg-poke-ball-tin-2025",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/Poke_Ball_Tin_Fall_2025_600x600_cea2ad87-44e6-49fa-ba93-c2151189ce5e.webp?v=1780307438"
-  },
-  {
-    "title": "Pokémon: Charizard ex Special Collection",
-    "price": "599 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-charizard-ex-special-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/912F21D7-411F-4E40-B94A-C8DBB1ED26B1.jpg?v=1775397182"
-  },
-  {
-    "title": "Pokémon: Ascended Heroes - Booster Bundle Display (Engelsk)",
-    "price": "12999 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-booster-bundle-display-engelsk",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/ascended-heroes-booster-bundle-display.webp?v=1781025242"
-  },
-  {
-    "title": "Pokémon Scarlet & Violet: Terastal Grand Gathering Eevee & Friends Badge Set (1 Pack) (CH)",
-    "price": "149 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-scarlet-violet-terastal-grand-gathering-eevee-friends-badge-set-1-pack-ch",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/Aquitaz_8_51282c60-6da7-4a43-a89f-6002b2468f43_png.webp?v=1782166786"
-  },
-  {
-    "title": "Akrylskydd för Prismatic Evolutions Super Premium Collection (SPC)",
-    "price": "299 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/akrylskydd-for-greninja-ex-ultra-premium-collection-upc-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/Prismatic_Evolutions_Super-Premium_Collection_Acrylic_600x600_jpg.webp?v=1782146345"
-  },
-  {
-    "title": "Akrylskydd för Team Rocket's Moltres ex Ultra Premium Collection (UPC)",
-    "price": "299 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-acrylic-case-booster-box-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/Team_Rocket_Moltres_Ultra-Premium_Collection_acryl_case_met_inhoud_jpg_f8e52076-997c-43bd-8d86-71529630765b.webp?v=1782162733"
-  },
-  {
-    "title": "Pokémon: Mega Charizard X ex - Ultra Premium Collection",
-    "price": "1990 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-mega-charizard-x-ex-ultra-premium-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/638289314_4f7f22e0-d45e-4d18-9a6f-9c1a4760ac5e.jpg?v=1779215977"
-  },
-  {
-    "title": "Pokémon: Enhanced 2-Pack Blister",
-    "price": "249 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-enhanced-2-pack-blister",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/pokemon-phantasmal-flames-enhanced-2-pack-blister_webp.jpg?v=1777913401"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Perfect Order Elite Trainer Box",
-    "price": "849 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-mega-evolution-perfect-order-elite-trainer",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/813BmMbm-YL.jpg_BO30_255_255_255_UF750_750_SR1910_1000_0_C_QL100.jpg?v=1776777150"
-  },
-  {
-    "title": "Pokémon: Prismatic Evolutions Premium Figure Collection",
-    "price": "2599 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-prismatic-evolutions-premium-figure-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/Prismatic_Evolutions_Premium_Figure_Collection_600x600_jpg.webp?v=1784621138"
-  },
-  {
-    "title": "Pokémon: Mega Evolution – Mega Gengar ex Tin (Engelsk)",
-    "price": "499 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-mega-evolution-mega-gengar-ex-tin-engelsk",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/KortetarNM_villduhafotosakontaktaoss_7_png.webp?v=1783421658"
-  },
-  {
-    "title": "Pokémon: Ascended Heroes - Elite Trainer Box Sealed Case (10 ETB)",
-    "price": "20999 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-ascended-heroes-elite-trainer-box-sealed-case-10-etb",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/699e1f41e266a.jpeg-2.avif?v=1782998393"
-  },
-  {
-    "title": "Akrylskydd för Charizard Sword & Shield Ultra Premium Collection (UPC)",
-    "price": "299 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/akrylskydd-for-charizard-sword-shield-ultra-premium-collection-upc",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/UPC_Charizard_acryl_case_met_product_schuin_voor_jpg.webp?v=1782146604"
-  },
-  {
-    "title": "Pokémon: Lumiose City Mini Tin",
-    "price": "199 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-lumiose-city-mini-tin",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/20260319-133353_0000_png.webp?v=1781024718"
-  },
-  {
-    "title": "Pokémon: Mega Evolution - Chaos Rising Elite Trainer Box (Engelsk)",
-    "price": "999 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-mega-evolution-chaos-rising-elite-trainer-box-engelsk",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/pokemon-chaos-rising-elite-trainer-box_jpg.png?v=1779285566"
-  },
-  {
-    "title": "Pokémon: Mega Evolution - Chaos Rising Booster Display (Engelsk)",
-    "price": "2599 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-mega-evolution-chaos-rising-booster-display-engelsk",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/pokemon-chaos-rising-booster-display_jpg.png?v=1779285351"
-  },
-  {
-    "title": "Pokémon: First Partner Illustration Collection Series 2",
-    "price": "649 kr",
-    "store": "Samlargrottan",
-    "status": "✅",
-    "url": "https://www.samlargrottan.se/product-page/pok%C3%A9mon-first-partners-illustration-collection-series-2",
-    "image": null
-  },
-  {
-    "title": "Pokémon Scarlet & Violet: Terastal Grand Gathering Eevee & Friends Coin Set (1 Pack) (CH)",
-    "price": "149 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-scarlet-violet-terastal-grand-gathering-eevee-friends-coin-set-1-pack-ch",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/RipnShip_83_5785f1a7-1bc6-451b-8b48-0a03dcfb981a_png.webp?v=1782164258"
-  },
-  {
-    "title": "Akrylskydd för Pokémon Booster Bundle (6-pack)",
-    "price": "149 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/akrylskydd-for-pokemon-151-ultra-premium-collection-upc-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/BlackBox_-_2026-05-07T180036_877_png.webp?v=1782161526"
-  },
-  {
-    "title": "Akrylskydd för Pokémon 151 Ultra Premium Collection (UPC)",
-    "price": "319 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/akrylskydd-for-charizard-sword-shield-ultra-premium-collection-upc-copy",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/151_Mew_Ultra-Premium_Collection_Acryl_Case_recht_voor_jpg.webp?v=1782161275"
-  },
-  {
-    "title": "Pokémon: Plush Toy Kortdisplay – Gift Box",
-    "price": "349 kr",
-    "store": "Rahtech",
-    "status": "✅",
-    "url": "https://rahtech.se/products/pokemon-plush-toy-kortdisplay-gavoskepp",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/PokemonMegaEvolutionPhantasmalFlamesEliteTrainerBox_ETB_9Pack_-2026-01-10T145254_384_png.webp?v=1781518731"
-  },
-  {
-    "title": "Pokémon: Mega Evolution Chaos Rising - Booster Pack (Engelsk)",
-    "price": "79 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-mega-evolution-chaos-rising-booster-pack-engelsk",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/pokemon-mega-evolution-chaos-rising-booster-pack-2_jpg.webp?v=1781023676"
-  },
-  {
-    "title": "Pokémon: Champion’s Path - Elite Trainer Box",
-    "price": "1999 kr",
-    "store": "Rahtech",
-    "status": "❌",
-    "url": "https://rahtech.se/products/pokemon-champion-s-path-elite-trainer-box",
-    "image": "https://cdn.shopify.com/s/files/1/0994/8882/5670/files/Untitleddesign_46_421cef18-4640-4ca4-871d-709465bdb142_png.webp?v=1777913771"
   },
   {
     "title": "(41x63mm) Board Game Sleeves - American Mini Black Sleeves",
@@ -13280,222 +12968,6 @@
     "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-pitch-black-booster-pack-3.jpg?v=1784711718"
   },
   {
-    "title": "Pokémon Scarlet & Violet 8.5: Prismatic Evolutions Booster Bundle (MAX 3 PER KUND)",
-    "price": "1399 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-scarlet-violet-8-5-prismatic-evolutions-booster-bundle",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-scarlet-and-violet-prismatic-evolutions-booster-bundle.jpg?v=1741169146"
-  },
-  {
-    "title": "Pokémon Scarlet & Violet 8.5: Prismatic Evolutions Surprise Box",
-    "price": "999 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-scarlet-violet-8-5-prismatic-evolutions-surprise-box-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-prismatic-evolutions-surprise-box-collection.jpg?v=1742845877"
-  },
-  {
-    "title": "Pokémon TCG: Charizard ex Super-Premium Collection",
-    "price": "1199 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-tcg-charizard-ex-super-premium-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-charizard-ex-super-premium-collection.jpg?v=1725697711"
-  },
-  {
-    "title": "Pokémon Scarlet & Violet 10: Destined Rivals Booster Bundle",
-    "price": "899 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-scarlet-violet-10-destined-rivals-booster-bundle",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-scarlet-violet-destined-rivals-booster-bundle.jpg?v=1771920687"
-  },
-  {
-    "title": "Pokémon TCG: Mimikyu ex Collection Box",
-    "price": "699 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mimikyu-ex-collection-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mimikyu-ex-box.jpg?v=1699738527"
-  },
-  {
-    "title": "Pokémon TCG: Holiday Calendar - Adventskalender 2024",
-    "price": "799 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-holiday-calendar-adventskalender-2024",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-holiday-calendar-2024-adventskalender.jpg?v=1724354952"
-  },
-  {
-    "title": "Pokémon TCG: Mega Venusaur ex Premium Collection",
-    "price": "899 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-mega-venusaur-ex-premium-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-tcg-mega-venusaur-ex-premium-collection.jpg?v=1763624993"
-  },
-  {
-    "title": "Pokémon Scarlet & Violet 4.5: Paldean Fates Premium Collection Box - Skeledirge ex",
-    "price": "2299 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-paldean-fates-premium-collection-box-skeledirge-ex",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-paldean-fates-skeledirge-ex-box.jpg?v=1709155317"
-  },
-  {
-    "title": "Pokémon Scarlet & Violet 4.5: Paldean Fates Premium Collection Box - Meowscarada ex",
-    "price": "2299 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-paldean-fates-premium-collection-box-meowscarada-ex",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-paldean-fates-meowscarada-ex-box.jpg?v=1709155096"
-  },
-  {
-    "title": "Pokémon TCG: Holiday Calendar - Adventskalender 2025",
-    "price": "799 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-holiday-calendar-adventskalender-2025",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-tcg-holiday-calendar-2025.jpg?v=1757063574"
-  },
-  {
-    "title": "Pokémon Scarlet & Violet 4.5: Paldean Fates Premium Collection Box - Quaquaval ex",
-    "price": "2299 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-paldean-fates-premium-collection-box-quaquaval-ex",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-paldean-fates-quaquaval-ex-box.jpg?v=1709154768"
-  },
-  {
-    "title": "Pokémon Scarlet & Violet 6.5: Shrouded Fable Kingambit Illustration Collection",
-    "price": "499 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-scarlet-violet-6-5-shrouded-fable-kingambit-illustration-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-shrouded-fable-kingambit-illustration-collection.jpg?v=1719498654"
-  },
-  {
-    "title": "Pokémon Shining Fates: Pikachu V Collection Box",
-    "price": "1199 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-shining-fates-pikachu-v-collection-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/sword-shield-shining-fates-pikachu-box.jpg?v=1704883281"
-  },
-  {
-    "title": "Pokémon TCG: Terapagos ex Ultra Premium Collection",
-    "price": "2299 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-terapagos-ex-ultra-premium-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/terapagos-ultra-premium-collection-box-pokemon.jpg?v=1726775292"
-  },
-  {
-    "title": "Pokémon Sword & Shield 10: Astral Radiance Build & Battle Stadium Box",
-    "price": "1699 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-sword-shield-10-astral-radiance-build-battle-stadium-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-astral-radiance-build-battle-stadium-box.jpg?v=1721419971"
-  },
-  {
-    "title": "Pokémon: Cyrus Premium Tournament Collection",
-    "price": "999 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-cyrus-premium-tournament-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/cyrus-premium-tournament-collection-engelska-pokemonkort.jpg?v=1704883135"
-  },
-  {
-    "title": "Pokémon TCG: Cynthia's Garchomp ex Premium Collection",
-    "price": "699 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-tcg-cynthias-garchomp-ex-premium-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-tcg-cynthia_s-garchomp-ex-premium-collection.jpg?v=1749807393"
-  },
-  {
-    "title": "Pokémon TCG: Palafin ex Box",
-    "price": "479 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-palafin-ex-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-palafin-ex-box.jpg?v=1733226708"
-  },
-  {
-    "title": "Pokémon: Klara Premium Tournament Collection",
-    "price": "999 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-klara-premium-tournament-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/klara-premium-tournament-collection-engelska-pokemonkort.jpg?v=1699814030"
-  },
-  {
-    "title": "Pokémon TCG: Cyclizar ex Box",
-    "price": "549 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-cyclizar-ex-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-scarlet-violet-cyclizar-box.jpg?v=1698700140"
-  },
-  {
-    "title": "Pokémon TCG: Mega Zygarde ex Premium Collection",
-    "price": "799 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-mega-zygarde-ex-premium-collection",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-zygarde-ex-premium-collection.jpg?v=1778236197"
-  },
-  {
-    "title": "Pokémon TCG: Paldea Collection Box - Sprigatito",
-    "price": "699 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-tcg-paldea-collection-box-sprigatito",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-paldea-collection-box-sprigatito.jpg?v=1705781129"
-  },
-  {
-    "title": "Pokémon TCG: Boltund V Showcase Box",
-    "price": "479 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-boltund-v-showcase-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-boltund-v-showcase-box.jpg?v=1736858841"
-  },
-  {
-    "title": "Pokémon TCG: Ogerpon ex Premium Collection Box",
-    "price": "699 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-tcg-ogerpon-ex-premium-collection-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-ogerpon-ex-premium-collection-box.jpg?v=1736859371"
-  },
-  {
-    "title": "Pokémon TCG: Paldea Collection Box - Fuecoco",
-    "price": "699 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-tcg-paldea-collection-box-fuecoco",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-paldea-collection-box-fuecoco.jpg?v=1705781038"
-  },
-  {
-    "title": "Pokémon TCG: Paldea Collection Box - Quaxly",
-    "price": "699 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-tcg-paldea-collection-box-quaxly",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-paldea-collection-box.jpg?v=1705780973"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Ascended Heroes Booster Bundle",
-    "price": "1399 kr",
-    "store": "TCGVault",
-    "status": "✅",
-    "url": "https://tcgvault.se/products/pokemon-mega-evolution-ascended-heroes-booster-bundle",
-    "image": null
-  },
-  {
     "title": "Pokémon Scarlet & Violet 6.5: Shrouded Fable Elite Trainer Box",
     "price": "999 kr",
     "store": "TCGStore",
@@ -13870,814 +13342,6 @@
     "status": "✅",
     "url": "https://tcgstore.se/products/pokemon-mega-evolution-chaos-rising-checklane-blister-pack-toxel",
     "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-chaos-rising-checklane-blister-pack-toxel.jpg?v=1782808430"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Phantasmal Flames Booster Pack (MAX 20 PER KUND)",
-    "price": "129 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-booster-pack",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-phantasmal-flames-booster-pack-1.jpg?v=1763628281"
-  },
-  {
-    "title": "Pokémon: Mega Evolution - Ultra PRO 9-Pocket Binder",
-    "price": "189 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-ultra-pro-9-pocket-binder",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/ultra-pro-9-pocket-portfolio-mega-evolutions.jpg?v=1758026822"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Phantasmal Flames Sleeved Booster Pack",
-    "price": "119 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-sleeved-booster-pack",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-phantasmal-flames-sleeved-booster-pack.jpg?v=1768918105"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Phantasmal Flames - Ultra PRO 9-Pocket Binder",
-    "price": "189 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-ultra-pro-9-pocket-binder",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-phantasmal-flames-9-pocket-portfolio.jpg?v=1765053542"
-  },
-  {
-    "title": "Mega Venusaur ex - MEP013 - Pokémon Mega Evolution: Promo",
-    "price": "29 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/mega-venusaur-ex-mep013-pokemon-mega-evolution-promo",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/mega-venusaur-ex-mep-013-pokemon-kort.jpg?v=1772655800"
-  },
-  {
-    "title": "Dewgong AR - 084/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "59 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/dewgong-ar-084-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/dewgong-ar-084-m2-pokemon-kort.jpg?v=1761514530"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Ascended Heroes Tech Sticker Collection - Charmander (MAX 1 PER KUND)",
-    "price": "299 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-ascended-heroes-tech-sticker-collection-charmander",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-ascended-heroes-tech-sticker-collection-charmander.jpg?v=1770116508"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Ascended Heroes Tech Sticker Collection - Gastly (MAX 1 PER KUND)",
-    "price": "299 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-ascended-heroes-tech-sticker-collection-gastly",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-ascended-heroes-tech-sticker-collection-gastly.jpg?v=1770116840"
-  },
-  {
-    "title": "Vulpix AR - 067/063 - Pokémon: Mega Brave (m1L)",
-    "price": "89 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/vulpix-ar-067-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/vulpix-ar-m1l-067-pokemon-kort.jpg?v=1759174594"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Perfect Order 3-Pack Blister - Chikorita",
-    "price": "259 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-perfect-order-3-pack-blister-chikorita",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-perfect-order-3-pack-blister-chikorita.jpg?v=1779266128"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Ascended Heroes - Ultra PRO 9-Pocket Portfolio",
-    "price": "189 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-ascended-heroes-ultra-pro-9-pocket-portfolio",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-ultra-pro-9-pocket-portfolio-mega-evolution-ascended-heroes.jpg?v=1774859600"
-  },
-  {
-    "title": "Beautifly AR - 194/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/beautifly-ar-194-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/beautifly-ar-194-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Cynthia's Spiritomb AR - 208/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/cynthias-spiritomb-ar-208-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/spiritomb-ar-208-m2a-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Exeggutor AR - 066/063 - Pokémon: Mega Brave (m1L)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/exeggutor-ar-066-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/exeggutor-ar-m1l-066-pokemon-kort_2c0a1575-d68a-492e-ad70-879cacb90ba8.jpg?v=1759173591"
-  },
-  {
-    "title": "Helioptile AR - 070/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/helioptile-ar-070-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/helioptile-ar-m1s-070-pokemon-kort.jpg?v=1759172090"
-  },
-  {
-    "title": "Litleo AR - 066/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/litleo-ar-066-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/litleo-ar-m1s-066-pokemon-kort.jpg?v=1759172534"
-  },
-  {
-    "title": "Budew AR - 196/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/budew-ar-196-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/budew-ar-196-m2a-pokemon-kort.jpg?v=1770933931"
-  },
-  {
-    "title": "Pokémon: Mega Evolution - Ultra PRO 4-Pocket Binder",
-    "price": "109 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-ultra-pro-4-pocket-binder",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/ultra-pro-4-pocket-portfolio-mega-evolutions.jpg?v=1758709912"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Phantasmal Flames Premium Checklane Blister Pack: Blaziken (MAX 2 PER KUND)",
-    "price": "149 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-premium-checklane-blister-pack-blaziken",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-phantasmal-flames-premium-checklane-blister-blaziken.jpg?v=1763629072"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Phantasmal Flames Premium Checklane Blister Pack: Hydrapple (MAX 2 PER KUND)",
-    "price": "149 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-premium-checklane-blister-pack-hydrapple",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-phantasmal-flames-premium-checklane-blister-hydrapple.jpg?v=1763628667"
-  },
-  {
-    "title": "Wigglytuff AR - 091/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "59 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/wigglytuff-ar-091-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/wigglytuff-ar-091-m2-pokemon-kort.jpg?v=1761513671"
-  },
-  {
-    "title": "Charcadet AR - 083/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/charcadet-ar-083-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/charcadet-ar-083-m2-pokemon-kort.jpg?v=1761514663"
-  },
-  {
-    "title": "Togedemaru AR - 090/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/togedemaru-ar-090-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/togedemaru-ar-090-m2-pokemon-kort.jpg?v=1761513923"
-  },
-  {
-    "title": "Shuckle AR - 064/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/shuckle-ar-064-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/shuckle-ar-m1s-064-pokemon-kort.jpg?v=1759173001"
-  },
-  {
-    "title": "Delibird AR - 074/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/delibird-ar-074-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/delibird-ar-m1s-074-pokemon-kort.jpg?v=1759171899"
-  },
-  {
-    "title": "Ethan's Magcargo AR - 197/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/magcargo-ar-197-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/magcargo-ar-197-m2a-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Zacian AR - 087/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/zacian-ar-087-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/zacian-ar-087-m2-pokemon-kort.jpg?v=1761513372"
-  },
-  {
-    "title": "Stufful AR - 075/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/stufful-ar-075-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/stufful-ar-m1s-075-pokemon-kort.jpg?v=1759173356"
-  },
-  {
-    "title": "Misdreavus AR - 202/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/misdreavus-ar-202-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/misdreavus-ar-202-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Toxtricity AR - 089/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/toxtricity-ar-089-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/toxtricity-ar-089-m2-pokemon-kort.jpg?v=1761513803"
-  },
-  {
-    "title": "Spearow AR - 074/063 - Pokémon: Mega Brave (m1L)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/spearow-ar-074-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/spearow-ar-m1l-074-pokemon-kort.jpg?v=1759174236"
-  },
-  {
-    "title": "Ninjask AR - 065/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/ninjask-ar-065-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/ninjask-ar-m1s-065-pokemon-kort.jpg?v=1759172700"
-  },
-  {
-    "title": "Flygon AR - 088/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/flygon-ar-088-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/flygon-ar-088-m2-pokemon-kort.jpg?v=1761514356"
-  },
-  {
-    "title": "Gumshoos AR - 075/063 - Pokémon: Mega Brave (m1L)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/gumshoos-ar-075-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/gumshoos-ar-m1l-075-pokemon-kort.jpg?v=1759174015"
-  },
-  {
-    "title": "Mega Froslass ex - 224/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "99 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/mega-froslass-ex-224-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/mega-froslass-ex-m2a-224-pokemon-kort.jpg?v=1773947953"
-  },
-  {
-    "title": "Hop's Trevenant AR - 204/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/hops-trevenant-ar-204-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/hops-trevenant-ar-204-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Medicham AR - 207/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/medicham-ar-207-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/medicham-ar-207-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Ambipom AR - 092/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/ambipom-ar-092-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/ambipom-ar-092-m2-pokemon-kort.jpg?v=1761514821"
-  },
-  {
-    "title": "Yamper AR - 086/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/yamper-ar-086-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/yamper-ar-086-m2-pokemon-kort.jpg?v=1761513525"
-  },
-  {
-    "title": "Steelix AR - 073/063 - Pokémon: Mega Brave (m1L)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/steelix-ar-073-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/steelix-ar-m1l-073-pokemon-kort.jpg?v=1759174478"
-  },
-  {
-    "title": "Houndstone AR - 073/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/houndstone-ar-073-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/houndstone-ar-m1s-073-pokemon-kort.jpg?v=1759172222"
-  },
-  {
-    "title": "Riolu AR - 068/063 - Pokémon: Mega Brave (m1L)",
-    "price": "59 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/riolu-ar-068-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/riolu-ar-m1l-068-pokemon-kort.jpg?v=1774043916"
-  },
-  {
-    "title": "Mega Elektross ex - 225/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "69 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/mega-elektross-ex-225-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/mega-elektross-ex-m2a-225-pokemon-kort.jpg?v=1773948155"
-  },
-  {
-    "title": "Numel AR - 198/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/numel-ar-198-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/numel-ar-198-pokemon-kort.jpg?v=1770933931"
-  },
-  {
-    "title": "Shedinja AR - 072/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/shedinja-ar-072-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/shedinja-ar-072-m1s-pokemon-kort.jpg?v=1759172873"
-  },
-  {
-    "title": "Chespin AR - 084/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "59 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/chespin-ar-084-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/chespin-ar-084-m4-pokemon-kort.jpg?v=1781006985"
-  },
-  {
-    "title": "Mega Scrafty ex - 231/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "69 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/mega-scrafty-ex-231-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/mega-scrafty-ex-m2a-231-pokemon-kort.jpg?v=1773948258"
-  },
-  {
-    "title": "Togekiss AR - 203/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/togekiss-ar-203-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/togekiss-ar-203-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Mega Hawlucha ex - 229/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "79 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/mega-hawlucha-ex-229-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/mega-hawlucha-ex-m2a-229-pokemon-kort.jpg?v=1773947804"
-  },
-  {
-    "title": "Snover AR - 067/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/snower-ar-067-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/snower-ar-m1s-067-pokemon-kort.jpg?v=1759173230"
-  },
-  {
-    "title": "Aurorus AR - 084/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/aurorus-ar-084-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/aurorus-084-m3-pokemon-kort.jpg?v=1781004034"
-  },
-  {
-    "title": "Espurr AR - 087/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/espurr-ar-087-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/espurr-087-m3-pokemon-kort.jpg?v=1781002128"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Chaos Rising - Ultra PRO 9-Pocket Portfolio",
-    "price": "189 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-chaos-rising-ultra-pro-9-pocket-portfolio",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-chaos-rising-9-pocket-portfolio.jpg?v=1779958159"
-  },
-  {
-    "title": "Team Rocket's Dugtrio AR - 206/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/team-rockets-dugtrio-ar-206-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/team-rockets-dugtrio-ar-206-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Dreepy AR - 211/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/dreepy-ar-211-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/dreepy-ar-211-pokemon-kort.jpg?v=1770933931"
-  },
-  {
-    "title": "Nymble AR - 082/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/nymble-ar-082-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/nymble-ar-082-m2-pokemon-kort.jpg?v=1761514106"
-  },
-  {
-    "title": "Spiritomb AR - 071/063 - Pokémon: Mega Brave (m1L)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/spiritomb-ar-071-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/spiritomb-ar-m1l-071-pokemon-kort.jpg?v=1759174349"
-  },
-  {
-    "title": "Inteleon AR - 069/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/inteleon-ar-069-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/inteleon-ar-m1s-069-pokemon-kort.jpg?v=1759172395"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Phantasmal Flames 3-Pack Blister - Sneasel",
-    "price": "299 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-3-pack-blister-sneasel",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-phantasmal-flames-3-pack-blister-sneasel.jpg?v=1771921190"
-  },
-  {
-    "title": "Clawitzer AR - 068/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/clawitzer-ar-068-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/clawitzer-ar-m1s-068-pokemon-kort.jpg?v=1759171584"
-  },
-  {
-    "title": "Rowlet AR - 082/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/rowlet-ar-082-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/rowlet-082-m3-pokemon-kort.jpg?v=1781002688"
-  },
-  {
-    "title": "Drakloak AR - 212/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/drakloak-ar-212-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/drakloak-ar-212-pokemon-kort.jpg?v=1770933931"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Phantasmal Flames - Ultra PRO 4-Pocket Binder",
-    "price": "109 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-ultra-pro-4-pocket-binder",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/mega-evolution-phantasmal-flames-4-pocket-portfolio.jpg?v=1765053925"
-  },
-  {
-    "title": "Ludicolo AR - 081/080 - Pokémon Mega: Inferno X (m2)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/ludicolo-ar-081-080-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/ludicolo-ar-081-m2-pokemon-kort.jpg?v=1761514233"
-  },
-  {
-    "title": "Team Rocket's Mimikyu AR - 205/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "69 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/team-rockets-mimikyu-ar-205-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/team-rockets-mimikyu-205-pokemon-kort.jpg?v=1780997481"
-  },
-  {
-    "title": "Pokémon TCG: Mega Evolution Mini Portfolio (MAX 2 PER KUND)",
-    "price": "89 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-tcg-mega-evolution-mini-portfolio",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-mini-portfolio.jpg?v=1760614455"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Ascended Heroes Mega Emboar ex Box",
-    "price": "799 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-ascended-heroes-mega-emboar-ex-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-ascended-heroes-mega-emboar-ex-box.jpg?v=1777021693"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Ascended Heroes Mega Meganium ex Box",
-    "price": "799 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-ascended-heroes-mega-meganium-ex-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-ascended-heroes-mega-meganium-ex-box.jpg?v=1777021583"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Ascended Heroes Mega Feraligatr ex Box",
-    "price": "799 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-ascended-heroes-mega-feraligatr-ex-box",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-ascended-heroes-mega-feraligatr-ex-box.jpg?v=1777021088"
-  },
-  {
-    "title": "Galarian Obstagoon AR - 209/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/galarian-obstagoon-ar-209-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/galarian-obstagoon-ar-209-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Snorunt AR - 200/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/snorunt-ar-200-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/snorunt-ar-200-m2a-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Shroodle AR - 072/063 - Pokémon: Mega Brave (m1L)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/shroodle-ar-072-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/shroodle-ar-m1l-072-pokemon-kort.jpg?v=1759174132"
-  },
-  {
-    "title": "Tauros AR - 094/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "69 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/tauros-ar-094-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/tauros-094-m4-pokemon-kort.jpg?v=1781008331"
-  },
-  {
-    "title": "Sliggoo AR - 093/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/sliggoo-ar-093-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/sliggoo-093-m4-pokemon-kort.jpg?v=1781008076"
-  },
-  {
-    "title": "Mega Diancie ex - 227/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "79 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/mega-diancie-ex-227-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/mega-diancie-ex-m2a-227-pokemon-kort.jpg?v=1773947671"
-  },
-  {
-    "title": "Crobat AR - 091/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/crobat-ar-091-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/crobat-091-m4-pokemon-kort.jpg?v=1781008888"
-  },
-  {
-    "title": "Spewpa AR - 081/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/spewpa-ar-081-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/spewpa-081-m3-pokemon-kort.jpg?v=1781004679"
-  },
-  {
-    "title": "Talonflame AR - 083/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/talonflame-ar-083-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/talonflame-083-m3-pokemon-kort.jpg?v=1780998557"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Phantasmal Flames 3-Pack Blister - Weavile",
-    "price": "299 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-3-pack-blister-weavile",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-phantasmal-flames-3-pack-blister-weavile.jpg?v=1771920913"
-  },
-  {
-    "title": "Dustox AR - 195/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/dustox-ar-195-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/dustox-ar-195-m2a-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Pokémon TCG: Mega Evolution Elite Trainer Box (Gardevoir) (MAX 1 PER KUND)",
-    "price": "799 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-tcg-mega-evolution-elite-trainer-box-gardevoir",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-elite-trainer-box-gardevoir.jpg?v=1761569659"
-  },
-  {
-    "title": "Pokémon TCG: Mega Evolution Elite Trainer Box (Lucario) (MAX 1 PER KUND)",
-    "price": "799 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/pokemon-tcg-mega-evolution-elite-trainer-box-lucario",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/pokemon-mega-evolution-elite-trainer-box-lucario_82f00ebd-f8aa-4cf1-a522-f314d8b185b5.jpg?v=1761569577"
-  },
-  {
-    "title": "Garganacl AR - 070/063 - Pokémon: Mega Brave (m1L)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/garganacl-ar-070-063-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/garganacl-ar-m1l-070-pokemon-kort.jpg?v=1759173681"
-  },
-  {
-    "title": "Ampharos AR - 088/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "89 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/ampharos-ar-088-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/ampharos-088-m4-pokemon-kort.jpg?v=1781009162"
-  },
-  {
-    "title": "Watchog AR - 095/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/watchog-ar-095-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/watchog-095-m4-pokemon-kort.jpg?v=1781007171"
-  },
-  {
-    "title": "Metang AR - 092/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/metang-ar-092-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/metang-092-m4-pokemon-kort.jpg?v=1781005481"
-  },
-  {
-    "title": "Raticate AR - 092/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/raticate-ar-092-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/raticate-092-m3-pokemon-kort.jpg?v=1780998292"
-  },
-  {
-    "title": "Alakazam AR - 071/063 - Pokémon: Mega Symphonia (m1S)",
-    "price": "69 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/alakazam-ar-071-063-pokemon-mega-symphonia-m1s",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/alakazam-ar-071-m1s-pokemon-kort.jpg?v=1780658915"
-  },
-  {
-    "title": "Fennekin AR - 085/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "59 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/fennekin-ar-085-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/fennekin-085-m4-pokemon-kort.jpg?v=1781007759"
-  },
-  {
-    "title": "Tyrunt AR - 089/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/tyrunt-ar-089-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/tyrunt-089-m3-pokemon-kort.jpg?v=1781004452"
-  },
-  {
-    "title": "Doublade AR - 091/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/doublade-ar-091-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/doublade-091-m3-pokemon-kort.jpg?v=1781001417"
-  },
-  {
-    "title": "Fan Rotom AR - 213/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/rotom-ar-213-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/rotom-ar-m2a-213-pokemon-kort.jpg?v=1770933933"
-  },
-  {
-    "title": "Heliolisk AR - 201/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/heliolisk-ar-201-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/heliolisk-ar-201-pokemon-kort.jpg?v=1770933932"
-  },
-  {
-    "title": "Probopass AR - 088/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/probopass-ar-088-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/probopass-088-m3-pokemon-kort.jpg?v=1781003042"
-  },
-  {
-    "title": "Pokémon Mega Evolution: Perfect Order - Ultra PRO 9-Pocket Portfolio",
-    "price": "189 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/pokemon-mega-evolution-phantasmal-flames-ultra-pro-9-pocket-portfolio",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/ultra-pro-pokemon-perfect-order-9-pocket-portfolio.jpg?v=1778488521"
-  },
-  {
-    "title": "Mega Gardevoir ex - 226/193 - Pokémon: Mega Dream ex (m2a)",
-    "price": "119 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/mega-gardevoir-ex-226-193-pokemon-mega-dream-ex-m2a",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/mega-gardevoir-ex-m2a-226-pokemon-kort.jpg?v=1773947441"
-  },
-  {
-    "title": "Froakie AR - 086/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "99 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/froakie-ar-086-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/froakie-086-m4-pokemon-kort.jpg?v=1781009848"
-  },
-  {
-    "title": "Claydol AR - 090/083 - Pokémon Mega: Ninja Spinner (m4)",
-    "price": "49 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/claydol-ar-090-083-pokemon-mega-ninja-spinner-m4",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/claydol-090-m4-pokemon-kort.jpg?v=1781007443"
-  },
-  {
-    "title": "Vulpix AR - #067 RaukCard 9 - Pokémon Mega Brave (m1L)",
-    "price": "279 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/vulpix-ar-067-raukcard-9-pokemon-mega-brave-m1l",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/vulpix-ar-067-rauk-card-9-pokemon-kort.jpg?v=1772058002"
-  },
-  {
-    "title": "Ambipom AR - #092 RaukCard 10 - Pokémon Mega Inferno X (m2)",
-    "price": "299 kr",
-    "store": "TCGStore",
-    "status": "❌",
-    "url": "https://tcgstore.se/products/ambipom-ar-092-raukcard-mint-10-pokemon-mega-inferno-x-m2",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/ambipom-ar-092-raukcard-10-pokemon-kort.jpg?v=1771967895"
-  },
-  {
-    "title": "Drapion AR - 090/080 - Pokémon Mega: Nihil Zero (m3)",
-    "price": "39 kr",
-    "store": "TCGStore",
-    "status": "✅",
-    "url": "https://tcgstore.se/products/drapion-ar-090-080-pokemon-mega-nihil-zero-m3",
-    "image": "https://cdn.shopify.com/s/files/1/0758/2508/6791/files/drapion-090-m3-pokemon-kort.jpg?v=1781002455"
   },
   {
     "title": "Pokémon Scarlet & Violet 9: Journey Together Elite Trainer Box SV9",
@@ -19472,19 +18136,19 @@
     "image": null
   },
   {
-    "title": "Pokemon - Pikachu Mini Waffle Maker",
-    "price": "353 kr",
-    "store": "Coolshop",
-    "status": "✅",
-    "url": "https://www.coolshop.se/produkt/pokemon-pikachu-mini-waffle-maker/23VT96/",
-    "image": null
-  },
-  {
     "title": "Pokémon - Mega Evolution ME04: Chaos Rising - Booster Box (POK10407-101)",
     "price": "3199 kr",
     "store": "Coolshop",
     "status": "✅",
     "url": "https://www.coolshop.se/produkt/pokemon-mega-evolution-me04-chaos-rising-booster-box-pok10407-101/23W84C/",
+    "image": null
+  },
+  {
+    "title": "Pokemon - Pikachu Mini Waffle Maker",
+    "price": "353 kr",
+    "store": "Coolshop",
+    "status": "✅",
+    "url": "https://www.coolshop.se/produkt/pokemon-pikachu-mini-waffle-maker/23VT96/",
     "image": null
   },
   {
@@ -19536,11 +18200,11 @@
     "image": null
   },
   {
-    "title": "Pokemon - Battle Spinner Arena Set (PKW4403)",
-    "price": "440 kr",
+    "title": "Pokemon - Premium Snap Binder Poke Green (ULT16721)",
+    "price": "329 kr",
     "store": "Coolshop",
     "status": "✅",
-    "url": "https://www.coolshop.se/produkt/pokemon-battle-spinner-arena-set-pkw4403/23KE59/",
+    "url": "https://www.coolshop.se/produkt/pokemon-premium-snap-binder-poke-green-ult16721/23TR7E/",
     "image": null
   },
   {
@@ -20328,6 +18992,14 @@
     "image": null
   },
   {
+    "title": "Pokémon: First Partner Illustration Collection Series 2",
+    "price": "649 kr",
+    "store": "Samlargrottan",
+    "status": "✅",
+    "url": "https://www.samlargrottan.se/product-page/pok%C3%A9mon-first-partners-illustration-collection-series-2",
+    "image": null
+  },
+  {
     "title": "Pokémon: 151 Booster Pack (1st)",
     "price": "299 kr",
     "store": "Samlargrottan",
@@ -20445,6 +19117,14 @@
     "store": "Samlargrottan",
     "status": "❌",
     "url": "https://www.samlargrottan.se/product-page/pok%C3%A9mon-tcg-pok%C3%A9mon-day-2026-collection",
+    "image": null
+  },
+  {
+    "title": "Pokémon: First Partner Illustration Collection Series 1",
+    "price": "799 kr",
+    "store": "Samlargrottan",
+    "status": "❌",
+    "url": "https://www.samlargrottan.se/product-page/pok%C3%A9mon-first-partner-illustration-collection-series-1",
     "image": null
   },
   {
@@ -24769,7 +23449,7 @@
   },
   {
     "title": "Samlarkort",
-    "price": "139 kr",
+    "price": "999 kr",
     "store": "Sweetnerds",
     "status": "✅",
     "url": "https://sweetnerds.se/sv/categories/spel",
@@ -24864,46 +23544,6 @@
     "image": null
   },
   {
-    "title": "POKEMON TCG samlarkort set League Battle Deck Mega Lucario",
-    "price": "789 kr",
-    "store": "XS Leksaker",
-    "status": "✅",
-    "url": "https://www.xsleksaker.se/pokemon-tcg-samlarkort-set-league-battle-deck-mega-lucario-pok10360101",
-    "image": null
-  },
-  {
-    "title": "POKEMON TCG MEGA EVOLUTION samlarkort set Booster",
-    "price": "109 kr",
-    "store": "XS Leksaker",
-    "status": "✅",
-    "url": "https://www.xsleksaker.se/pokemon-tcg-mega-evolution-samlarkort-set-booster-pok10407101",
-    "image": null
-  },
-  {
-    "title": "POKEMON samlarkort set Tin Summer EX",
-    "price": "579 kr",
-    "store": "XS Leksaker",
-    "status": "✅",
-    "url": "https://www.xsleksaker.se/pokemon-samlarkort-set-tin-summer-ex-pok10389101",
-    "image": null
-  },
-  {
-    "title": "POKEMON TCG MEGA EVOLUTION samlarkort set Elite Trainer Box                           ",
-    "price": "1199 kr",
-    "store": "XS Leksaker",
-    "status": "✅",
-    "url": "https://www.xsleksaker.se/pokemon-tcg-mega-evolution-samlarkort-set-elite-trainer-box-pok10416101",
-    "image": null
-  },
-  {
-    "title": "POKEMON TCG MEGA EVOLUTION samlarkort set Booster                                          ",
-    "price": "119 kr",
-    "store": "XS Leksaker",
-    "status": "✅",
-    "url": "https://www.xsleksaker.se/pokemon-tcg-mega-evolution-samlarkort-set-booster-pok10425101",
-    "image": null
-  },
-  {
     "title": "Pokémon Scarlet & Violet - Prismatic Evolutions Booster Pack",
     "price": "",
     "store": "Gimmick",
@@ -24931,7 +23571,7 @@
     "title": "Pokémon Scarlet & Violet - Surging Sparks Booster Pack",
     "price": "",
     "store": "Gimmick",
-    "status": "\\u2705",
+    "status": "\\u274c",
     "url": "https://gimmick.se/product/surging-sparks-boosterpack",
     "image": null
   },
@@ -25019,7 +23659,7 @@
     "title": "Pokémon Mega Evolution - Base Booster Pack",
     "price": "",
     "store": "Gimmick",
-    "status": "\\u2705",
+    "status": "\\u274c",
     "url": "https://gimmick.se/product/pokemon-mega-evolution-base-booster-pack",
     "image": null
   },
@@ -25043,7 +23683,7 @@
     "title": "Pokémon Sword & Shield - Astral Radiance Booster Pack",
     "price": "",
     "store": "Gimmick",
-    "status": "\\u2705",
+    "status": "\\u274c",
     "url": "https://gimmick.se/product/pokemon-sword-shield-astral-radiance",
     "image": null
   },
@@ -25051,7 +23691,7 @@
     "title": "Pokémon Scarlet & Violet - Paradox Rift Booster Pack",
     "price": "",
     "store": "Gimmick",
-    "status": "\\u2705",
+    "status": "\\u274c",
     "url": "https://gimmick.se/product/pokemon-scarlet-violet-paradox-rift-boosterpack",
     "image": null
   },
@@ -25277,14 +23917,6 @@
     "store": "Gimmick",
     "status": "\\u2705",
     "url": "https://gimmick.se/product/pokemon-mega-evolution-chaos-rising-elite-trainer-box-kopia",
-    "image": null
-  },
-  {
-    "title": "Pokémon Mega Evolution - Chaos Rising Elite Trainer Box",
-    "price": "",
-    "store": "Gimmick",
-    "status": "\\u274c",
-    "url": "https://gimmick.se/product/pokemon-mega-evolution-ascended-heroes-elite-trainer-box-kopia",
     "image": null
   },
   {
@@ -29400,6 +28032,14 @@
     "image": null
   },
   {
+    "title": "Pokemon Pitch Black MEGA Bundle",
+    "price": "3999 kr",
+    "store": "The Swedish Fish",
+    "status": "✅",
+    "url": "https://theswedishfish.se/product/pokemon-pitch-black-mega-bundle/",
+    "image": null
+  },
+  {
     "title": "Pokemon Pitch Black ETB",
     "price": "899 kr",
     "store": "The Swedish Fish",
@@ -30464,6 +29104,14 @@
     "image": null
   },
   {
+    "title": "Pokémon Mega Evolution: Ascended Heroes Booster Bundle",
+    "price": "1399 kr",
+    "store": "TCGVault",
+    "status": "✅",
+    "url": "https://tcgvault.se/products/pokemon-mega-evolution-ascended-heroes-booster-bundle",
+    "image": null
+  },
+  {
     "title": "Pokémon Scarlet & Violet: Paldean Fates Tin - Shiny Charizard ex",
     "price": "1299 kr",
     "store": "EvoKort",
@@ -31264,11 +29912,19 @@
     "image": "https://cdn.shopify.com/s/files/1/0902/2554/1499/files/LeagueBattleDeck26Q2.webp?v=1781864080"
   },
   {
-    "title": "Pokemon Mega Evolution: Perfect Order Elite Trainer Box (ETB)",
-    "price": "849 kr",
+    "title": "Pokemon Scarlet & Violet: Destined Rivals Booster Pack",
+    "price": "99 kr",
     "store": "CardHaven",
     "status": "✅",
-    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-perfect-order-elite-trainer-box-etb",
+    "url": "https://cardhaven.se/shop/pokemon/pokemon-scarlet-violet-destined-rivals-booster-pack",
+    "image": null
+  },
+  {
+    "title": "Pokemon Scarlet & Violet: Journey Together Booster Pack",
+    "price": "79 kr",
+    "store": "CardHaven",
+    "status": "✅",
+    "url": "https://cardhaven.se/shop/pokemon/pokemon-scarlet-violet-journey-together-booster-pack",
     "image": null
   },
   {
@@ -31277,6 +29933,38 @@
     "store": "CardHaven",
     "status": "✅",
     "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-pitch-black-elite-trainer-box",
+    "image": null
+  },
+  {
+    "title": "Pokemon Mega Evolution: Chaos Rising Checklane Blister",
+    "price": "99 kr",
+    "store": "CardHaven",
+    "status": "✅",
+    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-chaos-rising-checklane-blister",
+    "image": null
+  },
+  {
+    "title": "Pokemon Mega Evolution: Perfect Order Elite Trainer Box (ETB)",
+    "price": "849 kr",
+    "store": "CardHaven",
+    "status": "✅",
+    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-perfect-order-elite-trainer-box-etb",
+    "image": null
+  },
+  {
+    "title": "Pokemon Mega Evolution: Pitch Black Booster Bundle",
+    "price": "579 kr",
+    "store": "CardHaven",
+    "status": "✅",
+    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-pitch-black-booster-bundle",
+    "image": null
+  },
+  {
+    "title": "Pokemon Mega Evolution: Pitch Black Booster Pack",
+    "price": "89 kr",
+    "store": "CardHaven",
+    "status": "❌",
+    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-pitch-black-booster-pack",
     "image": null
   },
   {
@@ -31296,51 +29984,19 @@
     "image": null
   },
   {
+    "title": "Pokemon Mega Evolution: Pitch Black Booster Box",
+    "price": "2649 kr",
+    "store": "CardHaven",
+    "status": "❌",
+    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-pitch-black-booster-box",
+    "image": null
+  },
+  {
     "title": "Pokemon Mega Evolution: Chaos Rising 3-pack Blister",
     "price": "249 kr",
     "store": "CardHaven",
     "status": "✅",
     "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-chaos-rising-3-pack-blister",
-    "image": null
-  },
-  {
-    "title": "Pokemon Scarlet & Violet: Destined Rivals Booster Pack",
-    "price": "99 kr",
-    "store": "CardHaven",
-    "status": "✅",
-    "url": "https://cardhaven.se/shop/pokemon/pokemon-scarlet-violet-destined-rivals-booster-pack",
-    "image": null
-  },
-  {
-    "title": "Pokemon Mega Evolution: Chaos Rising Checklane Blister",
-    "price": "99 kr",
-    "store": "CardHaven",
-    "status": "✅",
-    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-chaos-rising-checklane-blister",
-    "image": null
-  },
-  {
-    "title": "Pokemon Scarlet & Violet: Journey Together Booster Pack",
-    "price": "79 kr",
-    "store": "CardHaven",
-    "status": "✅",
-    "url": "https://cardhaven.se/shop/pokemon/pokemon-scarlet-violet-journey-together-booster-pack",
-    "image": null
-  },
-  {
-    "title": "Pokemon Mega Evolution: Pitch Black Booster Pack",
-    "price": "89 kr",
-    "store": "CardHaven",
-    "status": "❌",
-    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-pitch-black-booster-pack",
-    "image": null
-  },
-  {
-    "title": "Pokemon Mega Evolution: Pitch Black Booster Bundle",
-    "price": "579 kr",
-    "store": "CardHaven",
-    "status": "✅",
-    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-pitch-black-booster-bundle",
     "image": null
   },
   {
@@ -31408,6 +30064,14 @@
     "image": null
   },
   {
+    "title": "Pokemon Mega Evolution: Chaos Rising Elite Trainer Box (ETB)",
+    "price": "899 kr",
+    "store": "CardHaven",
+    "status": "❌",
+    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-chaos-rising-elite-trainer-box",
+    "image": null
+  },
+  {
     "title": "Pokemon Mega Evolution: Pitch Black Sleeved Booster Pack",
     "price": "99 kr",
     "store": "CardHaven",
@@ -31453,22 +30117,6 @@
     "store": "CardHaven",
     "status": "❌",
     "url": "https://cardhaven.se/shop/pokemon/pokemon-scarlet-violet-paldea-evolved-sleeved-booster-pack",
-    "image": null
-  },
-  {
-    "title": "Pokemon Mega Evolution: Pitch Black Booster Box",
-    "price": "2649 kr",
-    "store": "CardHaven",
-    "status": "❌",
-    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-pitch-black-booster-box",
-    "image": null
-  },
-  {
-    "title": "Pokemon Mega Evolution: Chaos Rising Elite Trainer Box (ETB)",
-    "price": "899 kr",
-    "store": "CardHaven",
-    "status": "❌",
-    "url": "https://cardhaven.se/shop/pokemon/pokemon-mega-evolution-chaos-rising-elite-trainer-box",
     "image": null
   }
 ]
