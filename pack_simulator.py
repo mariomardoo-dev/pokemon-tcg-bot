@@ -322,6 +322,13 @@ var RARE_SLOT_POOL=[
 ];
 
 // ===== SET LOGOS =====
+var SET_SYMBOLS={
+  '151':'https://assets.tcgdex.net/univ/sv/sv03.5/symbol',
+  'surging-sparks':'https://assets.tcgdex.net/univ/sv/sv08/symbol',
+  'prismatic-evolutions':'https://assets.tcgdex.net/univ/sv/sv08.5/symbol',
+  'paldean-fates':'https://assets.tcgdex.net/univ/sv/sv04.5/symbol',
+  'twilight-masquerade':'https://assets.tcgdex.net/univ/sv/sv06/symbol',
+};
 var SET_COLORS={
   '151':'#e8c547',
   'surging-sparks':'#ff6b35',
@@ -435,6 +442,7 @@ function showPackUI(){
   var bestRarity=bestPulls[activeSet+'_best']||'';
   var bestCard=bestPulls[activeSet+'_bestCard']||'';
   var color=SET_COLORS[activeSet]||'#cc0000';
+  var sym=SET_SYMBOLS[activeSet]||'';
   document.getElementById('packStage').innerHTML=
     '<div class=pack-stats id=packStats>'+
       '<b>'+set.displayName+'</b> &middot; '+set.cards.length+' kort &middot; '+
@@ -444,11 +452,7 @@ function showPackUI(){
     '<div class=pack-wrapper id=packWrapper onclick=ripPack()>'+
       '<div class=booster-pack id=boosterPack style=border-color:'+color+'>'+
         '<div class=pack-art style=background:'+color+'22;border:2px solid '+color+'44>'+
-          '<svg viewBox="0 0 100 100" style=width:70%;height:70%>'+
-            '<circle cx=50 cy=50 r=48 fill=none stroke='+color+' stroke-width=4/>'+
-            '<circle cx=50 cy=50 r=15 fill='+color+'44 stroke='+color+' stroke-width=2/>'+
-            '<rect x=2 y=44 width=96 height=12 fill='+color+'66 rx=4/>'+
-          '</svg>'+
+          (sym?'<img src="'+sym+'" alt="'+set.displayName+'" style=width:65%;height:65%;object-fit:contain>':'🎴')+
         '</div>'+
         '<div class=pack-label style=color:'+color+'>'+set.displayName+'</div>'+
         '<div class=pack-sub>10 KORT PER PACK</div>'+
@@ -500,10 +504,10 @@ function bestRarityInPack(pack){
 }
 
 // ===== RIP PACK! =====
-var isRipping=false;
+var isRipping=false, lastRip=0;
 async function ripPack(){
-  if(isRipping)return;
-  isRipping=true;
+  if(isRipping||Date.now()-lastRip<2000)return;
+  isRipping=true;lastRip=Date.now();
   initAudio();
   try{
 
