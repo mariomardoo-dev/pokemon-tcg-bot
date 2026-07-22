@@ -256,7 +256,7 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 
 /* ===== NEXT PACK BUTTON ===== */
 .next-pack-btn{
-  display:block;margin:14px auto 0;padding:6px 24px;
+  display:block;margin:14px auto 0;padding:6px 14px;
   font-size:12px;font-weight:600;color:#e0e0e0;
   background:var(--bg2);border:1px solid var(--red);
   border-radius:8px;cursor:pointer;
