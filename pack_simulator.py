@@ -322,12 +322,12 @@ var RARE_SLOT_POOL=[
 ];
 
 // ===== SET LOGOS =====
-var SET_SYMBOLS={
-  '151':'https://assets.tcgdex.net/univ/sv/sv03.5/symbol',
-  'surging-sparks':'https://assets.tcgdex.net/univ/sv/sv08/symbol',
-  'prismatic-evolutions':'https://assets.tcgdex.net/univ/sv/sv08.5/symbol',
-  'paldean-fates':'https://assets.tcgdex.net/univ/sv/sv04.5/symbol',
-  'twilight-masquerade':'https://assets.tcgdex.net/univ/sv/sv06/symbol',
+var SET_LOGOS={
+  '151':'https://images.pokemontcg.io/sv3pt5/logo.png',
+  'surging-sparks':'https://images.pokemontcg.io/sv8/logo.png',
+  'prismatic-evolutions':'https://images.pokemontcg.io/sv8pt5/logo.png',
+  'paldean-fates':'https://images.pokemontcg.io/sv4pt5/logo.png',
+  'twilight-masquerade':'https://images.pokemontcg.io/sv6/logo.png',
 };
 var SET_COLORS={
   '151':'#e8c547',
@@ -442,7 +442,7 @@ function showPackUI(){
   var bestRarity=bestPulls[activeSet+'_best']||'';
   var bestCard=bestPulls[activeSet+'_bestCard']||'';
   var color=SET_COLORS[activeSet]||'#cc0000';
-  var sym=SET_SYMBOLS[activeSet]||'';
+  var sym=SET_LOGOS[activeSet]||'';
   document.getElementById('packStage').innerHTML=
     '<div class=pack-stats id=packStats>'+
       '<b>'+set.displayName+'</b> &middot; '+set.cards.length+' kort &middot; '+
@@ -607,9 +607,14 @@ async function ripPack(){
     }
   });
 
-  // Rebuild pack UI
-  await sleep(600);
-  showPackUI();
+  // Show "Next pack" button below cards — cards stay visible
+  var nextBtn=document.createElement('button');
+  nextBtn.className='open-btn';
+  nextBtn.style.marginTop='20px';
+  nextBtn.textContent='🔄 Öppna nästa pack';
+  nextBtn.onclick=function(){nextBtn.remove();showPackUI()};
+  stage.appendChild(nextBtn);
+
   }catch(e){console.warn('ripPack error:',e);showPackUI()}
   finally{isRipping=false}
 }
