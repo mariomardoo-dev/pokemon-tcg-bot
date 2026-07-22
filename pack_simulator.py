@@ -1,4 +1,4 @@
-"""Pack simulator HTML page for pokesniper.se."""
+"""Pack simulator HTML page for pokesniper.se — immersive loot-box experience."""
 PACKS_HTML = r"""<!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -11,15 +11,17 @@ PACKS_HTML = r"""<!DOCTYPE html>
   --red:#cc0000;--red2:#ff2222;--green:#22c55e;
   --text:#e0e0e0;--muted:#888;--border:#222;
   --gold:#f59e0b;--purple:#a855f7;--pink:#ec4899;
-  --blue:#3b82f6;--cyan:#06b6d4;--magenta:#d946ef;
+  --blue:#3b82f6;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
   background:var(--bg);color:var(--text);min-height:100vh;
-  overflow-x:hidden;
+  overflow-x:hidden;transition:background .6s;
 }
-/* ===== HEADER ===== */
+body.shake{animation:screenShake .5s ease-out}
+body.glow-bg{background:radial-gradient(ellipse at center,#1a0000 0%,var(--bg) 70%)!important}
+
 header{
   background:linear-gradient(180deg,#150000,var(--bg));
   border-bottom:1px solid var(--border);padding:16px 20px;
@@ -35,7 +37,6 @@ header{
 .back-link{color:var(--muted);font-size:13px;text-decoration:none;transition:color .2s}
 .back-link:hover{color:var(--text)}
 
-/* ===== SET SELECTOR ===== */
 .set-selector{
   max-width:1000px;margin:24px auto 0;padding:0 20px;
   display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
@@ -43,7 +44,7 @@ header{
 .set-btn{
   padding:10px 20px;border-radius:24px;border:1px solid var(--border);
   background:var(--bg2);color:var(--muted);cursor:pointer;
-  font-size:14px;transition:all .2s;white-space:nowrap;
+  font-size:14px;transition:all .2s;
 }
 .set-btn:hover{border-color:var(--red);color:var(--text)}
 .set-btn.active{
@@ -51,81 +52,123 @@ header{
   box-shadow:0 0 20px rgba(204,0,0,.15);
 }
 
-/* ===== MAIN AREA ===== */
 main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 
-/* ===== PACK AREA ===== */
-.pack-area{
+/* ===== PACK STAGE ===== */
+.pack-stage{
   display:flex;flex-direction:column;align-items:center;
-  padding:40px 20px;min-height:300px;
+  padding:40px 20px;min-height:360px;position:relative;
 }
 .pack-stats{
-  color:var(--muted);font-size:13px;margin-bottom:20px;
-  text-align:center;
+  color:var(--muted);font-size:13px;margin-bottom:8px;text-align:center;
 }
 .pack-stats b{color:var(--text)}
 
-/* ===== OPEN BUTTON ===== */
-.open-btn{
-  padding:20px 60px;font-size:22px;font-weight:800;
-  background:linear-gradient(135deg,var(--red),#990000);
-  color:#fff;border:none;border-radius:16px;
-  cursor:pointer;text-transform:uppercase;letter-spacing:3px;
-  transition:all .3s;position:relative;overflow:hidden;
-  box-shadow:0 4px 30px rgba(204,0,0,.3);
+/* ===== BOOSTER PACK ===== */
+.pack-wrapper{
+  position:relative;width:200px;height:280px;cursor:pointer;
+  perspective:800px;margin:20px 0;
 }
-.open-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 40px rgba(204,0,0,.5);
-}
-.open-btn:active{transform:scale(.96)}
-.open-btn:disabled{
-  opacity:.5;cursor:not-allowed;transform:none;
-  box-shadow:0 2px 10px rgba(204,0,0,.1);
-}
-.open-btn .icon{font-size:28px;margin-right:4px}
+.pack-wrapper:hover .booster-pack{transform:translateY(-4px)}
+.pack-wrapper:active .booster-pack{transform:scale(.96)}
 
-/* ===== CARD REVEAL ===== */
-.card-reveal{
+.booster-pack{
+  width:100%;height:100%;border-radius:12px;
+  background:linear-gradient(180deg,#1a1a2e 0%,#16213e 30%,#0f3460 50%,#16213e 70%,#1a1a2e 100%);
+  border:3px solid #2a2a4a;position:relative;overflow:hidden;
+  transition:all .3s ease;box-shadow:0 8px 32px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.booster-pack::before{
+  content:'';position:absolute;inset:6px;border:2px solid rgba(255,255,255,.06);
+  border-radius:8px;pointer-events:none;
+}
+.booster-pack .pack-art{
+  width:140px;height:140px;border-radius:8px;
+  background:linear-gradient(135deg,#0f3460,#1a1a4e);
+  display:flex;align-items:center;justify-content:center;
+  font-size:60px;margin-bottom:10px;position:relative;z-index:1;
+}
+.booster-pack .pack-label{
+  font-size:18px;font-weight:800;color:#fff;letter-spacing:4px;
+  text-transform:uppercase;z-index:1;
+}
+.booster-pack .pack-sub{
+  font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px;z-index:1;
+}
+
+/* Pack glow — applied before rip */
+.booster-pack.charging{animation:packPulse .6s ease-in-out 3}
+.booster-pack.charging::after{
+  content:'';position:absolute;inset:-10px;border-radius:16px;
+  animation:glowPulse .5s ease-in-out 3;
+  pointer-events:none;z-index:0;
+}
+@keyframes packPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.04)}
+}
+@keyframes glowPulse{
+  0%,100%{box-shadow:0 0 20px var(--glow,var(--red)), inset 0 0 20px var(--glow,var(--red))}
+  50%{box-shadow:0 0 50px var(--glow,var(--red)), inset 0 0 40px var(--glow,var(--red))}
+}
+
+/* Rip animation — pack splits */
+.booster-pack.ripping{
+  animation:ripShake .15s ease-in-out 2;
+}
+@keyframes ripShake{
+  0%,100%{transform:rotate(0)}
+  25%{transform:rotate(-3deg)}
+  75%{transform:rotate(3deg)}
+}
+.booster-pack.ripped{
+  animation:ripApart .5s ease-in forwards;
+}
+@keyframes ripApart{
+  0%{transform:scale(1);opacity:1;filter:blur(0)}
+  50%{transform:scale(1.1);opacity:.8;filter:blur(2px)}
+  100%{transform:scale(1.4);opacity:0;filter:blur(8px)}
+}
+
+/* ===== CARD REVEAL AREA ===== */
+.card-stage{
   display:flex;flex-wrap:wrap;justify-content:center;
-  gap:12px;margin-top:24px;perspective:1200px;
+  gap:10px;margin-top:16px;perspective:1200px;min-height:200px;
 }
+
+/* ===== CARDS ===== */
 .card{
-  width:140px;border-radius:10px;overflow:hidden;
+  width:130px;border-radius:10px;overflow:hidden;
   background:var(--bg3);border:2px solid var(--border);
-  transition:all .4s cubic-bezier(.34,1.56,.64,1);
-  opacity:0;transform:translateY(40px) scale(.8);
-  cursor:default;
+  cursor:default;position:relative;
+  animation:cardEntry .5s cubic-bezier(.34,1.56,.64,1) both;
 }
-.card.revealed{
-  opacity:1;transform:translateY(0) scale(1);
+@keyframes cardEntry{
+  from{opacity:0;transform:translateY(60px) scale(.5) rotateY(90deg)}
+  to{opacity:1;transform:translateY(0) scale(1) rotateY(0)}
 }
 .card:hover{
-  transform:translateY(-6px) scale(1.05);
-  z-index:10;
+  transform:translateY(-8px) scale(1.08);z-index:10;
+  box-shadow:0 12px 40px rgba(0,0,0,.4);
 }
 .card-img{
-  width:100%;height:190px;display:flex;align-items:center;
-  justify-content:center;background:var(--bg2);
-  overflow:hidden;position:relative;
+  width:100%;height:175px;display:flex;align-items:center;
+  justify-content:center;background:var(--bg2);overflow:hidden;
 }
-.card-img img{
-  width:100%;height:100%;object-fit:contain;
-  transition:transform .3s;
-}
-.card:hover .card-img img{transform:scale(1.08)}
-.card-info{padding:8px 10px}
+.card-img img{width:100%;height:100%;object-fit:contain}
+.card-info{padding:6px 8px}
 .card-name{
-  font-size:11px;font-weight:600;line-height:1.3;
+  font-size:10px;font-weight:600;line-height:1.3;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .card-rarity{
-  font-size:10px;margin-top:4px;font-weight:600;
-  padding:2px 8px;border-radius:10px;display:inline-block;
+  font-size:9px;margin-top:3px;font-weight:600;
+  padding:1px 7px;border-radius:8px;display:inline-block;
 }
 
 /* ===== RARITY COLORS ===== */
-.rarity-Common{color:#aaa;border-color:#555}
+.rarity-Common{color:#aaa;border-color:#444}
 .rarity-Uncommon{color:#22c55e;border-color:#166534}
 .rarity-Rare{color:#3b82f6;border-color:#1e40af}
 .rarity-Double{color:#eab308;border-color:#a16207}
@@ -147,51 +190,74 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 .rarity-badge-ACE{background:rgba(217,70,239,.15);color:#d946ef}
 .rarity-badge-Shiny{background:rgba(6,182,212,.15);color:#06b6d4}
 
-/* ===== PULL SUMMARY ===== */
-.pull-summary{
-  text-align:center;margin-top:24px;padding:16px;
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:12px;display:none;
-}
-.pull-summary h3{
-  font-size:15px;color:var(--red);margin-bottom:10px;
-}
-.pull-summary .pulls{
-  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
-}
-.pull-item{text-align:center}
-.pull-item .count{font-size:24px;font-weight:800}
-.pull-item .label{font-size:10px;color:var(--muted);text-transform:uppercase}
-
-/* ===== FOOTER ===== */
-footer{
-  text-align:center;padding:24px;color:var(--muted);
-  font-size:12px;border-top:1px solid var(--border);
-}
-
-/* ===== ANIMATIONS ===== */
+/* Holo shimmer */
 @keyframes shimmer{
   0%{background-position:-200% center}
   100%{background-position:200% center}
 }
-.card.holo-effect{
-  position:relative;
-}
-.card.holo-effect::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(105deg,
-    transparent 40%,rgba(255,255,255,.08) 45%,
-    rgba(255,255,255,.15) 50%,rgba(255,255,255,.08) 55%,
-    transparent 60%);
-  background-size:200% 100%;
-  animation:shimmer 3s infinite;
-  pointer-events:none;border-radius:10px;
+.card.holo::after{
+  content:'';position:absolute;inset:0;pointer-events:none;border-radius:10px;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.06) 45%,rgba(255,255,255,.12) 50%,rgba(255,255,255,.06) 55%,transparent 60%);
+  background-size:200% 100%;animation:shimmer 3s infinite;
 }
 
-/* ===== LOADING ===== */
-.loading{
-  text-align:center;padding:60px;color:var(--muted);
+/* Reverse holo */
+.card.reverse-holo .card-img{background:linear-gradient(135deg,#1a1a2e,#16213e,#1a1a2e)}
+
+/* Big hit card glow */
+.card.big-hit{animation:cardEntry .5s cubic-bezier(.34,1.56,.64,1) both, cardGlow 1.5s ease-in-out infinite}
+@keyframes cardGlow{
+  0%,100%{box-shadow:0 0 20px var(--hit-glow,rgba(245,158,11,.4))}
+  50%{box-shadow:0 0 40px var(--hit-glow,rgba(245,158,11,.7))}
 }
+
+/* ===== PARTICLES ===== */
+.particle{
+  position:fixed;pointer-events:none;z-index:1000;
+  font-size:20px;animation:particleFly 1.5s ease-out forwards;
+}
+@keyframes particleFly{
+  0%{opacity:1;transform:translate(0,0) scale(1)}
+  100%{opacity:0;transform:translate(var(--px),var(--py)) scale(0)}
+}
+
+/* ===== PULL SUMMARY ===== */
+.pull-summary{
+  text-align:center;margin-top:20px;padding:16px;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:12px;display:none;animation:fadeIn .4s ease;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.pull-summary h3{font-size:14px;color:var(--red);margin-bottom:8px}
+.pull-summary .pulls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.pull-item{text-align:center}
+.pull-item .count{font-size:22px;font-weight:800}
+.pull-item .label{font-size:9px;color:var(--muted);text-transform:uppercase}
+
+/* ===== SCREEN SHAKE ===== */
+@keyframes screenShake{
+  0%,100%{transform:translate(0)}
+  10%{transform:translate(-4px,2px)}
+  20%{transform:translate(4px,-1px)}
+  30%{transform:translate(-3px,-3px)}
+  40%{transform:translate(3px,2px)}
+  50%{transform:translate(-2px,1px)}
+  60%{transform:translate(2px,-2px)}
+  70%{transform:translate(-1px,-1px)}
+  80%{transform:translate(1px,1px)}
+  90%{transform:translate(-1px,2px)}
+}
+
+/* ===== OVERLAY FLASH ===== */
+.flash-overlay{
+  position:fixed;inset:0;pointer-events:none;z-index:999;
+  opacity:0;transition:opacity .1s;
+}
+.flash-overlay.active{opacity:1;transition:opacity 0s}
+.flash-overlay.fading{opacity:0;transition:opacity .4s}
+
+/* ===== LOADING ===== */
+.loading{text-align:center;padding:60px;color:var(--muted)}
 .loading .spinner{
   width:40px;height:40px;border:3px solid var(--border);
   border-top-color:var(--red);border-radius:50%;
@@ -199,25 +265,19 @@ footer{
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ===== MOBILE ===== */
-@media(max-width:600px){
-  .card{width:100px}
-  .card-img{height:140px}
-  .open-btn{padding:16px 40px;font-size:18px}
-  .set-selector{gap:6px}
-  .set-btn{padding:8px 14px;font-size:12px}
-}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
 
-/* ===== REVERSE HOLO SHINE ===== */
-.card.reverse-holo .card-img{
-  background:linear-gradient(135deg,#1a1a2e,#16213e,#1a1a2e);
-}
-.card.reverse-holo .card-name::after{
-  content:' ⭐';font-size:10px;
+@media(max-width:600px){
+  .card{width:95px}.card-img{height:130px}
+  .pack-wrapper{width:160px;height:224px}
+  .booster-pack .pack-art{width:100px;height:100px;font-size:40px}
+  .booster-pack .pack-label{font-size:14px}
 }
 </style>
 </head>
 <body>
+
+<div class=flash-overlay id=flashOverlay></div>
 
 <header>
 <div class=header-inner>
@@ -229,11 +289,8 @@ footer{
 <div class=set-selector id=setSelector></div>
 
 <main>
-<div class=pack-area id=packArea>
-  <div class=loading id=loading>
-    <div class=spinner></div>
-    <p>Laddar set...</p>
-  </div>
+<div class=pack-stage id=packStage>
+  <div class=loading id=loading><div class=spinner></div><p>Laddar set...</p></div>
 </div>
 </main>
 
@@ -243,7 +300,6 @@ footer{
 // ===== STATE =====
 var sets={}, activeSet=null, totalOpened=0, bestPulls={};
 
-// ===== RARITY MAPPING =====
 var RARITY_CLASS={
   'Common':'Common','Uncommon':'Uncommon','Rare':'Rare',
   'Double Rare':'Double','Illustration Rare':'Illustration',
@@ -257,47 +313,111 @@ var RARITY_WEIGHT={
   'Special Illustration Rare':6,'Hyper Rare':7,
   'ACE SPEC Rare':8,'Shiny Rare':4,'Shiny Ultra Rare':5
 };
-
-// ===== RARE SLOT ODDS (realistic SV-era pull rates) =====
-// Based on community data from 1000s of pack openings
+var GLOW_COLORS={
+  'Common':'rgba(170,170,170,.3)','Uncommon':'rgba(34,197,94,.3)',
+  'Double Rare':'rgba(234,179,8,.5)','Illustration Rare':'rgba(245,158,11,.6)',
+  'Ultra Rare':'rgba(168,85,247,.6)','Special Illustration Rare':'rgba(236,72,153,.7)',
+  'Hyper Rare':'rgba(251,191,36,.8)','ACE SPEC Rare':'rgba(217,70,239,.7)',
+  'Shiny Rare':'rgba(6,182,212,.6)','Shiny Ultra Rare':'rgba(6,182,212,.8)'
+};
+var HIT_GLOW={
+  'Double Rare':'rgba(234,179,8,.3)','Illustration Rare':'rgba(245,158,11,.4)',
+  'Ultra Rare':'rgba(168,85,247,.4)','Special Illustration Rare':'rgba(236,72,153,.5)',
+  'Hyper Rare':'rgba(251,191,36,.6)','ACE SPEC Rare':'rgba(217,70,239,.4)',
+  'Shiny Rare':'rgba(6,182,212,.4)','Shiny Ultra Rare':'rgba(6,182,212,.5)'
+};
 var RARE_SLOT_POOL=[
-  {rarity:'Double Rare',weight:67},             // ~67% — guaranteed holo or better in rare slot
-  {rarity:'Illustration Rare',weight:12},       // ~12% — 1 in 8 packs
-  {rarity:'Ultra Rare',weight:9},               // ~9% — 1 in 11 packs
-  {rarity:'Special Illustration Rare',weight:4}, // ~4% — 1 in 25 packs
-  {rarity:'Hyper Rare',weight:2},               // ~2% — 1 in 50 packs
+  {rarity:'Double Rare',weight:67},
+  {rarity:'Illustration Rare',weight:12},
+  {rarity:'Ultra Rare',weight:9},
+  {rarity:'Special Illustration Rare',weight:4},
+  {rarity:'Hyper Rare',weight:2},
 ];
+
+// ===== AUDIO (Web Audio API synthesis) =====
+var audioCtx=null;
+function initAudio(){
+  if(audioCtx)return;
+  try{audioCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){audioCtx=null}
+}
+function playNoise(dur,freq,type,vol){
+  if(!audioCtx)return;
+  var o=audioCtx.createOscillator();
+  var g=audioCtx.createGain();
+  o.type=type||'sawtooth';
+  o.frequency.setValueAtTime(freq||200,audioCtx.currentTime);
+  o.frequency.exponentialRampToValueAtTime(freq*2||400,audioCtx.currentTime+dur*.3);
+  o.frequency.exponentialRampToValueAtTime(50,audioCtx.currentTime+dur);
+  g.gain.setValueAtTime(vol||.05,audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);
+  o.connect(g);g.connect(audioCtx.destination);
+  o.start();o.stop(audioCtx.currentTime+dur);
+}
+function sfxRip(){playNoise(.25,100,'sawtooth',.08);setTimeout(function(){playNoise(.15,80,'square',.05)},100)}
+function sfxFlip(){playNoise(.08,600,'sine',.03)}
+function sfxDing(){playNoise(.3,880,'sine',.06);setTimeout(function(){playNoise(.3,1100,'sine',.04)},150)}
+function sfxBigHit(){
+  playNoise(.5,1200,'sine',.07);
+  setTimeout(function(){playNoise(.4,1600,'sine',.05)},200);
+  setTimeout(function(){playNoise(.6,2000,'sine',.04)},350);
+}
+function sfxSparkle(){playNoise(.1,2000+Math.random()*2000,'sine',.02)}
+
+// ===== PARTICLES =====
+function spawnParticles(x,y,count,emoji){
+  var emojis=emoji||['✨','⭐','💫','🌟'];
+  for(var i=0;i<count;i++){
+    var p=document.createElement('div');
+    p.className='particle';
+    p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    p.style.left=x+'px';p.style.top=y+'px';
+    p.style.setProperty('--px',(Math.random()-.5)*300+'px');
+    p.style.setProperty('--py',-(Math.random()*200+100)+'px');
+    p.style.animationDelay=Math.random()*.3+'s';
+    document.body.appendChild(p);
+    setTimeout(function(){p.remove()},1800);
+  }
+}
+
+// ===== SCREEN FLASH =====
+function screenFlash(color){
+  var el=document.getElementById('flashOverlay');
+  el.style.background=color||'rgba(255,255,255,.15)';
+  el.classList.add('active');
+  requestAnimationFrame(function(){
+    el.classList.remove('active');
+    el.classList.add('fading');
+    setTimeout(function(){el.classList.remove('fading')},400);
+  });
+}
+
+// ===== SCREEN SHAKE =====
+function screenShake(){
+  document.body.classList.add('shake');
+  setTimeout(function(){document.body.classList.remove('shake')},500);
+}
 
 // ===== LOAD SETS =====
 async function loadSets(){
   var setFiles=['151','surging-sparks','prismatic-evolutions','paldean-fates','twilight-masquerade'];
-  var loaded=0;
-  
   for(var i=0;i<setFiles.length;i++){
     try{
       var resp=await fetch('/static/sets/'+setFiles[i]+'.json');
       var data=await resp.json();
       sets[data.name]=data;
-      loaded++;
-    }catch(e){
-      console.warn('Failed to load',setFiles[i],e);
-    }
+    }catch(e){console.warn('Failed to load',setFiles[i])}
   }
-  
-  if(loaded===0){
-    document.getElementById('packArea').innerHTML='<div class=loading><p style=color:var(--red)>Kunde inte ladda set-data. Försök igen senare.</p></div>';
+  if(!Object.keys(sets).length){
+    document.getElementById('packStage').innerHTML='<div class=loading><p style=color:var(--red)>Kunde inte ladda data.</p></div>';
     return;
   }
-  
   buildSetSelector();
   activeSet=Object.keys(sets)[0];
   showPackUI();
 }
 
-// ===== BUILD SET SELECTOR =====
 function buildSetSelector(){
-  var html='';
-  var first=true;
+  var html='',first=true;
   for(var key in sets){
     html+='<button class="set-btn'+(first?' active':'')+'" onclick="selectSet(\''+key+'\',this)">'+sets[key].displayName+'</button>';
     first=false;
@@ -309,125 +429,259 @@ function selectSet(key,btn){
   activeSet=key;
   document.querySelectorAll('.set-btn').forEach(function(b){b.classList.remove('active')});
   btn.classList.add('active');
-  document.getElementById('cardReveal').innerHTML='';
-  document.getElementById('pullSummary').style.display='none';
+  showPackUI();
 }
 
-// ===== SHOW PACK UI =====
 function showPackUI(){
   var set=sets[activeSet];
   document.getElementById('loading').style.display='none';
-  document.getElementById('packArea').innerHTML=
+  var bestRarity=bestPulls[activeSet+'_best']||'';
+  var bestCard=bestPulls[activeSet+'_bestCard']||'';
+  document.getElementById('packStage').innerHTML=
     '<div class=pack-stats id=packStats>'+
       '<b>'+set.displayName+'</b> &middot; '+set.cards.length+' kort &middot; '+
-      '<span id=packCount>0</span> packs öppnade'+
+      '<span id=packCount>'+totalOpened+'</span> packs öppnade'+
+      (bestRarity?'<br>Bästa drag: <span style=color:var(--gold)>'+bestCard+'</span> ('+bestRarity+')':'')+
     '</div>'+
-    '<button class=open-btn id=openBtn onclick=openPack()>'+
-      '<span class=icon>&#128230;</span> Riv upp!'+
-    '</button>'+
-    '<div class=card-reveal id=cardReveal></div>'+
+    '<div class=pack-wrapper id=packWrapper onclick=ripPack()>'+
+      '<div class=booster-pack id=boosterPack>'+
+        '<div class=pack-art>🎴</div>'+
+        '<div class=pack-label>Pokémon TCG</div>'+
+        '<div class=pack-sub>10 KORT PER PACK</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class=card-stage id=cardStage></div>'+
     '<div class=pull-summary id=pullSummary>'+
-      '<h3>Dragna kort</h3>'+
-      '<div class=pulls id=pullList></div>'+
+      '<h3>Dragna kort</h3><div class=pulls id=pullList></div>'+
     '</div>';
 }
 
-// ===== OPEN PACK =====
-var isOpening=false;
-
-async function openPack(){
-  if(isOpening)return;
-  isOpening=true;
-  
-  var btn=document.getElementById('openBtn');
-  btn.disabled=true;
-  btn.innerHTML='<span class=icon>&#9889;</span> River upp...';
-  
-  var reveal=document.getElementById('cardReveal');
-  reveal.innerHTML='';
-  document.getElementById('pullSummary').style.display='none';
-  
+// ===== GENERATE PACK (pre-rip, so we know glow color) =====
+function generatePack(){
   var set=sets[activeSet];
-  
-  // Group cards by rarity
   var byRarity={};
   set.cards.forEach(function(c){
     var r=c.rarity||'Common';
     if(!byRarity[r])byRarity[r]=[];
     byRarity[r].push(c);
   });
-  
-  // Generate pack
+
   var pack=[];
-  
-  // 5 Commons
   pack=pack.concat(pickRandom(byRarity['Common']||[],5));
-  
-  // 3 Uncommons
   pack=pack.concat(pickRandom(byRarity['Uncommon']||[],3));
-  
-  // 1 Rare slot (weighted)
-  var rareSlotRarities=getAvailableRareSlots(byRarity);
-  var rareRarity=pickWeighted(rareSlotRarities);
+
+  var available=getAvailableRareSlots(byRarity);
+  var rareRarity=pickWeighted(available);
   var rareCards=byRarity[rareRarity]||byRarity['Rare']||[];
   pack=pack.concat(pickRandom(rareCards,1));
-  
-  // 1 Reverse Holo (any card, any rarity - but we mark it)
-  var allCards=set.cards;
-  var revHolo=pickRandom(allCards,1)[0];
+
+  var revHolo=pickRandom(set.cards,1)[0];
   revHolo._reverseHolo=true;
   pack.push(revHolo);
-  
-  // Shuffle reveal order (reverse holo last)
+
+  // Shuffle, reverse holo last
   shuffle(pack);
-  // Move reverse holo to last
   var rhIdx=-1;
   for(var i=0;i<pack.length;i++){if(pack[i]._reverseHolo){rhIdx=i;break}}
-  if(rhIdx>=0){
-    var rh=pack.splice(rhIdx,1)[0];
-    pack.push(rh);
-  }
-  
-  // Animate reveal
-  totalOpened++;
-  document.getElementById('packCount').textContent=totalOpened;
-  
-  for(var i=0;i<pack.length;i++){
-    await sleep(i===0?300:180);
-    revealCard(pack[i],reveal,i);
-  }
-  
-  // Show summary after a short delay
-  await sleep(600);
-  showPullSummary(pack);
-  
-  btn.disabled=false;
-  btn.innerHTML='<span class=icon>&#128230;</span> Riv upp igen!';
-  isOpening=false;
+  if(rhIdx>=0){var rh=pack.splice(rhIdx,1)[0];pack.push(rh)}
+
+  return pack;
 }
 
+// ===== BEST RARITY IN PACK =====
+function bestRarityInPack(pack){
+  var best='Common',bestW=0;
+  pack.forEach(function(c){
+    var w=RARITY_WEIGHT[c.rarity]||0;
+    if(w>bestW){best=c.rarity;bestW=w}
+  });
+  return best;
+}
+
+// ===== RIP PACK! =====
+var isRipping=false;
+async function ripPack(){
+  if(isRipping)return;
+  isRipping=true;
+  initAudio();
+
+  var pack=generatePack();
+  var bestRar=bestRarityInPack(pack);
+  var glowColor=GLOW_COLORS[bestRar]||GLOW_COLORS['Common'];
+  var isBigHit=RARITY_WEIGHT[bestRar]>=6; // SIR+ or Hyper+
+
+  totalOpened++;
+  document.getElementById('packCount').textContent=totalOpened;
+
+  var booster=document.getElementById('boosterPack');
+  var wrapper=document.getElementById('packWrapper');
+  var stage=document.getElementById('cardStage');
+  var summ=document.getElementById('pullSummary');
+  summ.style.display='none';
+  wrapper.style.pointerEvents='none';
+
+  // Phase 1: Glow charge-up
+  booster.style.setProperty('--glow',glowColor);
+  booster.classList.add('charging');
+  await sleep(1800);
+  booster.classList.remove('charging');
+
+  // Phase 2: RIPPING
+  booster.classList.add('ripping');
+  sfxRip();
+  await sleep(300);
+  booster.classList.remove('ripping');
+
+  // Particles from the pack
+  var rect=booster.getBoundingClientRect();
+  var cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
+  spawnParticles(cx,cy,20,['⚡','💥','✨']);
+
+  // Phase 3: Pack explodes
+  booster.classList.add('ripped');
+
+  // Big hit effects
+  if(isBigHit){
+    screenFlash(GLOW_COLORS[bestRar]);
+    screenShake();
+    sfxBigHit();
+    document.body.classList.add('glow-bg');
+    setTimeout(function(){document.body.classList.remove('glow-bg')},2000);
+    spawnParticles(cx,cy,40,['✨','🌟','💫','⭐','🔥','💎']);
+  }
+
+  await sleep(500);
+
+  // Phase 4: Cards appear one by one
+  var sortedByRarity=pack.slice().sort(function(a,b){
+    return(RARITY_WEIGHT[b.rarity]||0)-(RARITY_WEIGHT[a.rarity]||0);
+  });
+  // Reveal commons/uncommons first, rare cards later for drama
+  var commons=pack.filter(function(c){return RARITY_WEIGHT[c.rarity]<=1});
+  var uncommons=pack.filter(function(c){return RARITY_WEIGHT[c.rarity]===2});
+  var rarePlus=pack.filter(function(c){var w=RARITY_WEIGHT[c.rarity]||0;return w>=3});
+  var revHolo=pack.filter(function(c){return c._reverseHolo});
+  var others=pack.filter(function(c){return !c._reverseHolo && RARITY_WEIGHT[c.rarity]<=1});
+
+  var revealOrder=[];
+  // Commons first
+  commons.forEach(function(c){if(!c._reverseHolo)revealOrder.push(c)});
+  // Then uncommons
+  uncommons.forEach(function(c){if(!c._reverseHolo)revealOrder.push(c)});
+  // Then the rare/hit cards
+  rarePlus.forEach(function(c){if(!c._reverseHolo)revealOrder.push(c)});
+  // Reverse holo last
+  revHolo.forEach(function(c){revealOrder.push(c)});
+
+  stage.innerHTML='';
+  for(var i=0;i<revealOrder.length;i++){
+    var card=revealOrder[i];
+    var w=RARITY_WEIGHT[card.rarity]||0;
+
+    if(w>=4) sfxSparkle(); // IR/UR+
+    else if(w>=6) sfxDing(); // SIR+
+    else sfxFlip();
+
+    revealCard(card,stage,i,w);
+
+    // Dramatic pause for big cards
+    if(w>=6) await sleep(500);
+    else if(w>=4) await sleep(350);
+    else await sleep(200);
+  }
+
+  // Phase 5: Summary
+  await sleep(400);
+  showPullSummary(pack);
+
+  // Rebuild pack UI
+  await sleep(600);
+  showPackUI();
+  isRipping=false;
+}
+
+function revealCard(card,container,index,weight){
+  var rc=RARITY_CLASS[card.rarity]||'Common';
+  var isHit=weight>=4;
+  var isBigHit=weight>=6;
+  var rhClass=card._reverseHolo?' reverse-holo':'';
+  var holoClass=isHit?' holo':'';
+  var bigClass=isBigHit?' big-hit':'';
+
+  var div=document.createElement('div');
+  div.className='card rarity-'+rc+rhClass+holoClass+bigClass;
+  div.style.animationDelay=(index*.05)+'s';
+  if(isBigHit) div.style.setProperty('--hit-glow',HIT_GLOW[card.rarity]||HIT_GLOW['Double Rare']);
+
+  div.innerHTML=
+    '<div class=card-img>'+
+      '<img src="'+card.image+'" alt="'+card.name+'" loading=lazy onerror="this.style.display=\'none\';this.parentElement.textContent=\''+card.name.substring(0,3)+'\'">'+
+    '</div>'+
+    '<div class=card-info>'+
+      '<div class=card-name>'+(card._reverseHolo?'⭐ ':'')+card.name+'</div>'+
+      '<div class="card-rarity rarity-badge-'+rc+'">'+card.rarity+(card._reverseHolo?' RH':'')+'</div>'+
+    '</div>';
+
+  container.appendChild(div);
+
+  // Sparkle for hits
+  if(isHit){
+    setTimeout(function(){
+      var r=div.getBoundingClientRect();
+      spawnParticles(r.left+r.width/2,r.top+r.height/2,isBigHit?15:5);
+    },400);
+  }
+}
+
+function showPullSummary(pack){
+  var counts={};
+  pack.forEach(function(c){
+    counts[c.rarity]=counts[c.rarity]||[];
+    counts[c.rarity].push(c);
+  });
+
+  // Track best pulls
+  pack.forEach(function(c){
+    var w=RARITY_WEIGHT[c.rarity]||0;
+    var bestW=RARITY_WEIGHT[bestPulls[activeSet+'_best']]||0;
+    if(w>bestW){
+      bestPulls[activeSet+'_best']=c.rarity;
+      bestPulls[activeSet+'_bestCard']=c.name;
+    }
+  });
+
+  var rarityOrder=['Common','Uncommon','Rare','Double Rare','Illustration Rare','Ultra Rare',
+    'Special Illustration Rare','Hyper Rare','ACE SPEC Rare','Shiny Rare','Shiny Ultra Rare'];
+  var html='';
+  rarityOrder.forEach(function(r){
+    if(counts[r]){
+      var rc=RARITY_CLASS[r]||'Common';
+      html+='<div class=pull-item><div class="count rarity-badge-'+rc+'">'+counts[r].length+'</div><div class=label>'+r+'</div></div>';
+    }
+  });
+
+  var summ=document.getElementById('pullSummary');
+  document.getElementById('pullList').innerHTML=html;
+  summ.style.display='block';
+}
+
+// ===== HELPERS =====
 function getAvailableRareSlots(byRarity){
-  // Build weighted list based on what the set actually has
   var available=[];
   for(var j=0;j<RARE_SLOT_POOL.length;j++){
     var entry=RARE_SLOT_POOL[j];
-    if(byRarity[entry.rarity] && byRarity[entry.rarity].length>0){
+    if(byRarity[entry.rarity]&&byRarity[entry.rarity].length>0){
       available.push({rarity:entry.rarity,weight:entry.weight});
     }
   }
-  // Also check for ACE SPEC and Shiny variants
-  if(byRarity['ACE SPEC Rare'] && byRarity['ACE SPEC Rare'].length>0){
+  if(byRarity['ACE SPEC Rare']&&byRarity['ACE SPEC Rare'].length>0)
     available.push({rarity:'ACE SPEC Rare',weight:2});
-  }
-  if(byRarity['Shiny Ultra Rare'] && byRarity['Shiny Ultra Rare'].length>0){
+  if(byRarity['Shiny Ultra Rare']&&byRarity['Shiny Ultra Rare'].length>0)
     available.push({rarity:'Shiny Ultra Rare',weight:5});
-  }
-  if(byRarity['Shiny Rare'] && byRarity['Shiny Rare'].length>0 && !available.find(function(a){return a.rarity==='Shiny Rare'})){
+  if(byRarity['Shiny Rare']&&byRarity['Shiny Rare'].length>0&&!available.find(function(a){return a.rarity==='Shiny Rare'}))
     available.push({rarity:'Shiny Rare',weight:8});
-  }
   return available;
 }
-
 function pickWeighted(items){
   var total=0;
   items.forEach(function(item){total+=item.weight});
@@ -439,92 +693,13 @@ function pickWeighted(items){
   }
   return items[items.length-1].rarity;
 }
-
 function pickRandom(arr,count){
-  var shuffled=arr.slice();
-  shuffle(shuffled);
-  return shuffled.slice(0,Math.min(count,arr.length));
+  var s=arr.slice();shuffle(s);return s.slice(0,Math.min(count,arr.length));
 }
-
 function shuffle(arr){
-  for(var i=arr.length-1;i>0;i--){
-    var j=Math.floor(Math.random()*(i+1));
-    var tmp=arr[i];arr[i]=arr[j];arr[j]=tmp;
-  }
+  for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t}
 }
-
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
-
-// ===== REVEAL CARD =====
-function revealCard(card,container,index){
-  var rc=RARITY_CLASS[card.rarity]||'Common';
-  var isHolo=rc==='Double'||rc==='Illustration'||rc==='Ultra'||rc==='Special'||rc==='Hyper'||rc==='Shiny';
-  var rhClass=card._reverseHolo?' reverse-holo':'';
-  var holoClass=isHolo?' holo-effect':'';
-  
-  var div=document.createElement('div');
-  div.className='card rarity-'+rc+rhClass+holoClass;
-  div.style.transitionDelay=(index*0.05)+'s';
-  div.innerHTML=
-    '<div class=card-img>'+
-      '<img src="'+card.image+'" alt="'+card.name+'" loading=lazy onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 140%22><rect fill=%22%23111%22 width=%22100%22 height=%22140%22/><text fill=%22%23555%22 x=%2250%22 y=%2270%22 text-anchor=%22middle%22 font-size=%2212%22>'+encodeURIComponent(card.name.substring(0,15))+'</text></svg>\'">'+
-    '</div>'+
-    '<div class=card-info>'+
-      '<div class=card-name>'+(card._reverseHolo?'&#11088; ':'')+card.name+'</div>'+
-      '<div class="card-rarity rarity-badge-'+rc+'">'+card.rarity+(card._reverseHolo?' Reverse Holo':'')+'</div>'+
-    '</div>';
-  
-  container.appendChild(div);
-  
-  // Trigger animation
-  requestAnimationFrame(function(){
-    requestAnimationFrame(function(){
-      div.classList.add('revealed');
-    });
-  });
-}
-
-// ===== PULL SUMMARY =====
-function showPullSummary(pack){
-  var counts={};
-  pack.forEach(function(c){
-    counts[c.rarity]=counts[c.rarity]||[];
-    counts[c.rarity].push(c);
-  });
-  
-  var rarityOrder=['Common','Uncommon','Rare','Double Rare','Illustration Rare','Ultra Rare',
-    'Special Illustration Rare','Hyper Rare','ACE SPEC Rare','Shiny Rare','Shiny Ultra Rare'];
-  
-  // Track best pulls
-  pack.forEach(function(c){
-    var w=RARITY_WEIGHT[c.rarity]||0;
-    var bestW=RARITY_WEIGHT[bestPulls[activeSet+'_best']]||0;
-    if(w>bestW){
-      bestPulls[activeSet+'_best']=c.rarity;
-      bestPulls[activeSet+'_bestCard']=c.name;
-    }
-  });
-  
-  var html='';
-  rarityOrder.forEach(function(r){
-    if(counts[r]){
-      var rc=RARITY_CLASS[r]||'Common';
-      html+='<div class=pull-item><div class="count rarity-badge-'+rc+'">'+counts[r].length+'</div><div class=label>'+r+'</div></div>';
-    }
-  });
-  
-  var summ=document.getElementById('pullSummary');
-  document.getElementById('pullList').innerHTML=html;
-  summ.style.display='block';
-  
-  // Update stats
-  var bestRarity=bestPulls[activeSet+'_best']||'';
-  var bestCard=bestPulls[activeSet+'_bestCard']||'';
-  document.getElementById('packStats').innerHTML=
-    '<b>'+sets[activeSet].displayName+'</b> &middot; '+sets[activeSet].cards.length+' kort &middot; '+
-    '<span id=packCount>'+totalOpened+'</span> packs öppnade'+
-    (bestRarity?'<br>Bästa drag: <span style=color:var(--gold)>'+bestCard+'</span> ('+bestRarity+')':'');
-}
 
 // ===== INIT =====
 loadSets();
