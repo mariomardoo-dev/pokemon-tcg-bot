@@ -307,9 +307,9 @@ function doSearch(){
 function renderGroups(groups,targetId){
   var html='';
   groups.forEach(function(g){
-    var img=g.image?'<img src='+g.image+' class=group-img-img alt="" loading=lazy onerror="this.style.display=none">':'';
+    var img=g.image?'<img src="'+g.image+'" class=group-img-img alt="" loading=lazy onerror="this.style.display=none">':'';
     var cheapest=g.items[0].price||'';
-    html+='<div class=group-card onclick="this.classList.toggle(' + chr(39) + 'open' + chr(39) + ')">';
+    html+='<div class=group-card onclick="this.classList.toggle(\'open\')">';
     html+='<div class=group-header>';
     html+='<div class=group-img>'+(img||'<span>📦</span>')+'</div>';
     html+='<div class=group-info>';
@@ -329,7 +329,6 @@ function renderGroups(groups,targetId){
   });
   document.getElementById(targetId).innerHTML=html;
 }
-
 function buildFynd(){
   fetch('/api/groups?q=&cat=&sort=price_asc&only_stock=1&limit=12').then(function(r){return r.json()}).then(function(data){
     if(data.groups.length) renderGroups(data.groups,'fynd-grid');
