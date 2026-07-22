@@ -37,7 +37,7 @@ def is_pokemon(title):
                              "twilight masquerade","sur spark"]): return True
     if "collection box" in t or "premium figure" in t: return True
     if "booster box" in t and "magic" not in t: return True
-    if t.startswith("pok\u00e9mon ") or t.startswith("pokemon ") or "pok\u00e9mon " in t or "pokemon " in t: return True
+    if t.startswith("pok\u00e9mon ") or t.startswith("pokemon "): return True
     if " me" in t and ("evolution" in t or "booster" in t or "etb" in t): return True
     return False
 
@@ -72,6 +72,54 @@ def cat_for(title):
         if any(k in t for k in keys):
             return cat
     return "\u00d6vrigt"
+
+def norm(t):
+    """Normalize product title for grouping."""
+    hadEtb = bool(re.search(r'\b(?:elite trainer box|etb)\b', t, re.I))
+    t = re.sub(r'\s*\(Max\s+\d+\s*(st)?\s*(per\s+(kund|hushåll|person))?\)', '', t, flags=re.I)
+    t = re.sub(r'\s*\(Max\s+\d+(st)?\s*/\s*(kund|hushåll)\)', '', t, flags=re.I)
+    t = re.sub(r'\s*\(Limit\s+\d+\s*per[^)]*\)', '', t, flags=re.I)
+    t = re.sub(r'\s*\((ENG?|JP)\)\s*', '', t, flags=re.I)
+    t = re.sub(r'\s*[\u2013\u2014\u2012-]\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
+    t = re.sub(r'\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
+    t = re.sub(r'^(Pok\u00e9mon\s*TCG[:\s,-]+|Pokemon\s*TCG[:\s,-]+|Pok\u00e9mon[:\s,-]+|Pokemon[:\s,-]+)', '', t, flags=re.I)
+    t = re.sub(r'^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)', '', t, flags=re.I)
+    t = re.sub(r'^[\u2013\u2014\u2012-]\s*', '', t)
+    t = re.sub(r'\bElite\s+Trainer\s+Box\b', 'ETB', t, flags=re.I)
+    t = re.sub(r'^(?:ETB\s*[\u2013\u2014\u2012-]\s*)?(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)', '', t, flags=re.I)
+    t = re.sub(r'^[\u2013\u2014\u2012-]\s*', '', t)
+    t = re.sub(r'^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)', '', t, flags=re.I)
+    t = re.sub(r'\s*[\u2013\u2014\u2012-]\s*Elite\s+Trainer\s+Box\b', ' ETB', t, flags=re.I)
+    t = re.sub(r'\bElite\s+Trainer\s+Box\b', 'ETB', t, flags=re.I)
+    t = re.sub(r'\bBooster\s+Display\s+Box\b', 'Booster Box', t, flags=re.I)
+    t = re.sub(r'\s*\(ETB\)\s*', ' ETB ', t, flags=re.I)
+    t = re.sub(r'\s+ETB\s+ETB\b', ' ETB', t, flags=re.I)
+    t = re.sub(r'\s*[\u2013\u2014\u2012-]\s*ETB\b', ' ETB', t, flags=re.I)
+    t = re.sub(r'\s+', ' ', t).strip().lower()
+    if hadEtb and not re.search(r'\betb\b', t): t += ' etb'
+    return t
+
+def group_products(products):
+    """Group products by normalized title, sort cheapest first within each group."""
+    groups = {}
+    for p in products:
+        k = norm(p["title"])
+        if k not in groups:
+            groups[k] = {"title": p["title"], "image": p.get("image",""), "items": []}
+        groups[k]["items"].append(p)
+        if not groups[k]["image"] and p.get("image"):
+            groups[k]["image"] = p["image"]
+    
+    result = []
+    for g in groups.values():
+        g["items"].sort(key=lambda x: int(re.sub(r'[^0-9]','',x.get("price","999999")) or "999999"))
+        g["count"] = len(g["items"])
+        g["cheapest"] = g["items"][0]["price"]
+        g["in_stock"] = sum(1 for p in g["items"] if p.get("status") == "\u2705")
+        result.append(g)
+    
+    result.sort(key=lambda x: (-x["in_stock"], int(re.sub(r'[^0-9]','',x.get("cheapest","999999")) or "999999")))
+    return result
 
 def search_products(q, cat=None, sort="relevance", limit=60):
     words = [w for w in q.lower().split() if w not in
@@ -119,7 +167,6 @@ HTML = """<!DOCTYPE html>
 <meta name="description" content="J\u00e4mf\u00f6r priser p\u00e5 Pok\u00e9mon TCG fr\u00e5n 45+ svenska butiker. 4293 produkter. Hitta b\u00e4sta pris p\u00e5 ETB, booster box, tins och mer.">
 <meta property="og:title" content="Pokesniper.se — Sveriges Pok\u00e9mon-prisj\u00e4mf\u00f6relse">
 <meta property="og:description" content="45+ butiker, 4293 produkter. Hitta billigaste Pok\u00e9mon-korten i Sverige.">
-
 <style>
 :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--red:#cc0000;--red2:#ff2222;--green:#22c55e;--text:#e0e0e0;--muted:#888;--border:#222}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -186,7 +233,7 @@ footer a{color:var(--muted)}
 </div>
 <div>
 <div class=disc-label>Vi finns \u00e4ven i Discord</div>
-<a class=disc-badge href="https://discord.gg/QRaPfTVHFr" target=_blank><span class=icon>💬</span> Discord — smartare sök &amp; spårning</a>
+<a class=disc-badge href="https://discord.gg/QRaPfTVHFr" target=_blank><span class=icon>💬</span> Discord — smartare s\u00f6k &amp; sp\u00e5rning</a>
 </div>
 <div class=header-stats id=stats></div>
 </div>
@@ -215,67 +262,28 @@ footer a{color:var(--muted)}
 Pokesniper.se — J\u00e4mf\u00f6r Pok\u00e9mon TCG-priser hos 45+ svenska butiker \u00b7 <a href="https://discord.gg/QRaPfTVHFr">Discord</a>
 </footer>
 <script>
-var products=[],activeCat=null,activeSort='relevance';
+var activeCat=null,activeSort='relevance';
 
-fetch('/api/products').then(function(r){return r.json()}).then(function(p){
-  products=p;
-  document.getElementById('stats').textContent=p.length+' produkter \u00b7 '+new Set(p.map(function(x){return x.store})).size+' butiker';
-  buildCats();doSearch();buildFynd();
+fetch('/api/groups?q=&cat=&sort=relevance').then(function(r){return r.json()}).then(function(data){
+  document.getElementById('stats').textContent=data.total_products+' produkter \u00b7 '+data.total_stores+' butiker';
+  buildCats(data.categories);
+  renderGroups(data.groups,'grid');
+  buildFynd();
 });
 
-function norm(t){
-  var hadEtb=/\b(?:elite trainer box|etb)\b/i.test(t);
-  return t.replace(/\s*\(Max\s+\d+\s*(st)?\s*(per\s+(kund|hushåll|person))?\)/gi,'')
-          .replace(/\s*\(Max\s+\d+(st)?\s*\/\s*(kund|hushåll)\)/gi,'')
-          .replace(/\s*\(Limit\s+\d+\s*per[^)]*\)/gi,'')
-          .replace(/\s*\((ENG?|JP)\)\s*/gi,'').replace(/\s*\((ENG?|JP)\)\s*/gi,'')
-          .replace(/\s*[\u2013\u2014\u2012-]\s*Förhandsbokning\s*/gi,'')
-          .replace(/\s*Förhandsbokning\s*/gi,'')
-          .replace(/^(Pokémon\s*TCG[:\s,-]+|Pokemon\s*TCG[:\s,-]+|Pokémon[:\s,-]+|Pokemon[:\s,-]+)/gi,'')
-          .replace(/^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
-          .replace(/^[-–—]\s*/, '')
-          .replace(/\bElite\s+Trainer\s+Box\b/gi,'ETB')
-          .replace(/^(?:ETB\s*[-–—]\s*)?(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
-          .replace(/^[-–—]\s*/, '')
-          .replace(/^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
-          .replace(/\s*[-–—]\s*Elite\s+Trainer\s+Box\b/gi,' ETB')
-          .replace(/\bElite\s+Trainer\s+Box\b/gi,'ETB')
-          .replace(/\bBooster\s+Display\s+Box\b/gi,'Booster Box')
-          .replace(/\s*\(ETB\)\s*/gi,' ETB ')
-          .replace(/\s+ETB\s+ETB\b/gi,' ETB')
-          .replace(/\s*[-–—]\s*ETB\b/gi,' ETB')
-          .replace(/\s+/g,' ').trim().toLowerCase();
-  if(hadEtb && !/\betb\b/.test(t)) t += ' etb';
-  return t;
-}
-
-function buildCats(){
-  var cats={},order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','\u00d6vrigt'];
-  products.forEach(function(p){
-    var c=catFor(p.title);cats[c]=(cats[c]||0)+1;
+function buildCats(cats){
+  var order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','\u00d6vrigt'];
+  var html='<button class="cat-pill active" onclick="setCat(null,this)">Alla</button>';
+  order.forEach(function(c){
+    if(cats[c]) html+='<button class="cat-pill" onclick="setCat(\u00b4'+c+'\u00b4,this)">'+c+' <span style="opacity:.5;font-size:11px">'+cats[c]+'</span></button>';
   });
-  var html=order.filter(function(c){return cats[c]}).map(function(c){
-    return '<button class="cat-pill" onclick="toggleCat(\\''+c+'\\',this)">'+c+' <span style="opacity:.5;font-size:11px">'+cats[c]+'</span></button>';
-  }).join('');
-  document.getElementById('categories').innerHTML='<button class="cat-pill active" onclick="toggleCat(null,this)">Alla</button>'+html;
+  document.getElementById('categories').innerHTML=html;
 }
 
-function catFor(t){
-  t=' '+t.toLowerCase()+' ';
-  if(/elite trainer box|\\betb\\b|\\betbs\\b/.test(t))return'ETB';
-  if(/booster box|booster display/.test(t))return'Booster Box';
-  if(/booster bundle/.test(t))return'Booster Bundle';
-  if(/\\btin\\b|\\btins\\b/.test(t))return'Tin';
-  if(/booster/.test(t))return'Booster';
-  if(/box|collection|premium/.test(t))return'Box Set';
-  return'\u00d6vrigt';
-}
-
-function toggleCat(cat,el){
+function setCat(cat,el){
   activeCat=cat===activeCat?null:cat;
   document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active')});
-  if(activeCat)el.classList.add('active');
-  else document.querySelector('.cat-pill').classList.add('active');
+  if(activeCat)el.classList.add('active');else document.querySelector('.cat-pill').classList.add('active');
   doSearch();
 }
 
@@ -295,83 +303,33 @@ function clearSearch(){
 function doSearch(){
   var q=document.getElementById('search').value.trim();
   activeSort=document.getElementById('sort').value;
-  var filtered=products;
-  if(q){
-    var words=q.toLowerCase().split(/\\s+/).filter(function(w){return['pokemon','tcg','pok\\u00e9mon','the','a','an','max','per','sv','-'].indexOf(w)===-1});
-    if(words.indexOf('etb')!==-1){words=words.filter(function(w){return w!=='etb'});words.push('elite','trainer','box');}
-    filtered=filtered.filter(function(p){
-      var t=p.title.toLowerCase();
-      var m=words.filter(function(w){return w.length>0&&t.indexOf(w)!==-1}).length;
-      return m>=(words.length<=2?1:Math.max(1,words.length-1));
-    });
-  }
-  if(activeCat)filtered=filtered.filter(function(p){return catFor(p.title)===activeCat});
-  filtered=filtered.filter(function(p){return isGoodUrl(p.url||'')});
-
-  var groups={};
-  filtered.forEach(function(p){
-    var k=norm(p.title);
-    if(!groups[k])groups[k]={title:p.title,img:p.image,items:[]};
-    groups[k].items.push(p);
-    if(!groups[k].img&&p.image)groups[k].img=p.image;
+  var url='/api/groups?q='+encodeURIComponent(q)+'&cat='+(activeCat||'')+'&sort='+activeSort;
+  fetch(url).then(function(r){return r.json()}).then(function(data){
+    document.getElementById('count').textContent=data.groups.length+' produkter';
+    document.getElementById('empty').style.display=data.groups.length?'none':'block';
+    document.getElementById('fynd-section').style.display=(q||activeCat)?'none':'block';
+    renderGroups(data.groups,'grid');
   });
-  var gl=Object.values(groups);
-  gl.forEach(function(g){
-    g.cheapest=Math.min.apply(null,g.items.map(function(p){return parseInt(p.price)||999999}));
-    g.inStock=g.items.filter(function(p){return p.status==='\u2705'}).length;
-    g.items.sort(function(a,b){return(parseInt(a.price)||999999)-(parseInt(b.price)||999999)});
-  });
-
-  if(activeSort==='price_asc')gl.sort(function(a,b){return a.cheapest-b.cheapest});
-  else if(activeSort==='price_desc')gl.sort(function(a,b){return b.cheapest-a.cheapest});
-  else if(q)gl.sort(function(a,b){return b.inStock-a.inStock||a.cheapest-b.cheapest});
-
-  document.getElementById('count').textContent=gl.length+' produkter';
-  document.getElementById('empty').style.display=gl.length?'none':'block';
-  document.getElementById('fynd-section').style.display=(q||activeCat)?'none':'block';
-  renderTo(gl.slice(0,80),'grid');
 }
 
-function renderTo(groups,targetId){
+function renderGroups(groups,targetId){
   var html=groups.map(function(g){
-    var img=g.img?'<img src="'+g.img+'" alt="" loading=lazy onerror="this.style.display=\\'none\\';this.nextElementSibling.style.display=\\'block\\'"><span class=no-img style=display:none>📦</span>':'<span class=no-img>📦</span>';
-    var price=g.cheapest<999999?g.cheapest+' kr':'\u2014';
+    var img=g.image?'<img src="'+g.image+'" alt="" loading=lazy onerror="this.style.display=\\'none\\';this.nextElementSibling.style.display=\\'block\\'"><span class=no-img style=display:none>📦</span>':'<span class=no-img>📦</span>';
+    var price=g.cheapest?g.cheapest:'\u2014';
     var rows=g.items.map(function(p){
       var sc=p.status==='\u2705'?'s-in':'s-out';
       var st=p.status==='\u2705'?'I lager':'Slut';
-      return'<div class=store-row onclick="event.stopPropagation();window.open(\\''+p.url+'\\',\\'_blank\\')"><span class=s-price>'+(p.price||'\u2014')+'</span><span class=s-store>'+p.store+'</span><span class="s-status '+sc+'">'+st+'</span></div>';
+      return'<div class=store-row onclick="event.stopPropagation();window.open(\u00b4'+p.url+'\u00b4,\u00b4_blank\u00b4)"><span class=s-price>'+(p.price||'\u2014')+'</span><span class=s-store>'+p.store+'</span><span class="s-status '+sc+'">'+st+'</span></div>';
     }).join('');
-    return'<div class=group-card onclick="this.classList.toggle(\\'open\\')"><div class=group-header><div class=group-img>'+img+'</div><div class=group-info><div class=group-title>'+g.title+'</div><div class=group-meta><span class=group-price>Fr\u00e5n '+price+'</span><span class=group-stores>'+g.items.length+' butiker</span><span class=group-arrow>\u25bc</span></div></div></div><div class=store-list>'+rows+'</div></div>';
+    return'<div class=group-card onclick="this.classList.toggle(\u00b4open\u00b4)"><div class=group-header><div class=group-img>'+img+'</div><div class=group-info><div class=group-title>'+g.title+'</div><div class=group-meta><span class=group-price>Fr\u00e5n '+price+'</span><span class=group-stores>'+g.count+' butiker</span><span class=group-arrow>\u25bc</span></div></div></div><div class=store-list>'+rows+'</div></div>';
   }).join('');
   document.getElementById(targetId).innerHTML=html;
 }
 
-function isGoodUrl(url){
-  if(/\\/collections\\/|\\/categories\\//.test(url))return false;
-  try{
-    var parts=new URL(url).pathname.replace(/\\/$/,'').split('/').filter(Boolean);
-    var badEnds=['booster-box','booster-packs','tins','etb','booster-bundle','pokemon-boxar','pokemon-elite-trainer-box','pokemon-tins','booster','elite-trainer-box'];
-    if(parts.length<=2&&badEnds.indexOf(parts[parts.length-1].toLowerCase())!==-1)return false;
-  }catch(e){}
-  return true;
-}
-
 function buildFynd(){
-  var instock=products.filter(function(p){return p.status==='\u2705'&&isGoodUrl(p.url||'')});
-  var groups={};
-  instock.forEach(function(p){
-    var k=norm(p.title);
-    if(!groups[k])groups[k]={title:p.title,img:p.image,items:[]};
-    groups[k].items.push(p);
-    if(!groups[k].img&&p.image)groups[k].img=p.image;
+  fetch('/api/groups?q=&cat=&sort=price_asc&only_stock=1&limit=12').then(function(r){return r.json()}).then(function(data){
+    if(data.groups.length) renderGroups(data.groups,'fynd-grid');
   });
-  var gl=Object.values(groups);
-  gl.forEach(function(g){
-    g.cheapest=Math.min.apply(null,g.items.map(function(p){return parseInt(p.price)||999999}));
-    g.items.sort(function(a,b){return(parseInt(a.price)||999999)-(parseInt(b.price)||999999)});
-  });
-  gl.sort(function(a,b){return a.cheapest-b.cheapest});
-  renderTo(gl.slice(0,12),'fynd-grid');
 }
 </script>
 </body>
@@ -385,6 +343,41 @@ def index():
 def api_products():
     filtered = [p for p in PRODUCTS if is_pokemon(p["title"]) and is_good_url(p.get("url",""))]
     return jsonify(filtered)
+
+@app.route("/api/groups")
+def api_groups():
+    q = request.args.get("q","").strip()
+    cat = request.args.get("cat")
+    sort = request.args.get("sort","relevance")
+    limit = int(request.args.get("limit","80"))
+    only_stock = request.args.get("only_stock","0") == "1"
+    
+    results = search_products(q, cat, sort, 200)
+    
+    # Count categories for all results
+    all_products = [p for p in PRODUCTS if is_pokemon(p["title"]) and is_good_url(p.get("url",""))]
+    cats = {}
+    for p in all_products:
+        c = cat_for(p["title"])
+        cats[c] = cats.get(c, 0) + 1
+    
+    grouped = group_products(results)
+    
+    if only_stock:
+        grouped = [g for g in grouped if g["in_stock"] > 0]
+    
+    # Count total unique stores in results
+    stores = set()
+    for g in grouped:
+        for p in g["items"]:
+            stores.add(p["store"])
+    
+    return jsonify({
+        "groups": grouped[:limit],
+        "total_products": len(all_products),
+        "total_stores": len(set(p["store"] for p in all_products)),
+        "categories": cats
+    })
 
 @app.route("/api/search")
 def api_search():
