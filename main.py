@@ -163,6 +163,9 @@ HTML = """<!DOCTYPE html>
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pokesniper.se — J\u00e4mf\u00f6r priser p\u00e5 Pok\u00e9mon-kort</title>
 <meta name="description" content="J\u00e4mf\u00f6r priser p\u00e5 Pok\u00e9mon TCG fr\u00e5n 45+ svenska butiker. 4293 produkter. Hitta b\u00e4sta pris p\u00e5 ETB, booster box, tins och mer.">
@@ -262,7 +265,7 @@ footer a{color:var(--muted)}
 <footer>
 Pokesniper.se — J\u00e4mf\u00f6r Pok\u00e9mon TCG-priser hos 45+ svenska butiker \u00b7 <a href="https://discord.gg/QRaPfTVHFr">Discord</a>
 </footer>
-<script>
+<script data-v="1784693532">
 var activeCat=null,activeSort='relevance';
 
 fetch('/api/groups?q=&cat=&sort=relevance').then(function(r){return r.json()}).then(function(data){
