@@ -256,20 +256,19 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 
 /* ===== NEXT PACK BUTTON ===== */
 .next-pack-btn{
-  display:block;margin:24px auto 0;padding:16px 48px;
-  font-size:18px;font-weight:800;color:#fff;
+  display:block;margin:20px auto 0;padding:12px 36px;
+  font-size:15px;font-weight:700;color:#fff;
   background:linear-gradient(135deg,var(--red),#990000);
-  border:none;border-radius:14px;cursor:pointer;
-  letter-spacing:2px;text-transform:uppercase;
-  box-shadow:0 4px 24px rgba(204,0,0,.35);
+  border:none;border-radius:12px;cursor:pointer;
+  letter-spacing:1px;text-transform:uppercase;
+  box-shadow:0 3px 18px rgba(204,0,0,.3);
   transition:all .25s;animation:fadeIn .3s ease;
 }
 .next-pack-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 36px rgba(204,0,0,.5);
+  transform:translateY(-1px);
+  box-shadow:0 6px 28px rgba(204,0,0,.45);
 }
-.next-pack-btn:active{transform:scale(.95)}
-.next-pack-btn span{font-size:22px;margin-right:6px}
+.next-pack-btn:active{transform:scale(.96)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 footer{text-align:center;padding:24px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
@@ -605,7 +604,7 @@ async function ripPack(){
   // Next pack button
   var nextBtn=document.createElement('button');
   nextBtn.className='next-pack-btn';
-  nextBtn.innerHTML='<span>🔄</span> Riv upp nästa!';
+  nextBtn.innerHTML='Riv upp nästa!';
   nextBtn.onclick=function(){nextBtn.remove();resetAndRip()};
   stage.appendChild(nextBtn);
 
