@@ -57,7 +57,7 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 /* ===== PACK STAGE ===== */
 .pack-stage{
   display:flex;flex-direction:column;align-items:center;
-  padding:40px 20px;min-height:360px;position:relative;
+  padding:20px 20px 0;min-height:360px;position:relative;
 }
 .pack-stats{
   color:var(--muted);font-size:13px;margin-bottom:8px;text-align:center;
@@ -221,19 +221,6 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
   100%{opacity:0;transform:translate(var(--px),var(--py)) scale(0)}
 }
 
-/* ===== PULL SUMMARY ===== */
-.pull-summary{
-  text-align:center;margin-top:20px;padding:16px;
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:12px;display:none;animation:fadeIn .4s ease;
-}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.pull-summary h3{font-size:14px;color:var(--red);margin-bottom:8px}
-.pull-summary .pulls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.pull-item{text-align:center}
-.pull-item .count{font-size:22px;font-weight:800}
-.pull-item .label{font-size:9px;color:var(--muted);text-transform:uppercase}
-
 /* ===== SCREEN SHAKE ===== */
 @keyframes screenShake{
   0%,100%{transform:translate(0)}
@@ -333,6 +320,15 @@ var RARE_SLOT_POOL=[
   {rarity:'Special Illustration Rare',weight:4},
   {rarity:'Hyper Rare',weight:2},
 ];
+
+// ===== SET LOGOS (TCGdex) =====
+var SET_LOGOS={
+  '151':'https://assets.tcgdex.net/en/sv/sv03.5/logo',
+  'surging-sparks':'https://assets.tcgdex.net/en/sv/sv08/logo',
+  'prismatic-evolutions':'https://assets.tcgdex.net/en/sv/sv08.5/logo',
+  'paldean-fates':'https://assets.tcgdex.net/en/sv/sv04.5/logo',
+  'twilight-masquerade':'https://assets.tcgdex.net/en/sv/sv06/logo',
+};
 
 // ===== AUDIO (Web Audio API synthesis) =====
 var audioCtx=null;
@@ -437,6 +433,7 @@ function showPackUI(){
   document.getElementById('loading').style.display='none';
   var bestRarity=bestPulls[activeSet+'_best']||'';
   var bestCard=bestPulls[activeSet+'_bestCard']||'';
+  var logoUrl=SET_LOGOS[activeSet]||'';
   document.getElementById('packStage').innerHTML=
     '<div class=pack-stats id=packStats>'+
       '<b>'+set.displayName+'</b> &middot; '+set.cards.length+' kort &middot; '+
@@ -445,15 +442,12 @@ function showPackUI(){
     '</div>'+
     '<div class=pack-wrapper id=packWrapper onclick=ripPack()>'+
       '<div class=booster-pack id=boosterPack>'+
-        '<div class=pack-art>🎴</div>'+
-        '<div class=pack-label>Pokémon TCG</div>'+
+        '<div class=pack-art>'+(logoUrl?'<img src=\"'+logoUrl+'\" alt=\"'+set.displayName+'\" style=width:100%;height:100%;object-fit:contain>':'🎴')+'</div>'+
+        '<div class=pack-label>'+set.displayName+'</div>'+
         '<div class=pack-sub>10 KORT PER PACK</div>'+
       '</div>'+
     '</div>'+
-    '<div class=card-stage id=cardStage></div>'+
-    '<div class=pull-summary id=pullSummary>'+
-      '<h3>Dragna kort</h3><div class=pulls id=pullList></div>'+
-    '</div>';
+    '<div class=card-stage id=cardStage></div>';
 }
 
 // ===== GENERATE PACK (pre-rip, so we know glow color) =====
@@ -516,8 +510,6 @@ async function ripPack(){
   var booster=document.getElementById('boosterPack');
   var wrapper=document.getElementById('packWrapper');
   var stage=document.getElementById('cardStage');
-  var summ=document.getElementById('pullSummary');
-  summ.style.display='none';
   wrapper.style.pointerEvents='none';
 
   // Phase 1: Glow charge-up
@@ -551,6 +543,9 @@ async function ripPack(){
   }
 
   await sleep(500);
+
+  // Hide wrapper so cards appear in same spot
+  wrapper.style.display='none';
 
   // Phase 4: Cards appear one by one
   var sortedByRarity=pack.slice().sort(function(a,b){
@@ -590,9 +585,15 @@ async function ripPack(){
     else await sleep(200);
   }
 
-  // Phase 5: Summary
-  await sleep(400);
-  showPullSummary(pack);
+  // Track best pulls
+  pack.forEach(function(c){
+    var w=RARITY_WEIGHT[c.rarity]||0;
+    var bestW=RARITY_WEIGHT[bestPulls[activeSet+'_best']]||0;
+    if(w>bestW){
+      bestPulls[activeSet+'_best']=c.rarity;
+      bestPulls[activeSet+'_bestCard']=c.name;
+    }
+  });
 
   // Rebuild pack UI
   await sleep(600);
@@ -633,37 +634,7 @@ function revealCard(card,container,index,weight){
   }
 }
 
-function showPullSummary(pack){
-  var counts={};
-  pack.forEach(function(c){
-    counts[c.rarity]=counts[c.rarity]||[];
-    counts[c.rarity].push(c);
-  });
-
-  // Track best pulls
-  pack.forEach(function(c){
-    var w=RARITY_WEIGHT[c.rarity]||0;
-    var bestW=RARITY_WEIGHT[bestPulls[activeSet+'_best']]||0;
-    if(w>bestW){
-      bestPulls[activeSet+'_best']=c.rarity;
-      bestPulls[activeSet+'_bestCard']=c.name;
-    }
-  });
-
-  var rarityOrder=['Common','Uncommon','Rare','Double Rare','Illustration Rare','Ultra Rare',
-    'Special Illustration Rare','Hyper Rare','ACE SPEC Rare','Shiny Rare','Shiny Ultra Rare'];
-  var html='';
-  rarityOrder.forEach(function(r){
-    if(counts[r]){
-      var rc=RARITY_CLASS[r]||'Common';
-      html+='<div class=pull-item><div class="count rarity-badge-'+rc+'">'+counts[r].length+'</div><div class=label>'+r+'</div></div>';
-    }
-  });
-
-  var summ=document.getElementById('pullSummary');
-  document.getElementById('pullList').innerHTML=html;
-  summ.style.display='block';
-}
+function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
 
 // ===== HELPERS =====
 function getAvailableRareSlots(byRarity){
@@ -699,7 +670,6 @@ function pickRandom(arr,count){
 function shuffle(arr){
   for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t}
 }
-function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
 
 // ===== INIT =====
 loadSets();
