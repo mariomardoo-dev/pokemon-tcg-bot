@@ -84,11 +84,13 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
   border-radius:8px;pointer-events:none;
 }
 .booster-pack .pack-art{
-  width:140px;height:140px;border-radius:8px;
+  width:170px;height:80px;border-radius:8px;
   background:linear-gradient(135deg,#0f3460,#1a1a4e);
   display:flex;align-items:center;justify-content:center;
-  font-size:60px;margin-bottom:10px;position:relative;z-index:1;
+  font-size:40px;margin-bottom:10px;position:relative;z-index:1;
+  overflow:hidden;
 }
+.booster-pack .pack-art img{width:90%;height:90%;object-fit:contain}
 .booster-pack .pack-label{
   font-size:18px;font-weight:800;color:#fff;letter-spacing:4px;
   text-transform:uppercase;z-index:1;
@@ -323,11 +325,11 @@ var RARE_SLOT_POOL=[
 
 // ===== SET LOGOS =====
 var SET_LOGOS={
-  '151':'https://images.pokemontcg.io/sv3pt5/logo.png',
-  'surging-sparks':'https://images.pokemontcg.io/sv8/logo.png',
-  'prismatic-evolutions':'https://images.pokemontcg.io/sv8pt5/logo.png',
-  'paldean-fates':'https://images.pokemontcg.io/sv4pt5/logo.png',
-  'twilight-masquerade':'https://images.pokemontcg.io/sv6/logo.png',
+  '151':'https://assets.tcgdex.net/en/sv/sv03.5/logo',
+  'surging-sparks':'https://assets.tcgdex.net/en/sv/sv08/logo',
+  'prismatic-evolutions':'https://assets.tcgdex.net/en/sv/sv08.5/logo',
+  'paldean-fates':'https://assets.tcgdex.net/en/sv/sv04.5/logo',
+  'twilight-masquerade':'https://assets.tcgdex.net/en/sv/sv06/logo',
 };
 var SET_COLORS={
   '151':'#e8c547',
@@ -452,7 +454,8 @@ function showPackUI(){
     '<div class=pack-wrapper id=packWrapper onclick=ripPack()>'+
       '<div class=booster-pack id=boosterPack style=border-color:'+color+'>'+
         '<div class=pack-art style=background:'+color+'22;border:2px solid '+color+'44>'+
-          (sym?'<img src="'+sym+'" alt="'+set.displayName+'" style=width:65%;height:65%;object-fit:contain>':'🎴')+
+          '<span style=font-size:40px;position:absolute>🎴</span>'+
+          (sym?'<img src="'+sym+'" alt="" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1 onerror="this.remove()">':'')+
         '</div>'+
         '<div class=pack-label style=color:'+color+'>'+set.displayName+'</div>'+
         '<div class=pack-sub>10 KORT PER PACK</div>'+
