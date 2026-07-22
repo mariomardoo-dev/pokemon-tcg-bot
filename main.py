@@ -309,7 +309,7 @@ function renderGroups(groups,targetId){
   groups.forEach(function(g){
     var img=g.image?'<img src='+g.image+' class=group-img-img alt="" loading=lazy onerror="this.style.display=none">':'';
     var cheapest=g.items[0].price||'';
-    html+='<div class=group-card onclick="this.classList.toggle(\'open\')">';
+    html+='<div class=group-card onclick="this.classList.toggle('open')">';
     html+='<div class=group-header>';
     html+='<div class=group-img>'+(img||'<span>📦</span>')+'</div>';
     html+='<div class=group-info>';
