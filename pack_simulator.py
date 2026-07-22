@@ -356,8 +356,8 @@ var SET_LOGOS={
   'prismatic-evolutions':'https://images.pokemontcg.io/sv8pt5/logo.png',
   'journey-together':'https://images.pokemontcg.io/sv9/logo.png',
   'destined-rivals':'https://images.pokemontcg.io/sv10/logo.png',
-  'white-flare':'',
-  'black-bolt':'',
+  'white-flare':'https://assets.tcgdex.net/en/sv/sv10.5w/logo.png',
+  'black-bolt':'https://assets.tcgdex.net/en/sv/sv10.5b/logo.png',
 };
 var SET_COLORS={
   'scarlet-violet':'#e0245e','paldea-evolved':'#f59e0b','obsidian-flames':'#ef4444',
