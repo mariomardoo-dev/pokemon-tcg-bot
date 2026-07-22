@@ -224,6 +224,7 @@ fetch('/api/products').then(function(r){return r.json()}).then(function(p){
 });
 
 function norm(t){
+  var hadEtb=/\b(?:elite trainer box|etb)\b/i.test(t);
   return t.replace(/\s*\(Max\s+\d+\s*(st)?\s*(per\s+(kund|hushåll|person))?\)/gi,'')
           .replace(/\s*\(Max\s+\d+(st)?\s*\/\s*(kund|hushåll)\)/gi,'')
           .replace(/\s*\(Limit\s+\d+\s*per[^)]*\)/gi,'')
@@ -233,9 +234,9 @@ function norm(t){
           .replace(/^(Pokémon\s*TCG[:\s,-]+|Pokemon\s*TCG[:\s,-]+|Pokémon[:\s,-]+|Pokemon[:\s,-]+)/gi,'')
           .replace(/^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
           .replace(/^[-–—]\s*/, '')
-          .replace(/^(?:Elite\s+Trainer\s+Box\s*[-–—]\s*)?(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
+          .replace(/\bElite\s+Trainer\s+Box\b/gi,'ETB')
+          .replace(/^(?:ETB\s*[-–—]\s*)?(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
           .replace(/^[-–—]\s*/, '')
-          .replace(/^ETB\s*[-–—]\s*(Mega\s*Evolution\s*\d*\.?\d*[:\s,-]+)/gi,'$1')
           .replace(/^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)/gi,'')
           .replace(/\s*[-–—]\s*Elite\s+Trainer\s+Box\b/gi,' ETB')
           .replace(/\bElite\s+Trainer\s+Box\b/gi,'ETB')
@@ -243,6 +244,8 @@ function norm(t){
           .replace(/\s*\(ETB\)\s*/gi,' ETB ')
           .replace(/\s+ETB\s+ETB\b/gi,' ETB')
           .replace(/\s+/g,' ').trim().toLowerCase();
+  if(hadEtb && !/\betb\b/.test(t)) t += ' etb';
+  return t;
 }
 
 function buildCats(){
