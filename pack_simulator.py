@@ -254,6 +254,24 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* ===== NEXT PACK BUTTON ===== */
+.next-pack-btn{
+  display:block;margin:24px auto 0;padding:16px 48px;
+  font-size:18px;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,var(--red),#990000);
+  border:none;border-radius:14px;cursor:pointer;
+  letter-spacing:2px;text-transform:uppercase;
+  box-shadow:0 4px 24px rgba(204,0,0,.35);
+  transition:all .25s;animation:fadeIn .3s ease;
+}
+.next-pack-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 36px rgba(204,0,0,.5);
+}
+.next-pack-btn:active{transform:scale(.95)}
+.next-pack-btn span{font-size:22px;margin-right:6px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
 footer{text-align:center;padding:24px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
 
 @media(max-width:600px){
@@ -517,109 +535,89 @@ async function ripPack(){
   var pack=generatePack();
   var bestRar=bestRarityInPack(pack);
   var glowColor=GLOW_COLORS[bestRar]||GLOW_COLORS['Common'];
-  var isBigHit=RARITY_WEIGHT[bestRar]>=6; // SIR+ or Hyper+
+  var isBigHit=RARITY_WEIGHT[bestRar]>=6;
 
   totalOpened++;
-  document.getElementById('packCount').textContent=totalOpened;
+  // packCount might not exist during quick-rip
+  var pc=document.getElementById('packCount');
+  if(pc) pc.textContent=totalOpened;
 
-  var booster=document.getElementById('boosterPack');
-  var wrapper=document.getElementById('packWrapper');
   var stage=document.getElementById('cardStage');
-  wrapper.style.pointerEvents='none';
+  var wrapper=document.getElementById('packWrapper');
+  var booster=document.getElementById('boosterPack');
 
-  // Phase 1: Glow charge-up
-  booster.style.setProperty('--glow',glowColor);
-  booster.classList.add('charging');
-  await sleep(1800);
-  booster.classList.remove('charging');
-
-  // Phase 2: RIPPING
-  booster.classList.add('ripping');
-  sfxRip();
-  await sleep(300);
-  booster.classList.remove('ripping');
-
-  // Particles from the pack
-  var rect=booster.getBoundingClientRect();
-  var cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
-  spawnParticles(cx,cy,20,['⚡','💥','✨']);
-
-  // Phase 3: Pack explodes
-  booster.classList.add('ripped');
-
-  // Big hit effects
-  if(isBigHit){
-    screenFlash(GLOW_COLORS[bestRar]);
-    screenShake();
-    sfxBigHit();
-    document.body.classList.add('glow-bg');
-    setTimeout(function(){document.body.classList.remove('glow-bg')},2000);
-    spawnParticles(cx,cy,40,['✨','🌟','💫','⭐','🔥','💎']);
+  // If wrapper is already gone (quick-rip), skip pack animation
+  if(wrapper&&booster&&wrapper.style.display!=='none'){
+    wrapper.style.pointerEvents='none';
+    booster.style.setProperty('--glow',glowColor);
+    booster.classList.add('charging');
+    await sleep(1200);
+    booster.classList.remove('charging');
+    booster.classList.add('ripping');
+    sfxRip();
+    await sleep(250);
+    booster.classList.remove('ripping');
+    var rect=booster.getBoundingClientRect();
+    var cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
+    spawnParticles(cx,cy,20,['⚡','💥','✨']);
+    booster.classList.add('ripped');
+    if(isBigHit){
+      screenFlash(GLOW_COLORS[bestRar]);
+      screenShake();
+      sfxBigHit();
+      document.body.classList.add('glow-bg');
+      setTimeout(function(){document.body.classList.remove('glow-bg')},2000);
+      spawnParticles(cx,cy,40,['✨','🌟','💫','⭐','🔥','💎']);
+    }
+    await sleep(400);
+    wrapper.style.display='none';
+  } else {
+    // Quick-rip: just a flash
+    sfxRip();
+    if(isBigHit){screenShake();sfxBigHit()}
+    await sleep(300);
   }
 
-  await sleep(500);
-
-  // Hide wrapper so cards appear in same spot
-  wrapper.style.display='none';
-
-  // Phase 4: Cards appear one by one
-  var sortedByRarity=pack.slice().sort(function(a,b){
-    return(RARITY_WEIGHT[b.rarity]||0)-(RARITY_WEIGHT[a.rarity]||0);
-  });
-  // Reveal commons/uncommons first, rare cards later for drama
-  var commons=pack.filter(function(c){return RARITY_WEIGHT[c.rarity]<=1});
-  var uncommons=pack.filter(function(c){return RARITY_WEIGHT[c.rarity]===2});
-  var rarePlus=pack.filter(function(c){var w=RARITY_WEIGHT[c.rarity]||0;return w>=3});
-  var revHolo=pack.filter(function(c){return c._reverseHolo});
-  var others=pack.filter(function(c){return !c._reverseHolo && RARITY_WEIGHT[c.rarity]<=1});
-
-  var revealOrder=[];
-  // Commons first
-  commons.forEach(function(c){if(!c._reverseHolo)revealOrder.push(c)});
-  // Then uncommons
-  uncommons.forEach(function(c){if(!c._reverseHolo)revealOrder.push(c)});
-  // Then the rare/hit cards
-  rarePlus.forEach(function(c){if(!c._reverseHolo)revealOrder.push(c)});
-  // Reverse holo last
-  revHolo.forEach(function(c){revealOrder.push(c)});
-
+  // Reveal cards
   stage.innerHTML='';
+  var commons=pack.filter(function(c){return(RARITY_WEIGHT[c.rarity]||0)<=1&&!c._reverseHolo});
+  var uncommons=pack.filter(function(c){return(RARITY_WEIGHT[c.rarity]||0)===2&&!c._reverseHolo});
+  var rarePlus=pack.filter(function(c){var w=RARITY_WEIGHT[c.rarity]||0;return w>=3&&!c._reverseHolo});
+  var revHolo=pack.filter(function(c){return c._reverseHolo});
+
+  var revealOrder=commons.concat(uncommons).concat(rarePlus).concat(revHolo);
   for(var i=0;i<revealOrder.length;i++){
     var card=revealOrder[i];
     var w=RARITY_WEIGHT[card.rarity]||0;
-
     if(w>=6) sfxDing();
     else if(w>=4) sfxSparkle();
     else if(w>=1) sfxFlip();
-
     revealCard(card,stage,i,w);
-
-    // Dramatic pause for big cards
-    if(w>=6) await sleep(500);
-    else if(w>=4) await sleep(350);
-    else await sleep(200);
+    await sleep(w>=6?400:w>=4?280:150);
   }
 
-  // Track best pulls
   pack.forEach(function(c){
     var w=RARITY_WEIGHT[c.rarity]||0;
     var bestW=RARITY_WEIGHT[bestPulls[activeSet+'_best']]||0;
-    if(w>bestW){
-      bestPulls[activeSet+'_best']=c.rarity;
-      bestPulls[activeSet+'_bestCard']=c.name;
-    }
+    if(w>bestW){bestPulls[activeSet+'_best']=c.rarity;bestPulls[activeSet+'_bestCard']=c.name}
   });
 
-  // Show "Next pack" button below cards — cards stay visible
+  // Next pack button
   var nextBtn=document.createElement('button');
-  nextBtn.className='open-btn';
-  nextBtn.style.marginTop='20px';
-  nextBtn.textContent='🔄 Öppna nästa pack';
-  nextBtn.onclick=function(){nextBtn.remove();showPackUI()};
+  nextBtn.className='next-pack-btn';
+  nextBtn.innerHTML='<span>🔄</span> Riv upp nästa!';
+  nextBtn.onclick=function(){nextBtn.remove();resetAndRip()};
   stage.appendChild(nextBtn);
 
   }catch(e){console.warn('ripPack error:',e);showPackUI()}
   finally{isRipping=false}
+}
+
+function resetAndRip(){
+  document.getElementById('cardStage').innerHTML='';
+  var wrapper=document.getElementById('packWrapper');
+  if(wrapper) wrapper.style.display='';
+  ripPack();
 }
 
 function revealCard(card,container,index,weight){
