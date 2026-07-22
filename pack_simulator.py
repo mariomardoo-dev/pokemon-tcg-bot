@@ -382,7 +382,7 @@ var ERAS=[
     'shining-fates','battle-styles','chilling-reign','evolving-skies','fusion-strike',
     'brilliant-stars','astral-radiance','pokemon-go','lost-origin','silver-tempest','crown-zenith'
   ]},
-  {id:'meg',name:'Mega Evolution',logo:'',sets:[
+  {id:'meg',name:'Mega Evolution',logo:'https://images.pokemontcg.io/me1/logo.png',sets:[
     'mega-evolution','phantasmal-flames','ascended-heroes','perfect-order','chaos-rising','pitch-black'
   ]},
 ];
@@ -505,12 +505,12 @@ var SET_LOGOS={
   'base-set-2':'https://assets.tcgdex.net/en/base/base4/logo.png',
   'team-rocket':'https://assets.tcgdex.net/en/base/base5/logo.png',
   // Mega Evolution
-  'mega-evolution':'',
-  'phantasmal-flames':'',
-  'ascended-heroes':'',
-  'perfect-order':'',
-  'chaos-rising':'',
-  'pitch-black':'',
+  'mega-evolution':'https://images.pokemontcg.io/me1/logo.png',
+  'phantasmal-flames':'https://images.pokemontcg.io/me2/logo.png',
+  'ascended-heroes':'https://assets.tcgdex.net/en/me/me02.5/logo.png',
+  'perfect-order':'https://assets.tcgdex.net/en/me/me03/logo.png',
+  'chaos-rising':'https://assets.tcgdex.net/en/me/me04/logo.png',
+  'pitch-black':'https://assets.tcgdex.net/en/me/me05/logo.png',
 };
 var SET_COLORS={
   'scarlet-violet':'#e0245e','paldea-evolved':'#f59e0b','obsidian-flames':'#ef4444',
