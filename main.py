@@ -88,8 +88,6 @@ def norm(t):
     t = re.sub(r'\s+samlarkort\s+set\s+', ' ', t, flags=re.I)
     t = re.sub(r'\b(\d+),(\d+)\b', r'\1.\2', t)  # 8,5 -> 8.5
     t = re.sub(r'\s+[sS][vV]\s*\d+\.?\d*\s*$', '', t)  # trailing SV set code
-    t = re.sub(r'\s+ME\d+\s*$', '', t, flags=re.I)  # trailing ME set code
-    t = re.sub(r'\s+inkl\s+.+$', '', t, flags=re.I)  # strip "inkl ..." suffixes
     t = re.sub(r',\s*', ' ', t)  # commas -> space
     t = re.sub(r'\s*[\u2013\u2014\u2012-]\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
     t = re.sub(r'\s*\(*\s*F\u00f6rhandsbokning\s*\)*\s*', '', t, flags=re.I)
@@ -108,6 +106,8 @@ def norm(t):
     t = re.sub(r'\s*\(ETB\)\s*', ' ETB ', t, flags=re.I)
     t = re.sub(r'\s+ETB\s+ETB\b', ' ETB', t, flags=re.I)
     t = re.sub(r'\s*[\u2013\u2014\u2012-]\s*ETB\b', ' ETB', t, flags=re.I)
+    t = re.sub(r'\s+ME\d+\s*$', '', t, flags=re.I)  # trailing ME set code
+    t = re.sub(r'\s+inkl\s+.+$', '', t, flags=re.I)  # strip "inkl ..." suffixes
     t = re.sub(r'\s+', ' ', t).strip().lower()
     if hadEtb and not re.search(r'\betb\b', t): t += ' etb'
     return t
