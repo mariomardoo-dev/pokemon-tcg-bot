@@ -120,9 +120,10 @@ HTML = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pokesniper.se — Jämför priser på Pokémon-kort</title>
-<meta name="description" content="Jämför priser på Pokémon TCG från 44+ svenska butiker. Hitta bästa pris på ETB, booster box, tins och mer.">
+<meta name="description" content="Jämför priser på Pokémon TCG från 45+ svenska butiker. 4293 produkter. Hitta bästa pris på ETB, booster box, tins och mer.">
 <meta property="og:title" content="Pokesniper.se — Sveriges Pokémon-prisjämförelse">
-<meta property="og:description" content="44+ butiker, 3400+ produkter. Hitta billigaste Pokémon-korten i Sverige.">
+<meta property="og:description" content="45+ butiker, 4293 produkter. Hitta billigaste Pokémon-korten i Sverige.">
+
 <style>
 :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--red:#cc0000;--red2:#ff2222;--green:#22c55e;--text:#e0e0e0;--muted:#888;--border:#222}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -219,7 +220,7 @@ footer a{color:var(--muted)}
 </div>
 </main>
 <footer>
-Pokesniper.se — Jämför Pokémon TCG-priser hos 44+ svenska butiker · <a href="https://discord.gg/QRaPfTVHFr">Discord</a>
+Pokesniper.se — Jämför Pokémon TCG-priser hos 45+ svenska butiker · <a href="https://discord.gg/QRaPfTVHFr">Discord</a>
 </footer>
 <script>
 let products=[],activeCat=null,activeSort='relevance',searchQ='';
