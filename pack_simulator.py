@@ -115,7 +115,7 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
   font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px;z-index:1;
 }
 .booster-pack .pack-sim-label{
-  font-size:8px;color:rgba(255,255,255,.2);letter-spacing:1px;z-index:1;
+  font-size:8px;color:rgba(255,255,255,.35);letter-spacing:1px;z-index:1;
   font-weight:300;margin-top:2px;
 }
 
@@ -643,9 +643,10 @@ function buildSetSelector(){
   var sel=document.getElementById('setSelector');
   sel.innerHTML='';
   ERAS.forEach(function(era){
+    var logoHtml=era.logo?'<img src="'+era.logo+'" alt="">':'<span style=font-size:22px>🎴</span>';
     sel.innerHTML+=
       '<button class=era-btn onclick=toggleEra(this)>'+
-        '<img src="'+era.logo+'" alt="">'+era.name+
+        logoHtml+era.name+
         '<span class=arrow>▼</span>'+
       '</button>'+
       '<div class=set-grid id=grid-'+era.id+'></div>';
