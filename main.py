@@ -206,6 +206,7 @@ main{max-width:1200px;margin:0 auto;padding:16px 20px}
 .packs-btn{display:inline-block;padding:10px 18px;background:linear-gradient(180deg,#ffcc00,#e6a800);border:2px solid #c48900;border-radius:10px;color:#3d2e00;font-size:14px;font-weight:800;text-decoration:none;text-shadow:0 1px 0 rgba(255,255,255,.3);box-shadow:0 3px 0 #8b6500,0 4px 8px rgba(0,0,0,.3);transition:all .15s;white-space:nowrap;letter-spacing:.5px}
 .packs-btn:hover{background:linear-gradient(180deg,#ffe033,#f0b000);transform:translateY(-1px);box-shadow:0 4px 0 #8b6500,0 6px 12px rgba(0,0,0,.4)}
 .packs-btn:active{transform:translateY(1px);box-shadow:0 2px 0 #8b6500,0 2px 4px rgba(0,0,0,.3)}
+.packs-sub{font-size:9px;font-weight:400;opacity:.6;letter-spacing:1px;display:block;margin-top:1px}
 .group-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .2s;padding:12px;margin-bottom:8px}
 .group-card:hover{border-color:var(--red)}
 .group-header{display:flex;gap:12px;cursor:pointer;align-items:flex-start}
@@ -257,7 +258,7 @@ footer a{color:var(--muted)}
 <div class=toolbar>
 <div class=count id=count></div>
 <div style=display:flex;gap:8px;align-items:center>
-<a href=/packs class=packs-btn>🎴 Öppna Pokémon Packs!</a>
+<a href=/packs class=packs-btn>🎴 Öppna Pokémon Packs!<br><span class=packs-sub>Pack Simulator</span></a>
 <select class=sort-select id=sort onchange="doSearch()">
 <option value=relevance>Relevans</option>
 <option value=price_asc>Pris: l\u00e4gst f\u00f6rst</option>
