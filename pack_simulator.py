@@ -256,12 +256,12 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 
 /* ===== NEXT PACK BUTTON ===== */
 .next-pack-btn{
-  display:block;margin:14px auto 0;padding:6px 14px;
-  font-size:12px;font-weight:600;color:#e0e0e0;
-  background:var(--bg2);border:1px solid var(--red);
-  border-radius:8px;cursor:pointer;
-  letter-spacing:1px;text-transform:uppercase;
-  transition:all .25s;animation:fadeIn .3s ease;
+  display:block;margin:14px auto 0;padding:5px 12px;
+  font-size:11px;font-weight:500;color:#888;
+  background:transparent;border:1px solid #333;
+  border-radius:6px;cursor:pointer;
+  text-transform:uppercase;
+  transition:all .25s;
 }
 .next-pack-btn:hover{
   background:var(--red);color:#fff;
@@ -603,7 +603,7 @@ async function ripPack(){
   // Next pack button
   var nextBtn=document.createElement('button');
   nextBtn.className='next-pack-btn';
-  nextBtn.innerHTML='Riv upp nästa!';
+  nextBtn.innerHTML='Nästa';
   nextBtn.onclick=function(){nextBtn.remove();resetAndRip()};
   stage.appendChild(nextBtn);
 
