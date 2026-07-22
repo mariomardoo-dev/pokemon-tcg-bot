@@ -173,7 +173,7 @@ def search_products(q, cat=None, sort="relevance", limit=60):
 
 import os
 
-VISITOR_FILE = os.path.join(os.path.dirname(__file__), "visitor_count.txt")
+VISITOR_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "visitor_count.txt")
 
 def get_visitor_count():
     try:
@@ -386,6 +386,7 @@ function buildFynd(){
 
 @app.route("/")
 def index():
+    increment_visitor()
     return HTML
 
 @app.route("/api/products")
