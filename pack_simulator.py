@@ -372,6 +372,42 @@ var ERAS=[
     'shining-fates','battle-styles','chilling-reign','evolving-skies','fusion-strike',
     'brilliant-stars','astral-radiance','pokemon-go','lost-origin','silver-tempest','crown-zenith'
   ]},
+  {id:'sm',name:'Sun & Moon',logo:'',sets:[
+    'sun-moon','guardians-rising','burning-shadows','shining-legends','crimson-invasion',
+    'ultra-prism','forbidden-light','celestial-storm','dragon-majesty','lost-thunder',
+    'team-up','unbroken-bonds','unified-minds','hidden-fates','cosmic-eclipse'
+  ]},
+  {id:'xy',name:'XY',logo:'',sets:[
+    'xy-base','flashfire','furious-fists','phantom-forces','primal-clash',
+    'roaring-skies','ancient-origins','breakthrough','breakpoint','fates-collide',
+    'steam-siege','evolutions'
+  ]},
+  {id:'bw',name:'Black & White',logo:'',sets:[
+    'black-white','emerging-powers','noble-victories','next-destinies','dark-explorers',
+    'dragons-exalted','boundaries-crossed','plasma-storm','plasma-freeze','plasma-blast',
+    'legendary-treasures'
+  ]},
+  {id:'hgss',name:'HeartGold & SoulSilver',logo:'',sets:[
+    'heartgold-soulsilver','unleashed','undaunted','triumphant'
+  ]},
+  {id:'dp',name:'Diamond & Pearl',logo:'',sets:[
+    'diamond-pearl','mysterious-treasures','secret-wonders','great-encounters',
+    'majestic-dawn','legends-awakened','stormfront','platinum','rising-rivals',
+    'supreme-victors','arceus'
+  ]},
+  {id:'ex',name:'EX-Series',logo:'',sets:[
+    'ruby-sapphire','sandstorm','dragon','team-magma-aqua','hidden-legends',
+    'firered-leafgreen','team-rocket-returns','deoxys','emerald','unseen-forces',
+    'delta-species','legend-maker','holon-phantoms','crystal-guardians','dragon-frontiers',
+    'power-keepers'
+  ]},
+  {id:'neo',name:'Neo / e-Series',logo:'',sets:[
+    'neo-genesis','neo-discovery','neo-revelation','neo-destiny',
+    'expedition','aquapolis','skyridge'
+  ]},
+  {id:'base',name:'Wizards / Base Era',logo:'',sets:[
+    'base-set','jungle','fossil','base-set-2','team-rocket'
+  ]},
 ];
 var SET_LOGOS={
   'scarlet-violet':'https://images.pokemontcg.io/sv1/logo.png',
@@ -407,6 +443,40 @@ var SET_LOGOS={
   'lost-origin':'https://images.pokemontcg.io/swsh11/logo.png',
   'silver-tempest':'https://images.pokemontcg.io/swsh12/logo.png',
   'crown-zenith':'https://images.pokemontcg.io/swsh125/logo.png',
+  // Sun & Moon — use TCGdex logos
+  'sun-moon':'https://assets.tcgdex.net/en/sm/sm1/logo.png',
+  'guardians-rising':'https://assets.tcgdex.net/en/sm/sm2/logo.png',
+  'burning-shadows':'https://assets.tcgdex.net/en/sm/sm3/logo.png',
+  'shining-legends':'https://assets.tcgdex.net/en/sm/sm3.5/logo.png',
+  'crimson-invasion':'https://assets.tcgdex.net/en/sm/sm4/logo.png',
+  'ultra-prism':'https://assets.tcgdex.net/en/sm/sm5/logo.png',
+  'forbidden-light':'https://assets.tcgdex.net/en/sm/sm6/logo.png',
+  'celestial-storm':'https://assets.tcgdex.net/en/sm/sm7/logo.png',
+  'dragon-majesty':'https://assets.tcgdex.net/en/sm/sm7.5/logo.png',
+  'lost-thunder':'https://assets.tcgdex.net/en/sm/sm8/logo.png',
+  'team-up':'https://assets.tcgdex.net/en/sm/sm9/logo.png',
+  'unbroken-bonds':'https://assets.tcgdex.net/en/sm/sm10/logo.png',
+  'unified-minds':'https://assets.tcgdex.net/en/sm/sm11/logo.png',
+  'hidden-fates':'https://assets.tcgdex.net/en/sm/sm115/logo.png',
+  'cosmic-eclipse':'https://assets.tcgdex.net/en/sm/sm12/logo.png',
+  // Older eras — no logos available, use empty for SVG fallback
+  'xy-base':'','flashfire':'','furious-fists':'','phantom-forces':'','primal-clash':'',
+  'roaring-skies':'','ancient-origins':'','breakthrough':'','breakpoint':'','fates-collide':'',
+  'steam-siege':'','evolutions':'',
+  'black-white':'','emerging-powers':'','noble-victories':'','next-destinies':'','dark-explorers':'',
+  'dragons-exalted':'','boundaries-crossed':'','plasma-storm':'','plasma-freeze':'','plasma-blast':'',
+  'legendary-treasures':'',
+  'heartgold-soulsilver':'','unleashed':'','undaunted':'','triumphant':'',
+  'diamond-pearl':'','mysterious-treasures':'','secret-wonders':'','great-encounters':'',
+  'majestic-dawn':'','legends-awakened':'','stormfront':'','platinum':'','rising-rivals':'',
+  'supreme-victors':'','arceus':'',
+  'ruby-sapphire':'','sandstorm':'','dragon':'','team-magma-aqua':'','hidden-legends':'',
+  'firered-leafgreen':'','team-rocket-returns':'','deoxys':'','emerald':'','unseen-forces':'',
+  'delta-species':'','legend-maker':'','holon-phantoms':'','crystal-guardians':'','dragon-frontiers':'',
+  'power-keepers':'',
+  'neo-genesis':'','neo-discovery':'','neo-revelation':'','neo-destiny':'',
+  'expedition':'','aquapolis':'','skyridge':'',
+  'base-set':'','jungle':'','fossil':'','base-set-2':'','team-rocket':'',
 };
 var SET_COLORS={
   'scarlet-violet':'#e0245e','paldea-evolved':'#f59e0b','obsidian-flames':'#ef4444',
@@ -418,6 +488,35 @@ var SET_COLORS={
   'vivid-voltage':'#f5c842','shining-fates':'#f472b6','battle-styles':'#c44b4b','chilling-reign':'#5ba0c8',
   'evolving-skies':'#8bc5e8','fusion-strike':'#b880c8','brilliant-stars':'#f5a623','astral-radiance':'#6db3c4',
   'pokemon-go':'#f5c542','lost-origin':'#c090e0','silver-tempest':'#88b8d8','crown-zenith':'#e8c547',
+  // Sun & Moon
+  'sun-moon':'#f5a623','guardians-rising':'#4a90d9','burning-shadows':'#e85d3a','shining-legends':'#c9a44b',
+  'crimson-invasion':'#8b0000','ultra-prism':'#7b68ee','forbidden-light':'#4169e1','celestial-storm':'#87ceeb',
+  'dragon-majesty':'#b8860b','lost-thunder':'#ffd700','team-up':'#ff6347','unbroken-bonds':'#daa520',
+  'unified-minds':'#9370db','hidden-fates':'#ff69b4','cosmic-eclipse':'#2f4f4f',
+  // XY
+  'xy-base':'#4169e1','flashfire':'#ff4500','furious-fists':'#ff8c00','phantom-forces':'#6a0dad',
+  'primal-clash':'#00bfff','roaring-skies':'#87ceeb','ancient-origins':'#8b4513','breakthrough':'#ffd700',
+  'breakpoint':'#00ced1','fates-collide':'#32cd32','steam-siege':'#708090','evolutions':'#ff6347',
+  // Black & White
+  'black-white':'#333','emerging-powers':'#228b22','noble-victories':'#daa520','next-destinies':'#4169e1',
+  'dark-explorers':'#2f4f4f','dragons-exalted':'#ffd700','boundaries-crossed':'#87ceeb','plasma-storm':'#00bfff',
+  'plasma-freeze':'#87cefa','plasma-blast':'#ff4500','legendary-treasures':'#ffd700',
+  // HGSS
+  'heartgold-soulsilver':'#daa520','unleashed':'#ff6347','undaunted':'#4169e1','triumphant':'#32cd32',
+  // Diamond & Pearl
+  'diamond-pearl':'#b0c4de','mysterious-treasures':'#daa520','secret-wonders':'#9370db','great-encounters':'#4169e1',
+  'majestic-dawn':'#ffd700','legends-awakened':'#ff6347','stormfront':'#708090','platinum':'#c0c0c0',
+  'rising-rivals':'#ff4500','supreme-victors':'#ffd700','arceus':'#f5f5dc',
+  // EX
+  'ruby-sapphire':'#dc143c','sandstorm':'#daa520','dragon':'#4169e1','team-magma-aqua':'#ff4500',
+  'hidden-legends':'#9370db','firered-leafgreen':'#ff4500','team-rocket-returns':'#333','deoxys':'#ff6347',
+  'emerald':'#32cd32','unseen-forces':'#6a0dad','delta-species':'#ffd700','legend-maker':'#ffa500',
+  'holon-phantoms':'#87ceeb','crystal-guardians':'#00bfff','dragon-frontiers':'#ffd700','power-keepers':'#daa520',
+  // Neo / e-Series
+  'neo-genesis':'#daa520','neo-discovery':'#4169e1','neo-revelation':'#9370db','neo-destiny':'#ff6347',
+  'expedition':'#ffd700','aquapolis':'#00bfff','skyridge':'#87ceeb',
+  // Wizards / Base
+  'base-set':'#ffd700','jungle':'#228b22','fossil':'#708090','base-set-2':'#ffd700','team-rocket':'#333',
 };
 
 // ===== AUDIO (Web Audio API synthesis) =====
@@ -485,13 +584,8 @@ function screenShake(){
 
 // ===== LOAD SETS =====
 async function loadSets(){
-  var setFiles=['scarlet-violet','paldea-evolved','obsidian-flames','151','paradox-rift',
-    'paldean-fates','temporal-forces','twilight-masquerade','shrouded-fable','stellar-crown',
-    'surging-sparks','prismatic-evolutions','journey-together','destined-rivals',
-    'white-flare','black-bolt',
-    'sword-shield','rebel-clash','darkness-ablaze','champions-path','vivid-voltage',
-    'shining-fates','battle-styles','chilling-reign','evolving-skies','fusion-strike',
-    'brilliant-stars','astral-radiance','pokemon-go','lost-origin','silver-tempest','crown-zenith'];
+  var setFiles=[];
+  ERAS.forEach(function(e){setFiles=setFiles.concat(e.sets)});
   for(var i=0;i<setFiles.length;i++){
     try{
       var resp=await fetch('/static/sets/'+setFiles[i]+'.json');
