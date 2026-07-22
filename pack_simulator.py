@@ -455,7 +455,7 @@ function showPackUI(){
       '<div class=booster-pack id=boosterPack style=border-color:'+color+'>'+
         '<div class=pack-art style=background:'+color+'22;border:2px solid '+color+'44>'+
           '<span style=font-size:40px;position:absolute>🎴</span>'+
-          (sym?'<img src="'+sym+'" alt="" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1 onerror="this.remove()">':'')+
+          (sym?'<img src="'+sym+'" alt="" onerror="this.remove()" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1>':'')+
         '</div>'+
         '<div class=pack-label style=color:'+color+'>'+set.displayName+'</div>'+
         '<div class=pack-sub>10 KORT PER PACK</div>'+
