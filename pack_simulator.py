@@ -485,14 +485,8 @@ function showPackUI(){
     '<div class=pack-wrapper id=packWrapper onclick=ripPack()>'+
       '<div class=booster-pack id=boosterPack style=border-color:'+color+'>'+
         '<div class=pack-art style=background:'+color+'22;border:2px solid '+color+'44>'+
-          '<span style=font-size:40px;position:absolute>'+
-          (sym?'<img src="'+sym+'" alt="" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1>':
-           '<svg viewBox="0 0 100 100" style=width:55%;height:55%;position:relative;z-index:1>'+
-             '<circle cx=50 cy=50 r=46 fill=none stroke='+color+' stroke-width=4 opacity=.6/>'+
-             '<circle cx=50 cy=50 r=14 fill='+color+'33 stroke='+color+' stroke-width=2 opacity=.8/>'+
-             '<line x1=4 y1=50 x2=96 y2=50 stroke='+color+' stroke-width=3 opacity=.5/>'+
-           '</svg>')+
-          '</span>'+
+          '<span style=font-size:40px;position:absolute>🎴</span>'+
+          (sym?'<img src="'+sym+'" alt="" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1>':'')+
         '</div>'+
         '<div class=pack-label style=color:'+color+'>'+set.displayName+'</div>'+
         '<div class=pack-sub>10 KORT PER PACK</div>'+
