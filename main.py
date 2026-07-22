@@ -273,18 +273,21 @@ fetch('/api/groups?q=&cat=&sort=relevance').then(function(r){return r.json()}).t
 
 function buildCats(cats){
   var order=['ETB','Booster Box','Booster Bundle','Tin','Booster','Box Set','\u00d6vrigt'];
-  var html='<button class="cat-pill active" onclick="setCat(null,this)">Alla</button>';
+  var nav=document.getElementById('categories');
+  nav.innerHTML='<button class="cat-pill active" data-cat="">Alla</button>';
   order.forEach(function(c){
-    if(cats[c]) html+='<button class="cat-pill" onclick="setCat(''+c+'',this)">'+c+' <span style="opacity:.5;font-size:11px">'+cats[c]+'</span></button>';
+    if(cats[c]) nav.innerHTML+='<button class="cat-pill" data-cat="'+c+'">'+c+' <span style="opacity:.5;font-size:11px">'+cats[c]+'</span></button>';
   });
-  document.getElementById('categories').innerHTML=html;
-}
-
-function setCat(cat,el){
-  activeCat=cat===activeCat?null:cat;
-  document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active')});
-  if(activeCat)el.classList.add('active');else document.querySelector('.cat-pill').classList.add('active');
-  doSearch();
+  nav.onclick=function(e){
+    var btn=e.target.closest('.cat-pill');
+    if(!btn)return;
+    var cat=btn.dataset.cat||null;
+    activeCat=cat===activeCat?null:cat;
+    document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active')});
+    if(activeCat)btn.classList.add('active');
+    else nav.querySelector('.cat-pill').classList.add('active');
+    doSearch();
+  };
 }
 
 var tmr;
