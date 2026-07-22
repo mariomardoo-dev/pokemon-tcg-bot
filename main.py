@@ -305,29 +305,38 @@ function doSearch(){
 }
 
 function renderGroups(groups,targetId){
-  var html='';
+  var el=document.getElementById(targetId);
+  el.innerHTML='';
   groups.forEach(function(g){
-    var img=g.image?'<img src="'+g.image+'" class=group-img-img alt="" loading=lazy onerror="this.style.display=none">':'';
-    var cheapest=g.items[0].price||'';
-    html+='<div class=group-card onclick="this.classList.toggle(\'open\')">';
-    html+='<div class=group-header>';
-    html+='<div class=group-img>'+(img||'<span>📦</span>')+'</div>';
-    html+='<div class=group-info>';
-    html+='<div class=group-title>'+g.title+'</div>';
-    html+='<div class=group-meta><span class=group-price>Fran '+cheapest+'</span>';
-    html+='<span class=group-stores>'+g.count+' butiker</span></div>';
-    html+='</div></div>';
-    html+='<div class=store-list>';
+    var card=document.createElement('div');
+    card.className='group-card';
+    card.innerHTML='<div class=group-header>'+
+      '<div class=group-img>'+(g.image?'<img src="'+g.image+'" class=group-img-img alt="" loading=lazy>':'<span class=no-img>📦</span>')+'</div>'+
+      '<div class=group-info>'+
+      '<div class=group-title>'+g.title+'</div>'+
+      '<div class=group-meta>'+
+      '<span class=group-price>Fran '+(g.items[0].price||'')+'</span>'+
+      '<span class=group-stores>'+g.count+' butiker</span>'+
+      '</div></div>';
+    card.onclick=function(){this.classList.toggle('open')};
+    
+    var list=document.createElement('div');
+    list.className='store-list';
     g.items.forEach(function(p){
+      var row=document.createElement('a');
+      row.className='store-row';
+      row.href=p.url;
+      row.target='_blank';
+      row.onclick=function(e){e.stopPropagation()};
       var sc=p.status==='✅'?'s-in':'s-out';
-      var st=p.status==='✅'?'I lager':'Slut';
-      html+='<div class=store-row><a href="'+p.url+'" target=_blank class=s-price>'+(p.price||'')+'</a>';
-      html+='<span class=s-store>'+p.store+'</span>';
-      html+='<span class="s-status '+sc+'">'+st+'</span></div>';
+      row.innerHTML='<span class=s-price>'+(p.price||'')+'</span>'+
+        '<span class=s-store>'+p.store+'</span>'+
+        '<span class="s-status '+sc+'">'+(p.status==='✅'?'I lager':'Slut')+'</span>';
+      list.appendChild(row);
     });
-    html+='</div></div>';
+    card.appendChild(list);
+    el.appendChild(card);
   });
-  document.getElementById(targetId).innerHTML=html;
 }
 function buildFynd(){
   fetch('/api/groups?q=&cat=&sort=price_asc&only_stock=1&limit=12').then(function(r){return r.json()}).then(function(data){
