@@ -51,18 +51,13 @@ BAD_ENDS = {"booster-box","booster-packs","tins","etb","booster-bundle","pokemon
 def is_good_url(url):
     for b in BAD_URL:
         if b in url: return False
-    # Only flag if URL ends with a category slug (last path segment)
-    import os as _os
-    parts = url.rstrip("/").split("/")
-    if parts:
-        last = parts[-1].lower()
-        if last in BAD_ENDS:
-            # Extra check: if URL has more specific segments before, it's likely a product
-            path = "/".join(parts)
-            # Category: /pokemon/booster-box → flag
-            # Product: /sallskapsspel/pokemon/pokemon-tcg-stuff → keep
-            if len(parts) <= 3:  # Only 2-3 segments = likely category
-                return False
+    from urllib.parse import urlparse
+    parsed = urlparse(url)
+    path_parts = [p for p in parsed.path.rstrip("/").split("/") if p]
+    if path_parts:
+        last = path_parts[-1].lower()
+        if last in BAD_ENDS and len(path_parts) <= 2:
+            return False
     return True
 
 # --- categories ---
@@ -313,9 +308,11 @@ function isPokemon(title){return true;} // server handles this
 function isGoodUrl(url){
   let bad=['/collections/','/categories/'];
   if(bad.some(b=>url.includes(b))) return false;
-  let parts=url.replace(/\/$/,'').split('/');
-  let badEnds=['booster-box','booster-packs','tins','etb','booster-bundle','pokemon-boxar','pokemon-elite-trainer-box','pokemon-tins','booster','elite-trainer-box'];
-  if(parts.length<=3 && badEnds.includes(parts[parts.length-1].toLowerCase())) return false;
+  try{
+    let path=new URL(url).pathname.replace(/\/$/,'').split('/').filter(Boolean);
+    let badEnds=['booster-box','booster-packs','tins','etb','booster-bundle','pokemon-boxar','pokemon-elite-trainer-box','pokemon-tins','booster','elite-trainer-box'];
+    if(path.length<=2 && badEnds.includes(path[path.length-1].toLowerCase())) return false;
+  }catch(e){}
   return true;
 }
 
