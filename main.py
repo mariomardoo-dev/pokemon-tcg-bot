@@ -135,6 +135,9 @@ header{background:linear-gradient(180deg,#150000,var(--bg));border-bottom:1px so
 .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .logo{font-size:22px;font-weight:800;color:var(--red);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
 .logo span{color:var(--green);font-size:13px;display:block;letter-spacing:0;font-weight:400;text-transform:none}
+.discord-badge{background:#1a0000;border:1px solid var(--red);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:all .2s}
+.discord-badge:hover{background:#2a0000;border-color:var(--red2)}
+.discord-badge .icon{font-size:16px}
 .search-wrap{flex:1;min-width:200px;position:relative}
 .search-wrap input{width:100%;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s}
 .search-wrap input:focus{border-color:var(--red)}
@@ -191,11 +194,12 @@ footer a{color:var(--muted)}
 <body>
 <header>
 <div class=header-inner>
-<div class=logo>Pokesniper<span>Pokémon prisjämförelse</span></div>
+<div class=logo>Pokesniper<span>Scanna, hitta & jämför Pokémon TCG</span></div>
 <div class=search-wrap>
 <input id=search placeholder="Sök produkt... (t.ex. 151, etb, pitch black, tins)" autofocus>
 <button id=clear class=clear-search onclick="clearSearch()">✕</button>
 </div>
+<a class=discord-badge href="https://discord.gg/QRaPfTVHFr" target=_blank><span class=icon>💬</span> Discord — smartare sök & spårning</a>
 <div class=header-stats id=stats></div>
 </div>
 </header>
