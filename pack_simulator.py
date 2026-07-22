@@ -325,11 +325,11 @@ var RARE_SLOT_POOL=[
 
 // ===== SET LOGOS =====
 var SET_LOGOS={
-  '151':'https://assets.tcgdex.net/en/sv/sv03.5/logo',
-  'surging-sparks':'https://assets.tcgdex.net/en/sv/sv08/logo',
-  'prismatic-evolutions':'https://assets.tcgdex.net/en/sv/sv08.5/logo',
-  'paldean-fates':'https://assets.tcgdex.net/en/sv/sv04.5/logo',
-  'twilight-masquerade':'https://assets.tcgdex.net/en/sv/sv06/logo',
+  '151':'https://images.pokemontcg.io/sv3pt5/logo.png',
+  'surging-sparks':'https://images.pokemontcg.io/sv8/logo.png',
+  'prismatic-evolutions':'https://images.pokemontcg.io/sv8pt5/logo.png',
+  'paldean-fates':'https://images.pokemontcg.io/sv4pt5/logo.png',
+  'twilight-masquerade':'https://images.pokemontcg.io/sv6/logo.png',
 };
 var SET_COLORS={
   '151':'#e8c547',
@@ -455,7 +455,7 @@ function showPackUI(){
       '<div class=booster-pack id=boosterPack style=border-color:'+color+'>'+
         '<div class=pack-art style=background:'+color+'22;border:2px solid '+color+'44>'+
           '<span style=font-size:40px;position:absolute>🎴</span>'+
-          (sym?'<img src="'+sym+'" alt="" onerror="this.remove()" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1>':'')+
+          (sym?'<img src="'+sym+'" alt="" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1>':'')+
         '</div>'+
         '<div class=pack-label style=color:'+color+'>'+set.displayName+'</div>'+
         '<div class=pack-sub>10 KORT PER PACK</div>'+
