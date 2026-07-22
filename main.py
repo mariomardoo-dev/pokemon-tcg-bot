@@ -42,9 +42,7 @@ def is_pokemon(title):
     if " me" in t and ("evolution" in t or "booster" in t or "etb" in t): return True
     return False
 
-# bad URL patterns (category pages, not products)
 BAD_URL = {"/collections/","/categories/"}
-# Also filter URLs ending in a category slug (no product in path)
 BAD_ENDS = {"booster-box","booster-packs","tins","etb","booster-bundle","pokemon-boxar",
             "pokemon-elite-trainer-box","pokemon-tins","booster","elite-trainer-box"}
 
@@ -60,7 +58,6 @@ def is_good_url(url):
             return False
     return True
 
-# --- categories ---
 CAT_KEYS = {
     "ETB": ["elite trainer box"," etb "," etbs "],
     "Booster Box": ["booster box","booster display"],
@@ -136,6 +133,7 @@ header{background:linear-gradient(180deg,#150000,var(--bg));border-bottom:1px so
 .logo{font-size:22px;font-weight:800;color:var(--red);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
 .logo span{color:var(--green);font-size:13px;display:block;letter-spacing:0;font-weight:400;text-transform:none}
 .logo span .free{color:var(--red);font-weight:700;font-size:11px;letter-spacing:1px}
+.discord-label{color:var(--muted);font-size:11px;text-align:center;margin-bottom:2px}
 .discord-badge{background:#1a0000;border:1px solid var(--red);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:all .2s}
 .discord-badge:hover{background:#2a0000;border-color:var(--red2)}
 .discord-badge .icon{font-size:16px}
@@ -156,22 +154,29 @@ main{max-width:1200px;margin:0 auto;padding:16px 20px}
 .toolbar .count{color:var(--muted);font-size:13px}
 .sort-select{padding:8px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none;cursor:pointer}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .2s;display:flex;gap:12px;padding:12px}
-.card:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 4px 20px rgba(204,0,0,.1)}
-.card-img{width:100px;height:100px;border-radius:8px;overflow:hidden;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.card-img img{width:100%;height:100%;object-fit:contain}
-.card-img .no-img{font-size:32px;opacity:.3}
-.card-info{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
-.card-title{font-size:14px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card-meta{display:flex;align-items:center;gap:8px;font-size:12px;margin-top:auto}
-.card-price{color:var(--green);font-weight:700;font-size:16px}
-.card-store{color:var(--muted)}
-.card-status{font-size:12px;padding:3px 8px;border-radius:12px;display:inline-block}
-.status-in{background:rgba(34,197,94,.1);color:var(--green)}
-.status-out{background:rgba(239,68,68,.15);color:#ef4444}
-.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;gap:8px}
-.card-link{font-size:12px;color:var(--red);white-space:nowrap}
+/* Product group card */
+.group-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .2s;padding:12px}
+.group-card:hover{border-color:var(--red)}
+.group-header{display:flex;gap:12px;cursor:pointer;align-items:flex-start}
+.group-img{width:100px;height:100px;border-radius:8px;overflow:hidden;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.group-img img{width:100%;height:100%;object-fit:contain}
+.group-img .no-img{font-size:32px;opacity:.3}
+.group-info{flex:1;min-width:0}
+.group-title{font-size:14px;font-weight:600;line-height:1.3}
+.group-meta{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:13px}
+.group-price{color:var(--green);font-weight:700;font-size:16px}
+.group-stores{color:var(--muted);font-size:12px}
+.group-arrow{color:var(--muted);font-size:14px;transition:transform .2s;margin-left:8px}
+.group-card.open .group-arrow{transform:rotate(180deg)}
+
+/* Store rows inside expanded group */
+.store-list{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.group-card.open .store-list{display:block}
+.store-row{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;border-radius:6px;transition:background .15s;cursor:pointer;gap:8px}
+.store-row:hover{background:var(--bg3)}
+.store-row .s-price{color:var(--green);font-weight:600;font-size:14px;white-space:nowrap;min-width:70px}
+.store-row .s-store{color:var(--muted);font-size:13px;flex:1;min-width:0}
+.store-row .s-status{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap}
 
 .fynd-section{margin-top:32px;border-top:1px solid var(--border);padding-top:20px}
 .fynd-section h2{font-size:18px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px}
@@ -185,10 +190,9 @@ footer{text-align:center;padding:32px;color:var(--muted);font-size:12px;border-t
 footer a{color:var(--muted)}
 
 @media(max-width:600px){
-  .grid{grid-template-columns:1fr}
   .header-inner{flex-direction:column;align-items:stretch}
   .logo{text-align:center}
-  .card-img{width:70px;height:70px}
+  .group-img{width:70px;height:70px}
 }
 </style>
 </head>
@@ -200,7 +204,10 @@ footer a{color:var(--muted)}
 <input id=search placeholder="Sök produkt... (t.ex. 151, etb, pitch black, tins)" autofocus>
 <button id=clear class=clear-search onclick="clearSearch()">✕</button>
 </div>
+<div>
+<div class=discord-label>Vi finns även i Discord</div>
 <a class=discord-badge href="https://discord.gg/QRaPfTVHFr" target=_blank><span class=icon>💬</span> Discord — smartare sök & spårning</a>
+</div>
 <div class=header-stats id=stats></div>
 </div>
 </header>
@@ -214,14 +221,14 @@ footer a{color:var(--muted)}
 <option value=price_desc>Pris: högst först</option>
 </select>
 </div>
-<div class=grid id=grid></div>
+<div id=grid></div>
 <div class=empty id=empty style=display:none>
 <div class=icon>🔍</div>
 <p>Hittade inga produkter</p>
 </div>
 <div class=fynd-section id=fynd-section style=display:none>
 <h2><span class=icon>🔥</span> Dagens fynd — billigaste i lager</h2>
-<div class=grid id=fynd-grid></div>
+<div id=fynd-grid></div>
 </div>
 </main>
 <footer>
@@ -237,6 +244,15 @@ fetch('/api/products').then(r=>r.json()).then(p=>{
   doSearch();
   buildFynd();
 });
+
+function normalize(t){
+  return t.replace(/\s*\(Max\s+\d+\s*(st)?\s*(per\s+(kund|hushåll|person))?\)/gi,'')
+          .replace(/\s*\(Max\s+\d+(st)?\s*\/\s*(kund|hushåll)\)/gi,'')
+          .replace(/\s*\(Limit\s+\d+\s*per[^)]*\)/gi,'')
+          .replace(/\s*\(ENG\)/gi,'').replace(/\s*\(EN\)/gi,'')
+          .replace(/\s*\(JP\)/gi,'').replace(/\s*–\s*Förhandsbokning\s*/gi,'')
+          .replace(/\s*Förhandsbokning\s*/gi,'').trim();
+}
 
 function buildCategories(){
   let cats={};
@@ -300,54 +316,97 @@ function doSearch(){
     });
   }
   if(activeCat) filtered=filtered.filter(p=>catFor(p.title)===activeCat);
-  filtered=filtered.filter(p=>isPokemon(p.title)&&isGoodUrl(p.url||''));
-  if(activeSort==='price_asc') filtered.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
-  else if(activeSort==='price_desc') filtered.sort((a,b)=>(parseInt(b.price)||0)-(parseInt(a.price)||0));
+  filtered=filtered.filter(p=>isGoodUrl(p.url||''));
 
-  document.getElementById('count').textContent=filtered.length+' produkter';
-  document.getElementById('empty').style.display=filtered.length?'none':'block';
+  // Group by normalized title
+  let groups={};
+  filtered.forEach(p=>{
+    let key=normalize(p.title);
+    if(!groups[key]) groups[key]={title:p.title,image:p.image,items:[]};
+    groups[key].items.push(p);
+    if(!groups[key].image && p.image) groups[key].image=p.image;
+  });
+
+  let groupList=Object.values(groups);
+  // Sort groups by cheapest
+  groupList.forEach(g=>{
+    g.cheapest=Math.min(...g.items.map(p=>parseInt(p.price)||999999));
+    g.inStock=g.items.filter(p=>p.status===`✅`).length;
+    g.items.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
+  });
+
+  if(activeSort==='price_asc') groupList.sort((a,b)=>a.cheapest-b.cheapest);
+  else if(activeSort==='price_desc') groupList.sort((a,b)=>b.cheapest-a.cheapest);
+  else if(searchQ) groupList.sort((a,b)=>b.inStock-a.inStock||a.cheapest-b.cheapest);
+
+  document.getElementById('count').textContent=groupList.length+' produkter';
+  document.getElementById('empty').style.display=groupList.length?'none':'block';
   document.getElementById('fynd-section').style.display=searchQ||activeCat?'none':'block';
-  renderCards(filtered.slice(0,120),'grid');
+  renderGroups(groupList.slice(0,80));
 }
 
-function isPokemon(title){return true;} // server handles this
+function renderGroups(groups){
+  let html=groups.map(g=>{
+    let img=g.image?`<img src="${g.image}" alt="" loading=lazy onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class=no-img style=display:none>📦</span>`:'<span class=no-img>📦</span>';
+    let price=g.cheapest<999999?g.cheapest+' kr':'—';
+    let storeRows=g.items.map(p=>{
+      let sc=p.status===`✅`?'status-in':'status-out';
+      let st=p.status===`✅`?'I lager':'Slut';
+      let pr=p.price||'—';
+      return`<div class=store-row onclick="event.stopPropagation();window.open('${p.url}','_blank')">
+<span class=s-price>${pr}</span><span class=s-store>${p.store}</span>
+<span class="card-status ${sc}">${st}</span></div>`;
+    }).join('');
+    return`<div class=group-card onclick="this.classList.toggle('open')">
+<div class=group-header>
+<div class=group-img>${img}</div>
+<div class=group-info>
+<div class=group-title>${g.title}</div>
+<div class=group-meta>
+<span class=group-price>Från ${price}</span>
+<span class=group-stores>${g.items.length} butiker</span>
+<span class=group-arrow>▼</span>
+</div>
+</div>
+</div>
+<div class=store-list>${storeRows}</div>
+</div>`;
+  }).join('');
+  document.getElementById('grid').innerHTML=html;
+}
+
 function isGoodUrl(url){
   let bad=['/collections/','/categories/'];
   if(bad.some(b=>url.includes(b))) return false;
   try{
-    let path=new URL(url).pathname.replace(/\/$/,'').split('/').filter(Boolean);
+    let path=new URL(url).pathname.replace(/\\/$/,'').split('/').filter(Boolean);
     let badEnds=['booster-box','booster-packs','tins','etb','booster-bundle','pokemon-boxar','pokemon-elite-trainer-box','pokemon-tins','booster','elite-trainer-box'];
     if(path.length<=2 && badEnds.includes(path[path.length-1].toLowerCase())) return false;
   }catch(e){}
   return true;
 }
 
-function renderCards(items,gridId){
-  let html=items.map(p=>{
-    let img=p.image?`<img src="${p.image}" alt="" loading=lazy onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class=no-img style=display:none>📦</span>`:'<span class=no-img>📦</span>';
-    let statusClass=p.status==='✅'?'status-in':'status-out';
-    return`<div class=card onclick="window.open('${p.url}','_blank')" style=cursor:pointer>
-<div class=card-img>${img}</div>
-<div class=card-info>
-<div class=card-title>${p.title}</div>
-<div class=card-meta>
-<span class=card-price>${p.price||'—'}</span>
-</div>
-<div class=card-footer>
-<span class="card-status ${statusClass}">${p.status==='✅'?'I lager':'Slut'}</span>
-<span class=card-store>${p.store}</span>
-</div>
-</div></div>`;
-  }).join('');
-  document.getElementById(gridId).innerHTML=html;
-}
-
 function buildFynd(){
-  let instock=products.filter(p=>p.status==='✅'&&isGoodUrl(p.url||''));
-  instock.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
-  let cheapest=instock.slice(0,12);
-  if(cheapest.length) renderCards(cheapest,'fynd-grid');
+  let instock=products.filter(p=>p.status===`✅`&&isGoodUrl(p.url||''));
+  let groups={};
+  instock.forEach(p=>{
+    let key=normalize(p.title);
+    if(!groups[key]) groups[key]={title:p.title,image:p.image,items:[]};
+    groups[key].items.push(p);
+    if(!groups[key].image && p.image) groups[key].image=p.image;
+  });
+  let groupList=Object.values(groups);
+  groupList.forEach(g=>{
+    g.cheapest=Math.min(...g.items.map(p=>parseInt(p.price)||999999));
+    g.items.sort((a,b)=>(parseInt(a.price)||999999)-(parseInt(b.price)||999999));
+  });
+  groupList.sort((a,b)=>a.cheapest-b.cheapest);
+  renderGroups(groupList.slice(0,12));
+  document.getElementById('fynd-grid').innerHTML=document.getElementById('grid').innerHTML;
+  setTimeout(buildFynd,0); // reset grid
 }
+// Re-run buildFynd properly
+setTimeout(()=>{buildFynd();},500);
 </script>
 </body>
 </html>"""
@@ -358,7 +417,6 @@ def index():
 
 @app.route("/api/products")
 def api_products():
-    # Filter at API level too
     filtered = [p for p in PRODUCTS if is_pokemon(p["title"]) and is_good_url(p.get("url",""))]
     return jsonify(filtered)
 
