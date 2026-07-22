@@ -364,7 +364,7 @@ var SET_COLORS={
   '151':'#e8c547','paradox-rift':'#a855f7','paldean-fates':'#f472b6',
   'temporal-forces':'#06b6d4','twilight-masquerade':'#34d399','shrouded-fable':'#8b5cf6',
   'stellar-crown':'#fbbf24','surging-sparks':'#ff6b35','prismatic-evolutions':'#c4b5fd',
-  'journey-together':'#22c55e','destined-rivals':'#dc2626','white-flare':'#e2e8f0','black-bolt':'#334155',
+  'journey-together':'#22c55e','destined-rivals':'#dc2626','white-flare':'#f8fafc','black-bolt':'#1e1b4b',
 };
 
 // ===== AUDIO (Web Audio API synthesis) =====
@@ -485,8 +485,14 @@ function showPackUI(){
     '<div class=pack-wrapper id=packWrapper onclick=ripPack()>'+
       '<div class=booster-pack id=boosterPack style=border-color:'+color+'>'+
         '<div class=pack-art style=background:'+color+'22;border:2px solid '+color+'44>'+
-          '<span style=font-size:40px;position:absolute>🎴</span>'+
-          (sym?'<img src="'+sym+'" alt="" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1>':'')+
+          '<span style=font-size:40px;position:absolute>'+
+          (sym?'<img src="'+sym+'" alt="" style=width:90%;height:90%;object-fit:contain;position:relative;z-index:1>':
+           '<svg viewBox="0 0 100 100" style=width:55%;height:55%;position:relative;z-index:1>'+
+             '<circle cx=50 cy=50 r=46 fill=none stroke='+color+' stroke-width=4 opacity=.6/>'+
+             '<circle cx=50 cy=50 r=14 fill='+color+'33 stroke='+color+' stroke-width=2 opacity=.8/>'+
+             '<line x1=4 y1=50 x2=96 y2=50 stroke='+color+' stroke-width=3 opacity=.5/>'+
+           '</svg>')+
+          '</span>'+
         '</div>'+
         '<div class=pack-label style=color:'+color+'>'+set.displayName+'</div>'+
         '<div class=pack-sub>10 KORT PER PACK</div>'+
