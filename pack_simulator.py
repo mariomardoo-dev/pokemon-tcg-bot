@@ -175,6 +175,12 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
   justify-content:center;background:var(--bg2);overflow:hidden;
 }
 .card-img img{width:100%;height:100%;object-fit:contain}
+.card-fallback{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:100%;font-size:10px;color:#555;
+  text-align:center;padding:4px;word-break:break-word;
+  font-weight:600;
+}
 .card-info{padding:6px 8px}
 .card-name{
   font-size:10px;font-weight:600;line-height:1.3;
@@ -865,7 +871,8 @@ function revealCard(card,container,index,weight){
 
   div.innerHTML=
     '<div class=card-img>'+
-      '<img src="'+card.image+'" alt="'+card.name+'" loading=lazy onerror="this.style.display=\'none\';this.parentElement.textContent=\''+card.name.substring(0,3)+'\'">'+
+      (card.image?'<img src="'+card.image+'" alt="'+card.name+'" loading=lazy onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">':'')+
+      '<span class=card-fallback style=display:'+(card.image?'none':'flex')+'>'+card.name.substring(0,15)+'</span>'+
     '</div>'+
     '<div class=card-info>'+
       '<div class=card-name>'+(card._reverseHolo?'⭐ ':'')+card.name+'</div>'+
