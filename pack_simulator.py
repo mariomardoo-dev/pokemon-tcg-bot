@@ -256,16 +256,16 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 
 /* ===== NEXT PACK BUTTON ===== */
 .next-pack-btn{
-  display:block;margin:14px auto 0;padding:5px 12px;
-  font-size:11px;font-weight:500;color:#888;
+  display:block;margin:14px auto 0;padding:7px 10px;
+  font-size:11px;font-weight:500;color:#999;
   background:transparent;border:1px solid #333;
-  border-radius:6px;cursor:pointer;
-  text-transform:uppercase;
-  transition:all .25s;
+  border-radius:5px;cursor:pointer;
+  text-transform:uppercase;letter-spacing:.5px;
+  transition:all .2s;
 }
 .next-pack-btn:hover{
-  background:var(--red);color:#fff;
-  box-shadow:0 0 16px rgba(204,0,0,.2);
+  background:rgba(204,0,0,.12);color:var(--red);
+  border-color:rgba(204,0,0,.3);
 }
 .next-pack-btn:active{transform:scale(.96)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -603,7 +603,7 @@ async function ripPack(){
   // Next pack button
   var nextBtn=document.createElement('button');
   nextBtn.className='next-pack-btn';
-  nextBtn.innerHTML='Nästa';
+  nextBtn.innerHTML='Fortsätt öppna';
   nextBtn.onclick=function(){nextBtn.remove();resetAndRip()};
   stage.appendChild(nextBtn);
 
