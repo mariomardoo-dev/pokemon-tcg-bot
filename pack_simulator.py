@@ -332,11 +332,11 @@ var HIT_GLOW={
   'Shiny Rare':'rgba(6,182,212,.4)','Shiny Ultra Rare':'rgba(6,182,212,.5)'
 };
 var RARE_SLOT_POOL=[
-  {rarity:'Double Rare',weight:67},
-  {rarity:'Illustration Rare',weight:12},
-  {rarity:'Ultra Rare',weight:9},
-  {rarity:'Special Illustration Rare',weight:4},
-  {rarity:'Hyper Rare',weight:2},
+  {rarity:'Double Rare',weight:78},             // ~79% — baseline hit
+  {rarity:'Illustration Rare',weight:9},        // ~9% — 1 in 11 packs
+  {rarity:'Ultra Rare',weight:6},               // ~6% — 1 in 17 packs
+  {rarity:'Special Illustration Rare',weight:3}, // ~3% — 1 in 33 packs
+  {rarity:'Hyper Rare',weight:1},               // ~1% — 1 in 100 packs
 ];
 
 // ===== SET LOGOS =====
@@ -663,11 +663,11 @@ function getAvailableRareSlots(byRarity){
     }
   }
   if(byRarity['ACE SPEC Rare']&&byRarity['ACE SPEC Rare'].length>0)
-    available.push({rarity:'ACE SPEC Rare',weight:2});
+    available.push({rarity:'ACE SPEC Rare',weight:3});
   if(byRarity['Shiny Ultra Rare']&&byRarity['Shiny Ultra Rare'].length>0)
-    available.push({rarity:'Shiny Ultra Rare',weight:5});
+    available.push({rarity:'Shiny Ultra Rare',weight:3});
   if(byRarity['Shiny Rare']&&byRarity['Shiny Rare'].length>0&&!available.find(function(a){return a.rarity==='Shiny Rare'}))
-    available.push({rarity:'Shiny Rare',weight:8});
+    available.push({rarity:'Shiny Rare',weight:5});
   return available;
 }
 function pickWeighted(items){
