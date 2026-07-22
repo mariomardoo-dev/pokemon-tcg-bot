@@ -224,12 +224,21 @@ fetch('/api/products').then(function(r){return r.json()}).then(function(p){
 });
 
 function norm(t){
-  return t.replace(/\\s*\\(Max\\s+\\d+\\s*(st)?\\s*(per\\s+(kund|hush\\u00e5ll|person))?\\)/gi,'')
-          .replace(/\\s*\\(Max\\s+\\d+(st)?\\s*\\/\\s*(kund|hush\\u00e5ll)\\)/gi,'')
-          .replace(/\\s*\\(Limit\\s+\\d+\\s*per[^)]*\\)/gi,'')
-          .replace(/\\s*\\(ENG?\\)/gi,'').replace(/\\s*\\(JP\\)/gi,'')
-          .replace(/\\s*[\u2013\u2014\u2012-]\\s*F\u00f6rhandsbokning\\s*/gi,'')
-          .replace(/\\s*F\u00f6rhandsbokning\\s*/gi,'').trim();
+  return t.replace(/\s*\(Max\s+\d+\s*(st)?\s*(per\s+(kund|hushåll|person))?\)/gi,'')
+          .replace(/\s*\(Max\s+\d+(st)?\s*\/\s*(kund|hushåll)\)/gi,'')
+          .replace(/\s*\(Limit\s+\d+\s*per[^)]*\)/gi,'')
+          .replace(/\s*\((ENG?|JP)\)\s*/gi,'').replace(/\s*\((ENG?|JP)\)\s*/gi,'')
+          .replace(/\s*[\u2013\u2014\u2012-]\s*Förhandsbokning\s*/gi,'')
+          .replace(/\s*Förhandsbokning\s*/gi,'')
+          .replace(/^(Pokémon\s*TCG[:\s,-]+|Pokemon\s*TCG[:\s,-]+|Pokémon[,\s-]+|Pokemon[,\s-]+|Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+)/gi,'')
+          .replace(/^[-–—]\s*/, '')
+          .replace(/^Mega\s*Evolution\s*\d*\.?\d*\s*[-–—:]\s*/gi, '')
+          .replace(/\s*[-–—]\s*Elite\s+Trainer\s+Box\b/gi,' ETB')
+          .replace(/\bElite\s+Trainer\s+Box\b/gi,'ETB')
+          .replace(/\bBooster\s+Display\s+Box\b/gi,'Booster Box')
+          .replace(/\s*\(ETB\)\s*/gi,' ETB ')
+          .replace(/\s+ETB\s+ETB\b/gi,' ETB')
+          .replace(/\s+/g,' ').trim().toLowerCase();
 }
 
 function buildCats(){
