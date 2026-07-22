@@ -378,42 +378,6 @@ var ERAS=[
     'shining-fates','battle-styles','chilling-reign','evolving-skies','fusion-strike',
     'brilliant-stars','astral-radiance','pokemon-go','lost-origin','silver-tempest','crown-zenith'
   ]},
-  {id:'sm',name:'Sun & Moon',logo:'https://assets.tcgdex.net/en/sm/sm1/logo.png',sets:[
-    'sun-moon','guardians-rising','burning-shadows','shining-legends','crimson-invasion',
-    'ultra-prism','forbidden-light','celestial-storm','dragon-majesty','lost-thunder',
-    'team-up','unbroken-bonds','unified-minds','hidden-fates','cosmic-eclipse'
-  ]},
-  {id:'xy',name:'XY',logo:'https://assets.tcgdex.net/en/xy/xy1/logo.png',sets:[
-    'xy-base','flashfire','furious-fists','phantom-forces','primal-clash',
-    'roaring-skies','ancient-origins','breakthrough','breakpoint','fates-collide',
-    'steam-siege','evolutions'
-  ]},
-  {id:'bw',name:'Black & White',logo:'https://assets.tcgdex.net/en/bw/bw1/logo.png',sets:[
-    'black-white','emerging-powers','noble-victories','next-destinies','dark-explorers',
-    'dragons-exalted','boundaries-crossed','plasma-storm','plasma-freeze','plasma-blast',
-    'legendary-treasures'
-  ]},
-  {id:'hgss',name:'HeartGold & SoulSilver',logo:'https://assets.tcgdex.net/en/hgss/hgss1/logo.png',sets:[
-    'heartgold-soulsilver','unleashed','undaunted','triumphant'
-  ]},
-  {id:'dp',name:'Diamond & Pearl',logo:'https://assets.tcgdex.net/en/dp/dp1/logo.png',sets:[
-    'diamond-pearl','mysterious-treasures','secret-wonders','great-encounters',
-    'majestic-dawn','legends-awakened','stormfront','platinum','rising-rivals',
-    'supreme-victors','arceus'
-  ]},
-  {id:'ex',name:'EX-Series',logo:'https://assets.tcgdex.net/en/ex/ex1/logo.png',sets:[
-    'ruby-sapphire','sandstorm','dragon','team-magma-aqua','hidden-legends',
-    'firered-leafgreen','team-rocket-returns','deoxys','emerald','unseen-forces',
-    'delta-species','legend-maker','holon-phantoms','crystal-guardians','dragon-frontiers',
-    'power-keepers'
-  ]},
-  {id:'neo',name:'Neo / e-Series',logo:'https://assets.tcgdex.net/en/neo/neo1/logo.png',sets:[
-    'neo-genesis','neo-discovery','neo-revelation','neo-destiny',
-    'expedition','aquapolis','skyridge'
-  ]},
-  {id:'base',name:'Wizards / Base Era',logo:'https://assets.tcgdex.net/en/base/base1/logo.png',sets:[
-    'base-set','jungle','fossil','base-set-2','team-rocket'
-  ]},
 ];
 var SET_LOGOS={
   'scarlet-violet':'https://images.pokemontcg.io/sv1/logo.png',
