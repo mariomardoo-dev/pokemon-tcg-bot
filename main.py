@@ -92,7 +92,8 @@ def norm(t):
     t = re.sub(r'\s+inkl\s+.+$', '', t, flags=re.I)  # strip "inkl ..." suffixes
     t = re.sub(r',\s*', ' ', t)  # commas -> space
     t = re.sub(r'\s*[\u2013\u2014\u2012-]\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
-    t = re.sub(r'\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
+    t = re.sub(r'\s*\(*\s*F\u00f6rhandsbokning\s*\)*\s*', '', t, flags=re.I)
+    t = re.sub(r'\s*\(\)\s*', '', t)  # empty parens
     t = re.sub(r'^(Pok\u00e9mon\s*TCG[:\s,-]+|Pokemon\s*TCG[:\s,-]+|Pok\u00e9mon[:\s,-]+|Pokemon[:\s,-]+)', '', t, flags=re.I)
     t = re.sub(r'^(Scarlet\s*(?:&|and)?\s*Violet\s*\d*\.?\d*\s*[:\s,-]+|SV\s*\d+\.?\d*\s*[:\s,-]+)', '', t, flags=re.I)
     t = re.sub(r'^(Mega\s*(?:&|and)?\s*Evolution\s*\d*\.?\d*[:\s,-]+|ME\d+\s+|Mega\s*Evolution\s*\d*\.?\d*\s+)', '', t, flags=re.I)
