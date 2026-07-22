@@ -81,6 +81,7 @@ def norm(t):
     t = re.sub(r'\s*\(Max\s+\d+(st)?\s*/\s*(kund|hushåll)\)', '', t, flags=re.I)
     t = re.sub(r'\s*\(Limit\s+\d+\s*per[^)]*\)', '', t, flags=re.I)
     t = re.sub(r'\s*\((ENG?|JP)\)\s*', '', t, flags=re.I)
+    t = re.sub(r'\s*\(\d+\s*Pack\)\s*', '', t, flags=re.I)
     t = re.sub(r'\s*[\u2013\u2014\u2012-]\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
     t = re.sub(r'\s*F\u00f6rhandsbokning\s*', '', t, flags=re.I)
     t = re.sub(r'^(Pok\u00e9mon\s*TCG[:\s,-]+|Pokemon\s*TCG[:\s,-]+|Pok\u00e9mon[:\s,-]+|Pokemon[:\s,-]+)', '', t, flags=re.I)
