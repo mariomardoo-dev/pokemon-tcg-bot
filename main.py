@@ -437,7 +437,11 @@ def count():
 
 @app.route("/packs")
 def packs():
-    return PACKS_HTML
+    resp = app.make_response(PACKS_HTML)
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
 
 @app.route("/static/sets/<path:filename>")
 def static_sets(filename):
