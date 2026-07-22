@@ -321,13 +321,13 @@ var RARE_SLOT_POOL=[
   {rarity:'Hyper Rare',weight:2},
 ];
 
-// ===== SET LOGOS (TCGdex) =====
-var SET_LOGOS={
-  '151':'https://assets.tcgdex.net/en/sv/sv03.5/logo',
-  'surging-sparks':'https://assets.tcgdex.net/en/sv/sv08/logo',
-  'prismatic-evolutions':'https://assets.tcgdex.net/en/sv/sv08.5/logo',
-  'paldean-fates':'https://assets.tcgdex.net/en/sv/sv04.5/logo',
-  'twilight-masquerade':'https://assets.tcgdex.net/en/sv/sv06/logo',
+// ===== SET LOGOS =====
+var SET_COLORS={
+  '151':'#e8c547',
+  'surging-sparks':'#ff6b35',
+  'prismatic-evolutions':'#c4b5fd',
+  'paldean-fates':'#f472b6',
+  'twilight-masquerade':'#34d399',
 };
 
 // ===== AUDIO (Web Audio API synthesis) =====
@@ -433,7 +433,7 @@ function showPackUI(){
   document.getElementById('loading').style.display='none';
   var bestRarity=bestPulls[activeSet+'_best']||'';
   var bestCard=bestPulls[activeSet+'_bestCard']||'';
-  var logoUrl=SET_LOGOS[activeSet]||'';
+  var color=SET_COLORS[activeSet]||'#cc0000';
   document.getElementById('packStage').innerHTML=
     '<div class=pack-stats id=packStats>'+
       '<b>'+set.displayName+'</b> &middot; '+set.cards.length+' kort &middot; '+
@@ -441,9 +441,15 @@ function showPackUI(){
       (bestRarity?'<br>Bästa drag: <span style=color:var(--gold)>'+bestCard+'</span> ('+bestRarity+')':'')+
     '</div>'+
     '<div class=pack-wrapper id=packWrapper onclick=ripPack()>'+
-      '<div class=booster-pack id=boosterPack>'+
-        '<div class=pack-art>'+(logoUrl?'<img src=\"'+logoUrl+'\" alt=\"'+set.displayName+'\" style=width:100%;height:100%;object-fit:contain>':'🎴')+'</div>'+
-        '<div class=pack-label>'+set.displayName+'</div>'+
+      '<div class=booster-pack id=boosterPack style=border-color:'+color+'>'+
+        '<div class=pack-art style=background:'+color+'22;border:2px solid '+color+'44>'+
+          '<svg viewBox="0 0 100 100" style=width:70%;height:70%>'+
+            '<circle cx=50 cy=50 r=48 fill=none stroke='+color+' stroke-width=4/>'+
+            '<circle cx=50 cy=50 r=15 fill='+color+'44 stroke='+color+' stroke-width=2/>'+
+            '<rect x=2 y=44 width=96 height=12 fill='+color+'66 rx=4/>'+
+          '</svg>'+
+        '</div>'+
+        '<div class=pack-label style=color:'+color+'>'+set.displayName+'</div>'+
         '<div class=pack-sub>10 KORT PER PACK</div>'+
       '</div>'+
     '</div>'+
@@ -498,6 +504,7 @@ async function ripPack(){
   if(isRipping)return;
   isRipping=true;
   initAudio();
+  try{
 
   var pack=generatePack();
   var bestRar=bestRarityInPack(pack);
@@ -573,9 +580,9 @@ async function ripPack(){
     var card=revealOrder[i];
     var w=RARITY_WEIGHT[card.rarity]||0;
 
-    if(w>=4) sfxSparkle(); // IR/UR+
-    else if(w>=6) sfxDing(); // SIR+
-    else sfxFlip();
+    if(w>=6) sfxDing();
+    else if(w>=4) sfxSparkle();
+    else if(w>=1) sfxFlip();
 
     revealCard(card,stage,i,w);
 
@@ -598,7 +605,8 @@ async function ripPack(){
   // Rebuild pack UI
   await sleep(600);
   showPackUI();
-  isRipping=false;
+  }catch(e){console.warn('ripPack error:',e);showPackUI()}
+  finally{isRipping=false}
 }
 
 function revealCard(card,container,index,weight){
