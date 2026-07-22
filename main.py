@@ -164,7 +164,7 @@ main{max-width:1200px;margin:0 auto;padding:16px 20px}
 .card-store{color:var(--muted)}
 .card-status{font-size:12px;padding:3px 8px;border-radius:12px;display:inline-block}
 .status-in{background:rgba(34,197,94,.1);color:var(--green)}
-.status-out{background:rgba(255,255,255,.05);color:var(--muted)}
+.status-out{background:rgba(239,68,68,.15);color:#ef4444}
 .card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;gap:8px}
 .card-link{font-size:12px;color:var(--red);white-space:nowrap}
 
