@@ -93,7 +93,7 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 .booster-pack .pack-art img{width:90%;height:90%;object-fit:contain}
 .booster-pack .pack-label{
   font-size:18px;font-weight:800;color:#fff;letter-spacing:4px;
-  text-transform:uppercase;z-index:1;
+  text-transform:uppercase;z-index:1;text-align:center;
 }
 .booster-pack .pack-sub{
   font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px;z-index:1;
