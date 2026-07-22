@@ -256,12 +256,12 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 
 /* ===== NEXT PACK BUTTON ===== */
 .next-pack-btn{
-  display:block;margin:20px auto 0;padding:12px 36px;
-  font-size:15px;font-weight:700;color:#fff;
+  display:block;margin:16px auto 0;padding:10px 28px;
+  font-size:13px;font-weight:600;color:#fff;
   background:linear-gradient(135deg,var(--red),#990000);
-  border:none;border-radius:12px;cursor:pointer;
+  border:none;border-radius:10px;cursor:pointer;
   letter-spacing:1px;text-transform:uppercase;
-  box-shadow:0 3px 18px rgba(204,0,0,.3);
+  box-shadow:0 2px 12px rgba(204,0,0,.25);
   transition:all .25s;animation:fadeIn .3s ease;
 }
 .next-pack-btn:hover{
