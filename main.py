@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Pokesniper.se — Sveriges Pokemon TCG-prisjämförelse."""
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import json, os, re
+from pack_simulator import PACKS_HTML
 
 app = Flask(__name__)
 PRODUCTS_FILE = os.path.join(os.path.dirname(__file__), "products.json")
@@ -412,6 +413,15 @@ def sitemap():
 @app.route("/count")
 def count():
     return str(len(PRODUCTS))
+
+@app.route("/packs")
+def packs():
+    return PACKS_HTML
+
+@app.route("/static/sets/<path:filename>")
+def static_sets(filename):
+    sets_dir = os.path.join(os.path.dirname(__file__), "static", "sets")
+    return send_from_directory(sets_dir, filename)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
