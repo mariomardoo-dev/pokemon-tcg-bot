@@ -42,12 +42,27 @@ def is_pokemon(title):
     if " me" in t and ("evolution" in t or "booster" in t or "etb" in t): return True
     return False
 
-# bad URL patterns (category pages sold as products)
-BAD_URL = {"/collections/","/categories/","/pokemon/booster","/pokemon/tin","/pokemon/pokemon","/pokemon/etb"}
+# bad URL patterns (category pages, not products)
+BAD_URL = {"/collections/","/categories/"}
+# Also filter URLs ending in a category slug (no product in path)
+BAD_ENDS = {"booster-box","booster-packs","tins","etb","booster-bundle","pokemon-boxar",
+            "pokemon-elite-trainer-box","pokemon-tins","booster","elite-trainer-box"}
 
 def is_good_url(url):
     for b in BAD_URL:
         if b in url: return False
+    # Only flag if URL ends with a category slug (last path segment)
+    import os as _os
+    parts = url.rstrip("/").split("/")
+    if parts:
+        last = parts[-1].lower()
+        if last in BAD_ENDS:
+            # Extra check: if URL has more specific segments before, it's likely a product
+            path = "/".join(parts)
+            # Category: /pokemon/booster-box → flag
+            # Product: /sallskapsspel/pokemon/pokemon-tcg-stuff → keep
+            if len(parts) <= 3:  # Only 2-3 segments = likely category
+                return False
     return True
 
 # --- categories ---
@@ -296,8 +311,12 @@ function doSearch(){
 
 function isPokemon(title){return true;} // server handles this
 function isGoodUrl(url){
-  let bad=['/collections/','/categories/','/pokemon/booster','/pokemon/tin','/pokemon/etb','/pokemon/pokemon'];
-  return !bad.some(b=>url.includes(b));
+  let bad=['/collections/','/categories/'];
+  if(bad.some(b=>url.includes(b))) return false;
+  let parts=url.replace(/\/$/,'').split('/');
+  let badEnds=['booster-box','booster-packs','tins','etb','booster-bundle','pokemon-boxar','pokemon-elite-trainer-box','pokemon-tins','booster','elite-trainer-box'];
+  if(parts.length<=3 && badEnds.includes(parts[parts.length-1].toLowerCase())) return false;
+  return true;
 }
 
 function renderCards(items,gridId){
