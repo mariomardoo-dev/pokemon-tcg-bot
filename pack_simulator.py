@@ -430,7 +430,8 @@ function selectSet(key,btn){
 
 function showPackUI(){
   var set=sets[activeSet];
-  document.getElementById('loading').style.display='none';
+  var le=document.getElementById('loading');
+  if(le) le.style.display='none';
   var bestRarity=bestPulls[activeSet+'_best']||'';
   var bestCard=bestPulls[activeSet+'_bestCard']||'';
   var color=SET_COLORS[activeSet]||'#cc0000';
