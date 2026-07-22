@@ -20,7 +20,8 @@ for p in all_products:
         "price": p.get("price", ""),
         "store": p.get("store", "?"),
         "status": p.get("status", "❌"),
-        "url": p.get("url", "")
+        "url": p.get("url", ""),
+        "image": p.get("image", "")
     })
 
 stores = len(set(p["store"] for p in products))
