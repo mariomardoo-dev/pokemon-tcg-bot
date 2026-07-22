@@ -14,7 +14,8 @@ NON_POKEMON = {"lorcana","digimon","gundam","star wars","riftbound","magic:","fl
                "one piece","disney","final fantasy","yugioh","yu-gi-oh","meta zoo","flesh&blood",
                "ultra pro","sleeves","deck box","binder","toploader","playmat","album",
                "portfolio","zipfolio","dice","sugarrush","tcgprotect","ultimate guard","gamegenic",
-               "dragon shield","foldable","commander","playmats","prereleasekit"}
+               "dragon shield","foldable","commander","playmats","prereleasekit",
+               "acrylic case","protective case","p\u00e4rm","deck protector","samlarp\u00e4rm"}
 
 def is_pokemon(title):
     t = title.lower()
