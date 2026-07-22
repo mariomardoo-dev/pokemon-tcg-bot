@@ -256,17 +256,16 @@ main{max-width:1000px;margin:0 auto;padding:16px 20px 40px}
 
 /* ===== NEXT PACK BUTTON ===== */
 .next-pack-btn{
-  display:block;margin:16px auto 0;padding:10px 28px;
-  font-size:13px;font-weight:600;color:#fff;
-  background:linear-gradient(135deg,var(--red),#990000);
-  border:none;border-radius:10px;cursor:pointer;
+  display:block;margin:14px auto 0;padding:6px 24px;
+  font-size:12px;font-weight:600;color:#e0e0e0;
+  background:var(--bg2);border:1px solid var(--red);
+  border-radius:8px;cursor:pointer;
   letter-spacing:1px;text-transform:uppercase;
-  box-shadow:0 2px 12px rgba(204,0,0,.25);
   transition:all .25s;animation:fadeIn .3s ease;
 }
 .next-pack-btn:hover{
-  transform:translateY(-1px);
-  box-shadow:0 6px 28px rgba(204,0,0,.45);
+  background:var(--red);color:#fff;
+  box-shadow:0 0 16px rgba(204,0,0,.2);
 }
 .next-pack-btn:active{transform:scale(.96)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
