@@ -171,6 +171,24 @@ def search_products(q, cat=None, sort="relevance", limit=60):
         results.sort(key=_pr2)
     return results[:limit]
 
+import os
+
+VISITOR_FILE = os.path.join(os.path.dirname(__file__), "visitor_count.txt")
+
+def get_visitor_count():
+    try:
+        with open(VISITOR_FILE, "r") as f:
+            return int(f.read().strip())
+    except:
+        return 0
+
+def increment_visitor():
+    count = get_visitor_count() + 1
+    with open(VISITOR_FILE, "w") as f:
+        f.write(str(count))
+    return count
+
+
 HTML = """<!DOCTYPE html>
 <html lang="sv">
 <head>
