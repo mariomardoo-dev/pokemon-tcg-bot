@@ -445,10 +445,10 @@ var SET_LOGOS={
   'fusion-strike':'https://images.pokemontcg.io/swsh8/logo.png',
   'brilliant-stars':'https://images.pokemontcg.io/swsh9/logo.png',
   'astral-radiance':'https://images.pokemontcg.io/swsh10/logo.png',
-  'pokemon-go':'https://images.pokemontcg.io/swsh105/logo.png',
+  'pokemon-go':'https://images.pokemontcg.io/pgo/logo.png',
   'lost-origin':'https://images.pokemontcg.io/swsh11/logo.png',
   'silver-tempest':'https://images.pokemontcg.io/swsh12/logo.png',
-  'crown-zenith':'https://images.pokemontcg.io/swsh125/logo.png',
+  'crown-zenith':'https://images.pokemontcg.io/swsh12pt5/logo.png',
   // Sun & Moon — use TCGdex logos
   'sun-moon':'https://assets.tcgdex.net/en/sm/sm1/logo.png',
   'guardians-rising':'https://assets.tcgdex.net/en/sm/sm2/logo.png',
