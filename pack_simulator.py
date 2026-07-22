@@ -382,6 +382,9 @@ var ERAS=[
     'shining-fates','battle-styles','chilling-reign','evolving-skies','fusion-strike',
     'brilliant-stars','astral-radiance','pokemon-go','lost-origin','silver-tempest','crown-zenith'
   ]},
+  {id:'meg',name:'Mega Evolution',logo:'',sets:[
+    'mega-evolution','phantasmal-flames','ascended-heroes','perfect-order','chaos-rising','pitch-black'
+  ]},
 ];
 var SET_LOGOS={
   'scarlet-violet':'https://images.pokemontcg.io/sv1/logo.png',
@@ -501,6 +504,13 @@ var SET_LOGOS={
   'fossil':'https://assets.tcgdex.net/en/base/base3/logo.png',
   'base-set-2':'https://assets.tcgdex.net/en/base/base4/logo.png',
   'team-rocket':'https://assets.tcgdex.net/en/base/base5/logo.png',
+  // Mega Evolution
+  'mega-evolution':'',
+  'phantasmal-flames':'',
+  'ascended-heroes':'',
+  'perfect-order':'',
+  'chaos-rising':'',
+  'pitch-black':'',
 };
 var SET_COLORS={
   'scarlet-violet':'#e0245e','paldea-evolved':'#f59e0b','obsidian-flames':'#ef4444',
@@ -541,6 +551,9 @@ var SET_COLORS={
   'expedition':'#ffd700','aquapolis':'#00bfff','skyridge':'#87ceeb',
   // Wizards / Base
   'base-set':'#ffd700','jungle':'#228b22','fossil':'#708090','base-set-2':'#ffd700','team-rocket':'#333',
+  // Mega Evolution
+  'mega-evolution':'#ff4500','phantasmal-flames':'#ff6347','ascended-heroes':'#daa520',
+  'perfect-order':'#4169e1','chaos-rising':'#8b0000','pitch-black':'#1a1a2e',
 };
 
 // ===== AUDIO (Web Audio API synthesis) =====
